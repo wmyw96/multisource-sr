@@ -1,6 +1,7 @@
 import tensorflow as tf
 import numpy as np
-from utils import *
+from model.utils import *
+import tensorflow.contrib.slim as slim
 
 
 def get_edsr_ph(params):
@@ -27,7 +28,7 @@ def get_edsr_ph(params):
 def get_edsr_graph(ph, params):
     graph = {}
 
-    with tf.variable_scaope('edsr', reuse=tf.AUTO_REUSE):
+    with tf.variable_scope('edsr', reuse=tf.AUTO_REUSE):
         inp = ph['lr_image']
         if params['network']['shift_mean']:
             inp = inp - 127
@@ -39,15 +40,16 @@ def get_edsr_graph(ph, params):
 
         n_feats = params_n['n_feats']
         kernel_size = params_n['kernel_size']
-        graph['head'] = tf.nn.conv2d(inp, n_feats, kernel_size)
+        graph['head'] = slim.conv2d(inp, n_feats, kernel_size)
 
         x = tf.identity(graph['head'])
 
         graph['res_block'] = []
-        for i in range(params['n_resblocks']):
+        for i in range(params_n['n_resblocks']):
             x = resblock(x, n_feats, kernel_size, params_n['res_scale'])
             graph['res_block'].append(x)
-        graph['body'] = tf.nn.conv2d(x, n_feats, kernel_size) + graph['head']
+        graph['body'] = \
+            slim.conv2d(x, n_feats, kernel_size) + graph['head']
 
         up = upsampler_block(graph['body'], params_d['scale'], n_feats,
                              kernel_size, None)
@@ -99,15 +101,16 @@ def get_edsr_vars(ph, graph):
         'edsr': tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES,
                                   scope='edsr')
     }
-
-    return graph_vars
+    save_vars = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES,
+                                  scope='edsr')
+    return graph_vars, save_vars
 
 
 def build_edsr_model(params):
     ph = get_edsr_ph(params)
 
     graph = get_edsr_graph(ph, params)
-    graph_vars = get_edsr_vars(ph, graph)
+    graph_vars, save_vars = get_edsr_vars(ph, graph)
     targets = get_edsr_targets(ph, graph, graph_vars, params)
 
-    return ph, graph, targets
+    return ph, graph, save_vars, targets

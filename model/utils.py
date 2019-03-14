@@ -1,11 +1,12 @@
 import tensorflow as tf
 import math
+import tensorflow.contrib.slim as slim
 
 
 def resblock(x, n_feats, kernel_size, scale):
-    tmp = tf.nn.conv2d(x, n_feats, kernel_size, activation_fn=None)
+    tmp = slim.conv2d(x, n_feats, kernel_size, activation_fn=None)
     tmp = tf.nn.relu(tmp)
-    tmp = tf.nn.conv2d(tmp, n_feats, kernel_size, activation_fn=None)
+    tmp = slim.conv2d(tmp, n_feats, kernel_size, activation_fn=None)
     tmp *= scale
     return x + tmp
 
@@ -33,15 +34,16 @@ def ps_operator(x, r, color=False):
 
 
 def upsampler_block(x, scale, n_feats, kernel_size, activation):
-    x = tf.nn.conv2d(x, n_feats, kernel_size, activation)
+    x = slim.conv2d(x, n_feats, kernel_size, activation_fn=activation)
     if scale & (scale - 1) == 0:    # scale = 2 ^ k
         for _ in range(int(math.log(scale, 2))):
             ps_features = 3 * (2 ** 2)
-            x = tf.nn.conv2d(x, ps_features, kernel_size, activation)
+            x = slim.conv2d(x, ps_features, kernel_size,
+                            activation_fn=activation)
             x = ps_operator(x, 2, color=True)
     else:
         ps_features = 3 * (3 ** 2)
-        x = tf.nn.conv2d(x, ps_features, kernel_size, activation)
+        x = slim.conv2d(x, ps_features, kernel_size, activation_fn=activation)
         x = ps_operator(x, 3, color=True)
     return x
 

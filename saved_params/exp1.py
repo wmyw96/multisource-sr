@@ -2,12 +2,12 @@
 
 def generate_params():
 
-    data_params = {'size_h': 728 // 2,
-                   'size_w': 1024 // 2,
+    data_params = {'size_h': 720 // 2,
+                   'size_w': 1280 // 2,
                    'size_c': 3,
                    'scale': 2,
-                   'train': ['h-y-0306-13', 'j-d-0306-21'],
-                   'test': ['h-y-0306-13', 'h-j-0306-13', 'j-d-0306-21']}
+                   'train': ['h-y-0306-17', 'j-d-0306-21'],
+                   'test': ['h-y-0306-17', 'h-j-0306-13', 'j-d-0306-21']}
 
     train_params = {'batch_size': 16,
                     'lr': 1e-4,

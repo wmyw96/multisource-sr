@@ -1,7 +1,8 @@
 import numpy as np
 import os
 from skimage import io
-import cv2
+from PIL import Image
+import progressbar
 
 
 class dataset(object):
@@ -54,14 +55,30 @@ def sr_dataset(datadir, params):
         list = os.listdir(path)
         hr_img_cl = []
         lr_img_cl = []
+
+        pgb = progressbar.ProgressBar()
+        pgb.start(len(list))
+        count = 0
+
+        print('=' * 16 + '\nRead File: {}'.format(path))
         for ele in list:
+            if ele[0] == '.':
+                continue
+            count += 1
+            pgb.update(count)
+
             file_path = os.path.join(path, ele)
+
             if os.path.isfile(file_path):
                 img = io.imread(file_path)
                 hr_img_cl.append(np.expand_dims(img, axis=0))
-                shrink = cv2.resize(img, lr_img_size,
-                                    interpolation=cv2.INTER_AREA)
+
+                im = Image.open(file_path)
+                shrink = im.resize(lr_img_size, Image.ANTIALIAS)
+
                 lr_img_cl.append(np.expand_dims(shrink, axis=0))
+        pgb.finish()
+
         lr_img_dat = np.concatenate(lr_img_cl, axis=0)
         hr_img_dat = np.concatenate(hr_img_cl, axis=0)
         n_data = lr_img_dat.shape[0]

@@ -43,10 +43,10 @@ mod = importlib.import_module('saved_params.exp'+args.exp_id)
 params = mod.generate_params()
 
 # Load data
-sr_train_data, sr_valid_data, sr_test_data = sr_dataset(args.datadir)
+sr_train_data, sr_valid_data, sr_test_data = sr_dataset(args.datadir, params)
 
 # Build the computation graph
-ph, graph, targets, save_vars = build_edsr_model(params=params)
+ph, graph, save_vars, targets = build_edsr_model(params=params)
 
 # Train loop
 if args.gpu > -1:
@@ -73,7 +73,7 @@ def evaluate(sess, sr_data):
         fetches = []
         for _ in range(corpus.len() // params['train']['batch_size']):
             lr_image, hr_image = corpus.get_next_batch(
-                params['batch_size'])
+                params['train']['batch_size'])
             feed_dict = {
                 ph['lr_image']: lr_image,
                 ph['hr_image']: hr_image,
@@ -90,7 +90,8 @@ for ep in range(params['train']['num_episodes']):
 
     t_ep_start = time.time()
 
-    lr_image, hr_image = sr_train_data.get_next_batch(params['batch_size'])
+    lr_image, hr_image = \
+        sr_train_data.get_next_batch(params['train']['batch_size'])
     feed_dict = {
         ph['lr_image']: lr_image,
         ph['hr_image']: hr_image,
