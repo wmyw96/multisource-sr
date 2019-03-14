@@ -84,6 +84,12 @@ def get_edsr_targets(ph, graph, graph_vars, params):
         'edsr_train_op': edsr_train_op
     }
 
+    targets['eval'] = {
+        'mae_loss': mae,
+        'mse_loss': mse,
+        'psnr_loss': psnr,
+    }
+
     targets['samples'] = samples
     return targets
 

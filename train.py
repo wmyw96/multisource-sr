@@ -23,7 +23,7 @@ parser = argparse.ArgumentParser(description='multisource-super-resolution')
 parser.add_argument('--logdir', default='./logs', type=str)
 parser.add_argument('--exp_id', default='1', type=str)
 parser.add_argument('--gpu', default=-1, type=int)
-parser.add_argument('--datadir', default='./dataset', type=str)
+parser.add_argument('--datadir', default='./dataset/game-live-small', type=str)
 args = parser.parse_args()
 
 # Clear out the save logs directory (for tensorboard)
@@ -66,6 +66,23 @@ sess.run(tf.global_variables_initializer())
 #  code to restore #
 ####################
 
+
+def evaluate(sess, sr_data):
+    for name in sr_data:
+        corpus = sr_data[name]
+        fetches = []
+        for _ in range(corpus.len() // params['train']['batch_size']):
+            lr_image, hr_image = corpus.get_next_batch(
+                params['batch_size'])
+            feed_dict = {
+                ph['lr_image']: lr_image,
+                ph['hr_image']: hr_image,
+            }
+            fetch = sess.run(targets['eval'], feed_dict=feed_dict)
+            fetches.append(fetch)
+        print_metrics(combine_loss(fetches))
+
+
 decay = 1.0
 
 for ep in range(params['train']['num_episodes']):
@@ -87,3 +104,6 @@ for ep in range(params['train']['num_episodes']):
     t_ep_end = time.time()
     print('Episode: {} ({}): '.format(ep, t_ep_end - t_ep_start))
     print_metrics(readouts)
+
+    if ep % 100 == 0:
+        evaluate(sess, sr_valid_data)
