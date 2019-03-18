@@ -28,7 +28,7 @@ def get_edsr_ph(params):
 def get_edsr_graph(ph, params):
     graph = {}
 
-    with tf.variable_scope('edsr', reuse=tf.AUTO_REUSE):
+    with tf.variable_scope('edsr', reuse=False):
         inp = ph['lr_image']
         if params['network']['shift_mean']:
             inp = inp - 127
@@ -47,6 +47,7 @@ def get_edsr_graph(ph, params):
         graph['res_block'] = []
         for i in range(params_n['n_resblocks']):
             x = resblock(x, n_feats, kernel_size, params_n['res_scale'])
+            print('Block {}'.format(i) + str(x.shape))
             graph['res_block'].append(x)
         graph['body'] = \
             slim.conv2d(x, n_feats, kernel_size) + graph['head']
@@ -72,6 +73,9 @@ def get_edsr_targets(ph, graph, graph_vars, params):
     mae = tf.reduce_mean(tf.losses.absolute_difference(out,
                                                        ph['hr_image']))
     mse = tf.squared_difference(out, ph['hr_image'])
+    mae = tf.reduce_mean(mae)
+    mse = tf.reduce_mean(mse)
+
     psnr = tf.constant(255**2, dtype=tf.float32) / mse
     psnr = tf.constant(10, dtype=tf.float32) * log10(psnr)
 

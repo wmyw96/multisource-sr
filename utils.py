@@ -22,12 +22,10 @@ def print_metrics(readouts):
 def combine_loss(fetches):
     loss = {}
     for key in fetches[0]:
-        loss[key] = 0.0
+        loss[key] = []
 
     for i in range(len(fetches)):
         for key in fetches[i]:
-            loss[key] += fetches[i][key]
+            loss[key] += [fetches[i][key]]
 
-    for key in fetches[0]:
-        loss[key] /= len(fetches)
     return loss

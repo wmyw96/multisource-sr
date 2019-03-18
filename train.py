@@ -15,7 +15,7 @@ from data import sr_dataset
 sys.path.append(os.path.dirname(__file__))
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
-np.set_printoptions(threshold=np.nan)
+#np.set_printoptions(threshold=np.nan)
 np.random.seed(0)
 
 # Parse cmdline args
@@ -69,6 +69,7 @@ sess.run(tf.global_variables_initializer())
 
 def evaluate(sess, sr_data):
     for name in sr_data:
+        print('=' * 8 + 'Valid Set: ' + name + '=' * 8)
         corpus = sr_data[name]
         fetches = []
         for _ in range(corpus.len() // params['train']['batch_size']):
@@ -103,8 +104,15 @@ for ep in range(params['train']['num_episodes']):
             readouts[k_] = readouts.get(k_, []) + [fetches[k_]]
 
     t_ep_end = time.time()
-    print('Episode: {} ({}): '.format(ep, t_ep_end - t_ep_start))
-    print_metrics(readouts)
+    
+    if ep % 100 == 0:
+        print('Episode: {} ({})'.format(ep, t_ep_end - t_ep_start))
+        print_metrics(readouts)
+        readouts = {}
 
     if ep % 100 == 0:
+        decay *= 0.9
         evaluate(sess, sr_valid_data)
+
+evaluate(sess, sr_test_data)
+

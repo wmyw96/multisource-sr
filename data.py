@@ -52,16 +52,16 @@ def sr_dataset(datadir, params):
     test_dataset = {}
     for data_name in params['data']['test']:
         path = os.path.join(datadir, data_name)
-        list = os.listdir(path)
+        cur_list = os.listdir(path)
         hr_img_cl = []
         lr_img_cl = []
-
+        #print(len(cur_list))
         pgb = progressbar.ProgressBar()
-        pgb.start(len(list))
+        pgb.start()
         count = 0
 
         print('=' * 16 + '\nRead File: {}'.format(path))
-        for ele in list:
+        for ele in cur_list:
             if ele[0] == '.':
                 continue
             count += 1
@@ -72,7 +72,7 @@ def sr_dataset(datadir, params):
             if os.path.isfile(file_path):
                 img = io.imread(file_path)
                 hr_img_cl.append(np.expand_dims(img, axis=0))
-
+                #print(img.max())
                 im = Image.open(file_path)
                 shrink = im.resize(lr_img_size, Image.ANTIALIAS)
 
