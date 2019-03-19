@@ -13,7 +13,7 @@ def generate_params():
                     'lr': 1e-3,
                     'num_episodes': 10000}
 
-    network_params = {'n_resblocks': 6,
+    network_params = {'n_resblocks': 10,
                       'kernel_size': [3, 3],
                       'n_feats': 64,
                       'res_scale': 0.1,
