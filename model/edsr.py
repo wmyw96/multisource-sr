@@ -7,7 +7,7 @@ import tensorflow.contrib.slim as slim
 def get_edsr_ph(params):
     ph = {}
 
-    params_d = params['data']
+    params_d = params['network']
 
     lr_shape = [params_d['size_h'], params_d['size_w'], params_d['size_c']]
     scale = params_d['scale']

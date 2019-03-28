@@ -5,6 +5,33 @@ from PIL import Image
 import progressbar
 
 
+def get_small_batch(batch_inp, batch_out, size):
+    s = batch_out.shape[1] // batch_inp.shape[1]
+
+    W = batch_inp.shape[2]
+    H = batch_inp.shape[1]
+
+    h = size[0]
+    w = size[1]
+
+    batch_size = batch_inp.shape[0]
+
+    small_batch_inp = np.zeros((batch_size, h, w, 3))
+    small_batch_out = np.zeros((batch_size, h * s, w * s, 3))
+
+    for i in range(batch_size):
+        x = np.random.randint(H - h + 1, size=(1))
+        y = np.random.randint(W - w + 1, size=(1))
+
+        x = int(x)
+        y = int(y)
+
+        small_batch_inp[i, :, :, :] = batch_inp[i, x:x+h, y:y+h, :]
+        small_batch_out[i, :, :, :] = batch_out[i, x*s:(x*s+h*s), y*s:(y*s+h*s), :]
+
+    return small_batch_inp, small_batch_out
+
+
 class dataset(object):
     def __init__(self, inputs, labels, randomize=True):
         self.inputs = inputs
@@ -28,7 +55,7 @@ class dataset(object):
             self.inputs = self.inputs[idx, :]
             self.labels = self.labels[idx, :]
 
-    def get_next_batch(self, batch_size):
+    def get_next_batch(self, batch_size, size=None):
         # if batch_size is negative -> return all
         if batch_size < 0:
             return self.inputs, self.labels
@@ -38,6 +65,8 @@ class dataset(object):
         inputs = self.inputs[self.pointer:end, :]
         labels = self.labels[self.pointer:end, :]
         self.pointer = end
+        if size is not None:
+            return get_small_batch(inputs, labels, size)
         return inputs, labels
 
 

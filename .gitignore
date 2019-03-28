@@ -2,4 +2,6 @@
 dataset/
 __pycache__/
 logs/
+images/
+saved_models/
 

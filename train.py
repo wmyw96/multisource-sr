@@ -43,7 +43,7 @@ time.sleep(2)
 mod = importlib.import_module('saved_params.exp'+args.exp_id)
 params = mod.generate_params()
 
-log_name = get_log_name(params)
+log_name = get_log_name(params, 'edsr')
 model_path = args.modeldir + '/' + log_name + '.ckpt'
 log_path = args.logdir + '/' + log_name + '.log'
 
@@ -71,25 +71,30 @@ sess.run(tf.global_variables_initializer())
 #  code to restore #
 ####################
 
+small_size = (params['network']['size_h'], params['network']['size_w'])
+
+'''
+def get_hr_image(sess, inp):
+    border = params['data']['scale'] + 6
+    small_size2 = 
+
+
 
 def evaluate(sess, sr_data):
     for name in sr_data:
         print('=' * 8 + 'Valid Set: ' + name + '=' * 8)
         corpus = sr_data[name]
         fetches = []
-        for _ in range(corpus.len() // params['train']['batch_size']):
-            lr_image, hr_image = corpus.get_next_batch(
-                params['train']['batch_size'])
-            feed_dict = {
-                ph['lr_image']: lr_image,
-                ph['hr_image']: hr_image,
-            }
-            fetch = sess.run(targets['eval'], feed_dict=feed_dict)
-            fetches.append(fetch)
+        for _ in range(corpus.len()):
+            lr_image, hr_image = corpus.get_next_batch(1)
+            hr_fake = get_hr_image(lr_image)
+
         print_metrics(combine_loss(fetches))
+'''
 
 
 decay = 1.0
+
 
 for ep in range(params['train']['num_episodes']):
     readouts = {}
@@ -97,7 +102,7 @@ for ep in range(params['train']['num_episodes']):
     t_ep_start = time.time()
 
     lr_image, hr_image = \
-        sr_train_data.get_next_batch(params['train']['batch_size'])
+        sr_train_data.get_next_batch(params['train']['batch_size'], size=small_size)
     feed_dict = {
         ph['lr_image']: lr_image,
         ph['hr_image']: hr_image,
@@ -110,15 +115,15 @@ for ep in range(params['train']['num_episodes']):
 
     t_ep_end = time.time()
     
-    if ep % 100 == 0:
+    if ep % 1000 == 0:
         print('Episode: {} ({})'.format(ep, t_ep_end - t_ep_start))
         print_metrics(readouts)
         readouts = {}
 
-    if ep % 100 == 0:
-        decay *= 0.9
-        evaluate(sess, sr_valid_data)
-        saver.save(sess, model_path)
+    #if ep % 1000 == 0:
+    #    decay *= 0.9
+    #    evaluate(sess, sr_valid_data)
+    #    saver.save(sess, model_path)
 
 evaluate(sess, sr_test_data)
 
