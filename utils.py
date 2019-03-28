@@ -1,4 +1,5 @@
 import numpy as np
+import time
 
 
 def print_metrics(readouts):
@@ -29,3 +30,15 @@ def combine_loss(fetches):
             loss[key] += [fetches[i][key]]
 
     return loss
+
+
+def get_log_name(params, model):
+    ts = (time.strftime("[%Y-%m-%d %H:%M:%S]", time.localtime()))
+    scale = 'sl%d' % (params['data']['scale'])
+    train = 'tr%d' % (len(params['data']['train']))
+    if len(params['data']['train']) == 1:
+        train += '{' + params['data']['train'][0][0:2] + '}'
+    network = 'netb%df%d' % (params['network']['n_resblocks'],
+                             params['network']['n_feats'])
+    return model + '_' + ts + '_' + scale + '_' + train + '_' + network
+

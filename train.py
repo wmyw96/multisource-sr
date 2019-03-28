@@ -21,6 +21,7 @@ np.random.seed(0)
 # Parse cmdline args
 parser = argparse.ArgumentParser(description='multisource-super-resolution')
 parser.add_argument('--logdir', default='./logs', type=str)
+parser.add_argument('--modeldir', default='./saved_models/', type=str)
 parser.add_argument('--exp_id', default='1', type=str)
 parser.add_argument('--gpu', default=-1, type=int)
 parser.add_argument('--datadir', default='./dataset/game-live-small', type=str)
@@ -41,6 +42,10 @@ time.sleep(2)
 # Experiment parameters
 mod = importlib.import_module('saved_params.exp'+args.exp_id)
 params = mod.generate_params()
+
+log_name = get_log_name(params)
+model_path = args.modeldir + '/' + log_name + '.ckpt'
+log_path = args.logdir + '/' + log_name + '.log'
 
 # Load data
 sr_train_data, sr_valid_data, sr_test_data = sr_dataset(args.datadir, params)
@@ -113,6 +118,7 @@ for ep in range(params['train']['num_episodes']):
     if ep % 100 == 0:
         decay *= 0.9
         evaluate(sess, sr_valid_data)
+        saver.save(sess, model_path)
 
 evaluate(sess, sr_test_data)
 
