@@ -6,8 +6,8 @@ def generate_params():
                    'size_w': 1280 // 2,
                    'size_c': 3,
                    'scale': 2,
-                   'train': ['h-y-0306-17'],
-                   'test': ['h-y-0306-17']}
+                   'train': ['h-j-0306-13'],
+                   'test': ['h-j-0306-13']}
 
     train_params = {'batch_size': 16,
                     'lr': 1e-4,
