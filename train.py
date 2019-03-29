@@ -119,6 +119,7 @@ for ep in range(params['train']['num_episodes']):
         print('Episode: {} ({})'.format(ep, t_ep_end - t_ep_start))
         print_metrics(readouts)
         readouts = {}
+        saver.save(sess, model_path)
 
     #if ep % 1000 == 0:
     #    decay *= 0.9
