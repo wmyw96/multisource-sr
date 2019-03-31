@@ -20,7 +20,7 @@ def print_metrics(readouts):
     print(print_str)
 
 
-def print_metrics(title, readouts, path):
+def write_logs(title, readouts, path):
     '''
     Printing the losses from a sess.run() call
     Args:
@@ -29,18 +29,26 @@ def print_metrics(title, readouts, path):
     '''
 
     print_str = ''
-    print_str += title
+    print_str += title.rjust(20) + ': '
 
     spacing = 10
     for k_, v_ in readouts.items():
         if 'loss' in k_:
             value = np.around(np.mean(v_, axis=0), decimals=6)
-            print_str += (k_ + ': ').rjust(spacing) + str(value) + ','
+            print_str += (k_ + ' ').rjust(spacing) + str(value) + ','
 
     print_str = print_str[:-1]
 
     with open(path, 'a') as f:
         f.write(print_str + '\n')
+
+
+def summarize_loss(fetches):
+    loss = {}
+    for key in fetches:
+        loss[key] = np.mean(fetches[key])
+
+    return loss
 
 
 def combine_loss(fetches):
@@ -64,11 +72,11 @@ def summarize_loss(fetches):
 
 
 def get_log_name(params, model):
-    ts = (time.strftime("_%m%d%H_", time.localtime()))
+    ts = (time.strftime("%m%d%H", time.localtime()))
     scale = 'sl%d' % (params['data']['scale'])
     train = 'tr%d' % (len(params['data']['train']))
-    if len(params['data']['train']) == 1:
-        train += '_' + params['data']['train'][0][0:3] + '_'
+    #if len(params['data']['train']) == 1:
+    #    train += '_' + params['data']['train'][0][0:3]
     network = 'netb%df%d' % (params['network']['n_resblocks'],
                              params['network']['n_feats'])
     return model + '_' + ts + '_' + scale + '_' + train + '_' + network

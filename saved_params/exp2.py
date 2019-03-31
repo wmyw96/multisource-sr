@@ -1,5 +1,4 @@
 
-
 def generate_params():
 
     data_params = {'size_h': 720 // 2,
