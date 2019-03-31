@@ -1,6 +1,7 @@
 import tensorflow as tf
 import numpy as np
 from model.utils import *
+from utils import *
 import tensorflow.contrib.slim as slim
 
 
@@ -46,6 +47,7 @@ def get_mssr_ph(params):
 
 def get_mssr_graph(ph, params):
     graph = {}
+    print('Building MSSR (Multi Source Super Resolution) Comp Graph ...')
 
     params_d = params['data']
     params_n = params['network']
@@ -59,12 +61,14 @@ def get_mssr_graph(ph, params):
             inp = inp - 127
 
         graph['inp'] = inp
-        graph['head'] = slim.conv2d(inp, n_feats, kernel_size)
+        with tf.variable_scope('feat-extra', reuse=False):
+            graph['head'] = slim.conv2d(inp, n_feats, kernel_size)
 
         x = tf.identity(graph['head'])
 
         for i in range(params_n['start_branch']):
-            x = resblock(x, n_feats, kernel_size, params_n['res_scale'])
+            with tf.variable_scope('pre-resblock-%d' % i, reuse=False):
+                x = resblock(x, n_feats, kernel_size, params_n['res_scale'])
 
         graph['branch'] = tf.identity(x)
 
@@ -73,10 +77,11 @@ def get_mssr_graph(ph, params):
         for i in range(params['network']['n_sources']):
 
             with tf.variable_scope('source-%d' % i, reuse=False):
-                x = tf.identity(graph['branch'])
+                x = slim.conv2d(graph['branch'], params_n['n_feats_branch'], kernel_size)
 
-                for _ in range(params_n['n_resblocks_branch'])
-                    x = resblock(x, params_n['n_feats_branch'], kernel_size, params_n['res_scale'])
+                for _ in range(params_n['n_resblocks_branch']):
+                    with tf.variable_scope('resblock-%d' % _, reuse=False):
+                        x = resblock(x, params_n['n_feats_branch'], kernel_size, params_n['res_scale'])
 
                 graph['branch_feat'][i] = tf.identity(x)
 
@@ -84,7 +89,8 @@ def get_mssr_graph(ph, params):
         x = tf.identity(graph['branch'])
 
         for _ in range(params_n['n_resblocks'] - params_n['start_branch']):
-            x = resblock(x, n_feats, kernel_size, params_n['res_scale'])
+            with tf.variable_scope('aft-resblock-%d' % _, reuse=False):
+                x = resblock(x, n_feats, kernel_size, params_n['res_scale'])
 
         graph['global_feat'] = tf.identity(x)
 
@@ -95,12 +101,14 @@ def get_mssr_graph(ph, params):
         with tf.variable_scope('mssr-global', reuse=(i > 0)):
             cced = tf.concat([graph['global_feat'], graph['branch_feat'][i]], axis=3)
 
-            print('concatenated feats for source {}, shape = '.format(i) + str(cced.shape))
-            graph['body'][i] = \
-                slim.conv2d(cced, n_feats, kernel_size) + graph['head']
+            print('Concatenated feats for source {}, shape = '.format(i) + str(cced.shape))
+            with tf.variable_scope('feat-concat', reuse=(i > 0)):
+                graph['body'][i] = \
+                    slim.conv2d(cced, n_feats, kernel_size) + graph['head']
 
-            up = upsampler_block(graph['body'][i], params_d['scale'], n_feats,
-                                 kernel_size, None)
+            with tf.variable_scope('upsamler-module', reuse=(i > 0)):
+                up = upsampler_block(graph['body'][i], params_d['scale'], n_feats,
+                                     kernel_size, None)
 
             if params['network']['shift_mean']:
                 graph['hr_fake'][i] = up + 127.0
@@ -170,7 +178,7 @@ def get_mssr_targets(ph, graph, graph_vars, params):
     return targets
 
 
-def get_mssr_vars(ph, graph):
+def get_mssr_vars(ph, graph, params):
     graph_vars = {
         'mssr-global': tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES,
                                   scope='mssr-global')
@@ -179,7 +187,7 @@ def get_mssr_vars(ph, graph):
     for i in range(params['network']['n_sources']):
         graph_vars['mssr-local'][i] = \
             tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES,
-                              scope='source-%d' % i)
+                              scope='mssr-local/source-%d' % i)
 
     save_vars = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES,
                                   scope='mssr')
@@ -190,7 +198,7 @@ def build_mssr_model(params):
     ph = get_mssr_ph(params)
 
     graph = get_mssr_graph(ph, params)
-    graph_vars, save_vars = get_mssr_vars(ph, graph)
+    graph_vars, save_vars = get_mssr_vars(ph, graph, params)
     targets = get_mssr_targets(ph, graph, graph_vars, params)
 
-    return ph, graph, save_vars, targets
+    return ph, graph, graph_vars, targets, save_vars

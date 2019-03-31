@@ -81,3 +81,20 @@ def get_log_name(params, model):
                              params['network']['n_feats'])
     return model + '_' + ts + '_' + scale + '_' + train + '_' + network
 
+
+def show_variables(domain, myvars):
+    print('Trainable Variables in Domain {}: '.format(domain))
+
+    tots = 0
+    for var in myvars:
+        print(var.name + ': ' + str(var.shape))
+        num = 1
+        for i in range(len(var.shape)):
+            num *= int(var.shape[i])
+        tots += num
+
+    tot_b = tots * 4
+    tot_kb = tot_b / 1024.0
+    tot_mb = tot_kb / 1024.0
+    print('Summary: size = {} KB = {} MB'.format(tot_kb, tot_mb))
+

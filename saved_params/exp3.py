@@ -25,7 +25,7 @@ def generate_params():
                       'start_branch': 8,
                       'n_feats_branch': 32,
                       'n_resblocks_branch': 4,
-                      'n_sources': 8}
+                      'n_sources': 7}
 
     params = {'data': data_params,
               'train': train_params,

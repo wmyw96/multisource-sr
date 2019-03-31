@@ -70,7 +70,7 @@ class dataset(object):
         return inputs, labels
 
 
-def sr_dataset(datadir, params):
+def sr_dataset(datadir, params, split_train=False):
     # valid = train \belong test
     train_set = set(params['data']['train'])
     lr_img_size = (params['data']['size_w'], params['data']['size_h'])
@@ -79,6 +79,7 @@ def sr_dataset(datadir, params):
     train_hr = []
     valid_dataset = {}
     test_dataset = {}
+    train_dataset = {}
     for data_name in params['data']['test']:
         path = os.path.join(datadir, data_name)
         cur_list = os.listdir(path)
@@ -113,8 +114,13 @@ def sr_dataset(datadir, params):
         n_data = lr_img_dat.shape[0]
 
         if data_name in train_set:
-            train_lr.append(lr_img_dat[:n_data // 10 * 6, :])
-            train_hr.append(hr_img_dat[:n_data // 10 * 6, :])
+            if split_train:
+                train_dataset[data_name] = \
+                    dataset(lr_img_dat[:n_data // 10 * 6, :],
+                            hr_img_dat[:n_data // 10 * 6, :])
+            else:
+                train_lr.append(lr_img_dat[:n_data // 10 * 6, :])
+                train_hr.append(hr_img_dat[:n_data // 10 * 6, :])
 
             valid_dataset[data_name] = \
                 dataset(lr_img_dat[n_data // 10 * 6:n_data // 10 * 8, :],
@@ -125,8 +131,10 @@ def sr_dataset(datadir, params):
         else:
             test_dataset[data_name] = \
                 dataset(lr_img_dat, hr_img_dat)
-    train_lr = np.concatenate(train_lr, axis=0)
-    train_hr = np.concatenate(train_hr, axis=0)
-    train_dataset = dataset(train_lr, train_hr)
+
+    if not split_train:
+        train_lr = np.concatenate(train_lr, axis=0)
+        train_hr = np.concatenate(train_hr, axis=0)
+        train_dataset = dataset(train_lr, train_hr)
 
     return train_dataset, valid_dataset, test_dataset
