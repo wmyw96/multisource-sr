@@ -27,10 +27,6 @@ parser.add_argument('--gpu', default=-1, type=int)
 parser.add_argument('--datadir', default='./dataset/game-live-small', type=str)
 args = parser.parse_args()
 
-# Clear out the save logs directory (for tensorboard)
-if os.path.isdir(args.logdir):
-    shutil.rmtree(args.logdir)
-
 # GPU settings
 if args.gpu > -1:
     os.environ['CUDA_VISIBLE_DEVICES'] = str(args.gpu)
@@ -199,7 +195,7 @@ def evaluate(sess, ph, targets, sr_data, mode='Valid'):
         write_logs('Valid {}'.format(name), combine_loss(fetches), log_path)
         print_metrics(combine_loss(fetches))
 
-        total_loss.append(combine_loss(fetches))
+        total_loss.append(summarize_loss(combine_loss(fetches)))
 
     return combine_loss(total_loss)
 

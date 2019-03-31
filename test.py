@@ -44,7 +44,7 @@ time.sleep(2)
 mod = importlib.import_module('saved_params.exp'+args.exp_id)
 params = mod.generate_params()
 
-log_name = "edsr_sl2_tr1_netb16f64"
+log_name = "h-j-2/edsr_032921_sl2_tr1_netb16f64"
 
 model_path = args.modeldir + log_name + '.ckpt'
 log_path = args.logdir + log_name + '.log'

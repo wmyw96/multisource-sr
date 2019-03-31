@@ -55,6 +55,14 @@ def combine_loss(fetches):
     return loss
 
 
+def summarize_loss(fetches):
+    loss = {}
+    for key in fetches:
+        loss[key] = np.mean(fetches[key])
+
+    return loss
+
+
 def get_log_name(params, model):
     ts = (time.strftime("_%m%d%H_", time.localtime()))
     scale = 'sl%d' % (params['data']['scale'])
