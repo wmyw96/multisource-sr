@@ -28,8 +28,8 @@ parser.add_argument('--datadir', default='./dataset/game-live-small', type=str)
 args = parser.parse_args()
 
 # Clear out the save logs directory (for tensorboard)
-if os.path.isdir(args.logdir):
-    shutil.rmtree(args.logdir)
+#if os.path.isdir(args.logdir):
+#    shutil.rmtree(args.logdir)
 
 # GPU settings
 if args.gpu > -1:
@@ -47,8 +47,11 @@ log_name = get_log_name(params, 'edsr')
 model_path = args.modeldir + '/' + log_name + '.ckpt'
 log_path = args.logdir + '/' + log_name + '.log'
 
-with open(log_path, 'w') as f:
-    f.truncate()
+f = open(log_path, 'w')
+f.truncate()
+f.close()
+#with open(log_path, 'w') as f:
+#    f.truncate()
 
 # Load data
 sr_train_data, sr_valid_data, sr_test_data = sr_dataset(args.datadir, params)
@@ -189,17 +192,17 @@ def evaluate(sess, ph, targets, sr_data, mode='Valid'):
             hr_image = hr_image[0, :, :, :]
 
             ts -= time.time()
-            out_image = get_hr_image(sess, ph, targets, lr_image, small_size, params['data']['scale'] + 6)
+            out_image = get_hr_image(sess, ph, targets, lr_image, small_size, params['data']['scale'] + 6, False)
             ts += time.time()
 
             fetches.append(get_loss(out_image, hr_image))
 
         print('Evaluation Time: Total {} s, Mean {} s'.format(ts, ts / corpus.len()))
-
+        ts = 0.0
         write_logs('Valid {}'.format(name), combine_loss(fetches), log_path)
         print_metrics(combine_loss(fetches))
 
-        total_loss.append(combine_loss(fetches))
+        total_loss.append(summarize_loss(combine_loss(fetches)))
 
     return combine_loss(total_loss)
 
@@ -227,16 +230,20 @@ for ep in range(params['train']['num_episodes']):
 
     t_ep_end = time.time()
     
-    if ep % 500 == 0:
+    if ep % 1000 == 0:
         print('Episode: {} ({})'.format(ep, t_ep_end - t_ep_start))
         print_metrics(readouts)
         write_logs('Train Ep {}'.format(ep), readouts, log_path)
         readouts = {}
-        saver.save(sess, model_path)
+        #saver.save(sess, model_path)
+
+    if ep % 50000 == 0 and ep > 0:
+        decay *= 0.90
 
     if ep % 5000 == 0:
-        decay *= 0.90
-        cur_psnr_loss = evaluate(sess, ph, targets, sr_valid_data)['psnr_loss']
+        #decay *= 0.90
+        #print(evaluate(sess, ph, targets, sr_valid_data)['psnr_loss'])
+        cur_psnr_loss = np.mean(evaluate(sess, ph, targets, sr_valid_data)['psnr_loss'])
 
         if cur_psnr_loss > best_psnr_loss:
             best_psnr_loss = cur_psnr_loss
