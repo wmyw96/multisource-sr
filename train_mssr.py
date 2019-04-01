@@ -71,7 +71,7 @@ for s_id in range(n_sources):
     show_variables('Local (Source %d)' % s_id, graph_vars['mssr-local'][s_id])
 
 # Load data
-sr_train_data, sr_valid_data, sr_test_data = sr_dataset(args.datadir, params)
+sr_train_data, sr_valid_data, sr_test_data = sr_dataset(args.datadir, params, True)
 
 saver = tf.train.Saver(save_vars)
 writer = tf.summary.FileWriter(args.logdir, sess.graph)
@@ -217,7 +217,7 @@ def evaluate(sess, ph, targets, sr_data, mode='Valid'):
         print('Evaluation Time: Total {} s, Mean {} s'.format(ts, ts / corpus.len()))
         ts = 0.0
         write_logs('Valid {}'.format(name), combine_loss(fetches), log_path)
-        print_metrics(combine_loss(fetches))
+        print_metrics(name, combine_loss(fetches))
 
         total_loss.append(summarize_loss(combine_loss(fetches)))
 
@@ -232,6 +232,8 @@ best_psnr_loss = 0.0
 
 for ep in range(params['train']['num_episodes']):
     readouts = {}
+    for s in range(n_sources):
+        readouts[s] = {}
 
     t_ep_start = time.time()
 
@@ -240,7 +242,7 @@ for ep in range(params['train']['num_episodes']):
             idd = int(np.random.randint(n_sources - 1, size=(1)))
             data_name = params['data']['train'][idd]
         else:
-            data_name = params['data']['train'][source]
+            data_name = params['data']['train'][source - 1]
 
         lr_image, hr_image = \
             sr_train_data[data_name].get_next_batch(params['train']['batch_size'], 
@@ -251,7 +253,7 @@ for ep in range(params['train']['num_episodes']):
             ph['hr_image']: hr_image,
             ph['lr_decay']: decay
         }
-        fetches = sess.run(targets['train_all'], feed_dict=feed_dict)
+        fetches = sess.run(targets['train_all'][source], feed_dict=feed_dict)
         for k_, v_ in fetches.items():
             if 'loss' in k_:
                 readouts[source][k_] = readouts[source].get(k_, []) + [fetches[k_]]
@@ -265,8 +267,10 @@ for ep in range(params['train']['num_episodes']):
         for key in readouts:
             print_metrics(idx2name[key], readouts[key])
             write_logs('Train Ep {}, {}'.format(ep, idx2name[key]), readouts[key], log_path)
-
+        
         readouts = {}
+        for s in range(n_sources):
+            readouts[s] = {}
         #saver.save(sess, model_path)
 
     if ep % 50000 == 0 and ep > 0:

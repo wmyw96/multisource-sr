@@ -2,7 +2,7 @@ import numpy as np
 import time
 
 
-def print_metrics(readouts):
+def print_metrics(domain, readouts):
     '''
     Printing the losses from a sess.run() call
     Args:
@@ -10,7 +10,7 @@ def print_metrics(readouts):
     Returns:
     '''
     spacing = 17
-    print_str = ''
+    print_str = '' + domain + '>\n'
     for k_, v_ in readouts.items():
         if 'loss' in k_:
             value = np.around(np.mean(v_, axis=0), decimals=6)
@@ -29,7 +29,7 @@ def write_logs(title, readouts, path):
     '''
 
     print_str = ''
-    print_str += title.rjust(20) + ': '
+    print_str += title.rjust(30) + ': '
 
     spacing = 10
     for k_, v_ in readouts.items():
