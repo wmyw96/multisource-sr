@@ -273,7 +273,7 @@ for ep in range(params['train']['num_episodes']):
             readouts[s] = {}
         #saver.save(sess, model_path)
 
-    if ep % 50000 == 0 and ep > 0:
+    if ep % 20000 == 0 and ep > 0:
         decay *= 0.90
 
     if ep % 5000 == 0:
