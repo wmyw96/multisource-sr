@@ -44,7 +44,7 @@ time.sleep(2)
 mod = importlib.import_module('saved_params.exp'+args.exp_id)
 params = mod.generate_params()
 
-log_name = "h-j-2/edsr_032921_sl2_tr1_netb16f64"
+log_name = "edsr_hj/edsr_040117_sl2_tr1_netb16f64"
 
 model_path = args.modeldir + log_name + '.ckpt'
 log_path = args.logdir + log_name + '.log'
@@ -181,7 +181,7 @@ def get_hr_image(sess, ph, targets, inp, inp_size, border, debug=True):
 
 
 def print_image(sess, ph, targets, logdir, corpus_name, corpus):
-    for _ in range(corpus.len() // params['train']['batch_size']):
+    for _ in range(corpus.len()):
         lr_image, hr_image = corpus.get_next_batch(1)
 
         lr_image = lr_image[0, :, :, :]
