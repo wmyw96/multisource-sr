@@ -11,7 +11,10 @@ def generate_params():
 
     train_params = {'batch_size': 16,
                     'lr': 1e-4,
-                    'num_episodes': 300000}
+                    'num_episodes': 300000,
+                    'trainlog_interval': 1000,
+                    'decay_interval': 20000,
+                    'validlog_interval': 5000}
 
     network_params = {'size_h': 48,
                       'size_w': 48,
