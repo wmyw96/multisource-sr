@@ -217,7 +217,7 @@ def evaluate(sess, ph, targets, sr_data, mode='Valid'):
         print('Evaluation Time: Total {} s, Mean {} s'.format(ts, ts / corpus.len()))
         ts = 0.0
         write_logs('Valid {}'.format(name), combine_loss(fetches), log_path)
-        print_metrics(name, combine_loss(fetches))
+        print_metrics(combine_loss(fetches), name)
 
         total_loss.append(summarize_loss(combine_loss(fetches)))
 
@@ -265,7 +265,7 @@ for ep in range(params['train']['num_episodes']):
         print('Episode: {} ({})'.format(ep, t_ep_end - t_ep_start))
 
         for key in readouts:
-            print_metrics(idx2name[key], readouts[key])
+            print_metrics(readouts[key], idx2name[key])
             write_logs('Train Ep {}, {}'.format(ep, idx2name[key]), readouts[key], log_path)
         
         readouts = {}
