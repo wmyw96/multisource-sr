@@ -25,6 +25,8 @@ parser.add_argument('--modeldir', default='./saved_models/', type=str)
 parser.add_argument('--exp_id', default='3', type=str)
 parser.add_argument('--gpu', default=-1, type=int)
 parser.add_argument('--datadir', default='./dataset/game-live-small', type=str)
+parser.add_argument('--restore', default='', type=str)
+parser.add_argument('--restoredir', default='', type=str)
 args = parser.parse_args()
 
 
@@ -86,11 +88,6 @@ idx2name[0] = 'general'
 
 
 sess.run(tf.global_variables_initializer())
-# restore the model here
-
-####################
-#  code to restore #
-####################
 
 small_size = (params['network']['size_h'], params['network']['size_w'])
 
@@ -228,12 +225,41 @@ decay = 1.0
 
 best_psnr_loss = 0.0
 
+# restore the model here
+
+####################
+#  code to restore #
+####################
+
+begin_ep = 0
+
+import re
+
+if len(args.restore) > 0:
+    log_file_path_old = args.logdir + '/' + args.restore + '.log'
+    with open(log_file_path_old, 'r') as f:
+        ep = 0
+        pattern = re.compile(r'(?<=Train Ep )\d+\.?\d*')
+        for line in f.readlines():
+            if 'Train Ep' in line:
+                ep = int(pattern.findall(line)[0])
+            elif 'Valid' in line:
+                begin_ep = max(begin_ep, ep)
+            else:
+                assert Exception, "Invalid log file"
+    model_path = args.restoredir
+    print('Load model and start training at ep {}'.format(begin_ep))
+    saver.restore(sess, model_path)
+    for i in range(begin_ep // params['train']['decay_interval']):
+        decay *= 0.9
 
 
-for ep in range(params['train']['num_episodes']):
-    readouts = {}
-    for s in range(n_sources):
-        readouts[s] = {}
+readouts = {}
+for s in range(n_sources):
+    readouts[s] = {}
+
+
+for ep in range(begin_ep, params['train']['num_episodes']):
 
     t_ep_start = time.time()
 
@@ -261,7 +287,7 @@ for ep in range(params['train']['num_episodes']):
 
     t_ep_end = time.time()
     
-    if ep % 1000 == 0:
+    if ep % params['train']['trainlog_interval'] == 0:
         print('Episode: {} ({})'.format(ep, t_ep_end - t_ep_start))
 
         for key in readouts:
@@ -273,10 +299,10 @@ for ep in range(params['train']['num_episodes']):
             readouts[s] = {}
         #saver.save(sess, model_path)
 
-    if ep % 20000 == 0 and ep > 0:
+    if ep % params['train']['decay_interval'] == 0 and ep > 0:
         decay *= 0.90
 
-    if ep % 5000 == 0:
+    if ep % params['train']['validlog_interval'] == 0:
         cur_psnr_loss = np.mean(evaluate(sess, ph, targets, sr_valid_data)['psnr_loss'])
 
         if cur_psnr_loss > best_psnr_loss:
@@ -284,4 +310,3 @@ for ep in range(params['train']['num_episodes']):
             saver.save(sess, model_path)
 
 evaluate(sess, sr_test_data)
-

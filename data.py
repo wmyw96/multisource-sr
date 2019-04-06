@@ -112,13 +112,15 @@ def sr_dataset(datadir, params, split_train=False):
         lr_img_dat = np.concatenate(lr_img_cl, axis=0)
         hr_img_dat = np.concatenate(hr_img_cl, axis=0)
         n_data = lr_img_dat.shape[0]
-
+        print('Number of data = {}'.format(n_data))
         if data_name in train_set:
+            print('{}: TRAIN'.format(data_name))
             if split_train:
                 train_dataset[data_name] = \
                     dataset(lr_img_dat[:n_data // 10 * 6, :],
                             hr_img_dat[:n_data // 10 * 6, :])
             else:
+                print('append')
                 train_lr.append(lr_img_dat[:n_data // 10 * 6, :])
                 train_hr.append(hr_img_dat[:n_data // 10 * 6, :])
 
