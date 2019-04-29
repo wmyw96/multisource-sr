@@ -1,0 +1,597 @@
+          Train Ep 0:  mae_loss 59.39439, mse_loss 4790.925,psnr_loss 11.32661
+   Valid b-s-0306-19:  mae_loss 62.631145, mse_loss 5608.303871,psnr_loss 11.012644
+   Valid j-d-0306-21:  mae_loss 54.315946, mse_loss 4317.336992,psnr_loss 12.060746
+   Valid h-j-0306-13:  mae_loss 57.655647, mse_loss 4774.970267,psnr_loss 11.396918
+   Valid d-g-0308-10:  mae_loss 55.523595, mse_loss 4305.461898,psnr_loss 11.98337
+   Valid h-y-0306-17:  mae_loss 62.151008, mse_loss 5399.692586,psnr_loss 10.878742
+   Valid a-y-0305-12:  mae_loss 64.438584, mse_loss 5828.317467,psnr_loss 10.894091
+       Train Ep 1000:  mae_loss 6.173662, mse_loss 194.03683,psnr_loss 25.25196
+       Train Ep 2000:  mae_loss 4.268563, mse_loss 78.64399,psnr_loss 29.174149
+       Train Ep 3000:  mae_loss 5.425476, mse_loss 156.72179,psnr_loss 26.179512
+       Train Ep 4000:  mae_loss 5.205342, mse_loss 133.02547,psnr_loss 26.891457
+       Train Ep 5000:  mae_loss 3.186698, mse_loss 46.506428,psnr_loss 31.455673
+   Valid b-s-0306-19:  mae_loss 3.651888, mse_loss 71.087537,psnr_loss 29.712434
+   Valid j-d-0306-21:  mae_loss 3.940375, mse_loss 88.074377,psnr_loss 28.85445
+   Valid h-j-0306-13:  mae_loss 5.147586, mse_loss 104.839412,psnr_loss 27.964932
+   Valid d-g-0308-10:  mae_loss 2.790948, mse_loss 41.99593,psnr_loss 32.041693
+   Valid h-y-0306-17:  mae_loss 4.544687, mse_loss 91.249091,psnr_loss 28.567685
+   Valid a-y-0305-12:  mae_loss 3.319857, mse_loss 74.647538,psnr_loss 29.658935
+       Train Ep 6000:  mae_loss 3.824024, mse_loss 71.11153,psnr_loss 29.611404
+       Train Ep 7000:  mae_loss 3.089012, mse_loss 43.538033,psnr_loss 31.742117
+       Train Ep 8000:  mae_loss 3.783226, mse_loss 58.01551,psnr_loss 30.495361
+       Train Ep 9000:  mae_loss 3.852312, mse_loss 72.67161,psnr_loss 29.517157
+      Train Ep 10000:  mae_loss 3.139947, mse_loss 37.928288,psnr_loss 32.34117
+   Valid b-s-0306-19:  mae_loss 2.977446, mse_loss 57.260983,psnr_loss 30.625805
+   Valid j-d-0306-21:  mae_loss 3.416408, mse_loss 75.064259,psnr_loss 29.550671
+   Valid h-j-0306-13:  mae_loss 4.442063, mse_loss 86.555732,psnr_loss 28.802017
+   Valid d-g-0308-10:  mae_loss 2.477154, mse_loss 35.931538,psnr_loss 32.734931
+   Valid h-y-0306-17:  mae_loss 3.919992, mse_loss 76.308623,psnr_loss 29.341551
+   Valid a-y-0305-12:  mae_loss 2.863699, mse_loss 65.038892,psnr_loss 30.259369
+      Train Ep 11000:  mae_loss 4.991054, mse_loss 133.22672,psnr_loss 26.884892
+      Train Ep 12000:  mae_loss 4.007653, mse_loss 91.98535,psnr_loss 28.493616
+      Train Ep 13000:  mae_loss 2.456348, mse_loss 51.304886,psnr_loss 31.029215
+      Train Ep 14000:  mae_loss 3.076767, mse_loss 47.271336,psnr_loss 31.384827
+      Train Ep 15000:  mae_loss 3.879615, mse_loss 81.79746,psnr_loss 29.003407
+   Valid b-s-0306-19:  mae_loss 2.587276, mse_loss 48.702082,psnr_loss 31.333205
+   Valid j-d-0306-21:  mae_loss 3.092787, mse_loss 67.583343,psnr_loss 30.034519
+   Valid h-j-0306-13:  mae_loss 3.948065, mse_loss 74.194031,psnr_loss 29.472552
+   Valid d-g-0308-10:  mae_loss 2.259817, mse_loss 32.857012,psnr_loss 33.128139
+   Valid h-y-0306-17:  mae_loss 3.418016, mse_loss 65.219379,psnr_loss 30.027107
+   Valid a-y-0305-12:  mae_loss 2.51987, mse_loss 58.218198,psnr_loss 30.74892
+      Train Ep 16000:  mae_loss 1.727126, mse_loss 22.793991,psnr_loss 34.5526
+      Train Ep 17000:  mae_loss 2.354226, mse_loss 36.71771,psnr_loss 32.482048
+      Train Ep 18000:  mae_loss 2.925757, mse_loss 64.22901,psnr_loss 30.053492
+      Train Ep 19000:  mae_loss 2.19741, mse_loss 23.057339,psnr_loss 34.502712
+      Train Ep 20000:  mae_loss 2.190489, mse_loss 33.59336,psnr_loss 32.868267
+   Valid b-s-0306-19:  mae_loss 2.359065, mse_loss 42.903448,psnr_loss 31.894164
+   Valid j-d-0306-21:  mae_loss 2.956738, mse_loss 62.711758,psnr_loss 30.369482
+   Valid h-j-0306-13:  mae_loss 3.680171, mse_loss 67.301925,psnr_loss 29.897142
+   Valid d-g-0308-10:  mae_loss 2.163558, mse_loss 30.019004,psnr_loss 33.521816
+   Valid h-y-0306-17:  mae_loss 3.217232, mse_loss 59.750438,psnr_loss 30.40639
+   Valid a-y-0305-12:  mae_loss 2.327813, mse_loss 52.442469,psnr_loss 31.244215
+      Train Ep 21000:  mae_loss 3.160581, mse_loss 69.85482,psnr_loss 29.688837
+      Train Ep 22000:  mae_loss 2.823357, mse_loss 69.32065,psnr_loss 29.722178
+      Train Ep 23000:  mae_loss 3.084856, mse_loss 45.169388,psnr_loss 31.582363
+      Train Ep 24000:  mae_loss 2.612535, mse_loss 41.26354,psnr_loss 31.975138
+      Train Ep 25000:  mae_loss 3.044865, mse_loss 45.312008,psnr_loss 31.56867
+   Valid b-s-0306-19:  mae_loss 2.242786, mse_loss 38.844371,psnr_loss 32.334005
+   Valid j-d-0306-21:  mae_loss 2.837037, mse_loss 57.829659,psnr_loss 30.737788
+   Valid h-j-0306-13:  mae_loss 3.56234, mse_loss 62.924852,psnr_loss 30.182167
+   Valid d-g-0308-10:  mae_loss 2.131453, mse_loss 29.151367,psnr_loss 33.650985
+   Valid h-y-0306-17:  mae_loss 3.113411, mse_loss 55.294402,psnr_loss 30.745309
+   Valid a-y-0305-12:  mae_loss 2.289045, mse_loss 49.050917,psnr_loss 31.565699
+      Train Ep 26000:  mae_loss 2.088824, mse_loss 22.254982,psnr_loss 34.656532
+      Train Ep 27000:  mae_loss 1.761766, mse_loss 21.057547,psnr_loss 34.896725
+      Train Ep 28000:  mae_loss 2.458715, mse_loss 35.861435,psnr_loss 32.584526
+      Train Ep 29000:  mae_loss 3.116664, mse_loss 69.04066,psnr_loss 29.739754
+      Train Ep 30000:  mae_loss 2.748946, mse_loss 39.76075,psnr_loss 32.136257
+   Valid b-s-0306-19:  mae_loss 2.151721, mse_loss 36.858105,psnr_loss 32.568117
+   Valid j-d-0306-21:  mae_loss 2.747229, mse_loss 54.991201,psnr_loss 30.96731
+   Valid h-j-0306-13:  mae_loss 3.453379, mse_loss 60.228068,psnr_loss 30.380477
+   Valid d-g-0308-10:  mae_loss 2.058528, mse_loss 28.103148,psnr_loss 33.817319
+   Valid h-y-0306-17:  mae_loss 2.996323, mse_loss 52.030681,psnr_loss 31.012693
+   Valid a-y-0305-12:  mae_loss 2.179786, mse_loss 45.031905,psnr_loss 31.981394
+      Train Ep 31000:  mae_loss 2.235468, mse_loss 38.15444,psnr_loss 32.315353
+      Train Ep 32000:  mae_loss 1.789784, mse_loss 26.160667,psnr_loss 33.954315
+      Train Ep 33000:  mae_loss 3.02831, mse_loss 64.09456,psnr_loss 30.062592
+      Train Ep 34000:  mae_loss 2.247268, mse_loss 31.214607,psnr_loss 33.187225
+      Train Ep 35000:  mae_loss 2.418119, mse_loss 32.241123,psnr_loss 33.0467
+   Valid b-s-0306-19:  mae_loss 2.035749, mse_loss 33.583712,psnr_loss 32.986303
+   Valid j-d-0306-21:  mae_loss 2.667448, mse_loss 51.607711,psnr_loss 31.262862
+   Valid h-j-0306-13:  mae_loss 3.29295, mse_loss 55.786618,psnr_loss 30.712123
+   Valid d-g-0308-10:  mae_loss 2.0332, mse_loss 27.25777,psnr_loss 33.947968
+   Valid h-y-0306-17:  mae_loss 2.872891, mse_loss 48.392247,psnr_loss 31.32692
+   Valid a-y-0305-12:  mae_loss 2.121585, mse_loss 43.084542,psnr_loss 32.222163
+      Train Ep 36000:  mae_loss 2.411625, mse_loss 40.588615,psnr_loss 32.04676
+      Train Ep 37000:  mae_loss 2.266384, mse_loss 31.589718,psnr_loss 33.135345
+      Train Ep 38000:  mae_loss 1.975813, mse_loss 27.273293,psnr_loss 33.77343
+      Train Ep 39000:  mae_loss 2.527618, mse_loss 44.991158,psnr_loss 31.599531
+      Train Ep 40000:  mae_loss 2.438348, mse_loss 41.41318,psnr_loss 31.959417
+   Valid b-s-0306-19:  mae_loss 2.058973, mse_loss 32.898953,psnr_loss 33.077511
+   Valid j-d-0306-21:  mae_loss 2.651854, mse_loss 49.923764,psnr_loss 31.432479
+   Valid h-j-0306-13:  mae_loss 3.217344, mse_loss 53.710923,psnr_loss 30.879939
+   Valid d-g-0308-10:  mae_loss 1.979348, mse_loss 26.009102,psnr_loss 34.149209
+   Valid h-y-0306-17:  mae_loss 2.835932, mse_loss 46.061661,psnr_loss 31.546403
+   Valid a-y-0305-12:  mae_loss 2.050401, mse_loss 39.16593,psnr_loss 32.643435
+      Train Ep 41000:  mae_loss 1.942588, mse_loss 19.939394,psnr_loss 35.133682
+      Train Ep 42000:  mae_loss 2.29526, mse_loss 41.53726,psnr_loss 31.946426
+      Train Ep 43000:  mae_loss 2.132985, mse_loss 20.117943,psnr_loss 35.09497
+      Train Ep 44000:  mae_loss 2.188047, mse_loss 28.633488,psnr_loss 33.562057
+      Train Ep 45000:  mae_loss 3.085177, mse_loss 62.1733,psnr_loss 30.194763
+   Valid b-s-0306-19:  mae_loss 1.995468, mse_loss 31.047062,psnr_loss 33.330817
+   Valid j-d-0306-21:  mae_loss 2.522378, mse_loss 44.926792,psnr_loss 31.864925
+   Valid h-j-0306-13:  mae_loss 3.204325, mse_loss 52.518734,psnr_loss 30.97217
+   Valid d-g-0308-10:  mae_loss 1.976721, mse_loss 25.702159,psnr_loss 34.209887
+   Valid h-y-0306-17:  mae_loss 2.756566, mse_loss 43.81119,psnr_loss 31.763605
+   Valid a-y-0305-12:  mae_loss 2.008781, mse_loss 37.427458,psnr_loss 32.932459
+      Train Ep 46000:  mae_loss 2.600791, mse_loss 40.83048,psnr_loss 32.020958
+      Train Ep 47000:  mae_loss 1.765135, mse_loss 16.370697,psnr_loss 35.99013
+      Train Ep 48000:  mae_loss 2.056598, mse_loss 24.530214,psnr_loss 34.233788
+      Train Ep 49000:  mae_loss 2.444428, mse_loss 33.79935,psnr_loss 32.84172
+      Train Ep 50000:  mae_loss 2.303868, mse_loss 22.168322,psnr_loss 34.673477
+   Valid b-s-0306-19:  mae_loss 2.028108, mse_loss 31.137171,psnr_loss 33.348801
+   Valid j-d-0306-21:  mae_loss 2.707577, mse_loss 48.278786,psnr_loss 31.639064
+   Valid h-j-0306-13:  mae_loss 3.145525, mse_loss 50.63586,psnr_loss 31.134574
+   Valid d-g-0308-10:  mae_loss 2.008824, mse_loss 25.738087,psnr_loss 34.194659
+   Valid h-y-0306-17:  mae_loss 2.747797, mse_loss 42.706312,psnr_loss 31.876048
+   Valid a-y-0305-12:  mae_loss 2.064813, mse_loss 37.649727,psnr_loss 32.948656
+      Train Ep 51000:  mae_loss 2.889446, mse_loss 43.568382,psnr_loss 31.73909
+      Train Ep 52000:  mae_loss 2.043564, mse_loss 22.919561,psnr_loss 34.52874
+      Train Ep 53000:  mae_loss 1.789364, mse_loss 17.347446,psnr_loss 35.73845
+      Train Ep 54000:  mae_loss 2.904393, mse_loss 54.63063,psnr_loss 30.756445
+      Train Ep 55000:  mae_loss 2.267234, mse_loss 28.977377,psnr_loss 33.510212
+   Valid b-s-0306-19:  mae_loss 1.94641, mse_loss 28.840857,psnr_loss 33.681289
+   Valid j-d-0306-21:  mae_loss 2.451471, mse_loss 41.800144,psnr_loss 32.182161
+   Valid h-j-0306-13:  mae_loss 3.072339, mse_loss 48.669978,psnr_loss 31.308493
+   Valid d-g-0308-10:  mae_loss 1.970283, mse_loss 24.366607,psnr_loss 34.426391
+   Valid h-y-0306-17:  mae_loss 2.669038, mse_loss 39.901678,psnr_loss 32.170328
+   Valid a-y-0305-12:  mae_loss 2.007342, mse_loss 34.886687,psnr_loss 33.226688
+      Train Ep 56000:  mae_loss 2.981936, mse_loss 42.172623,psnr_loss 31.880495
+      Train Ep 57000:  mae_loss 2.013032, mse_loss 23.521503,psnr_loss 34.416153
+      Train Ep 58000:  mae_loss 1.957901, mse_loss 20.996012,psnr_loss 34.909435
+      Train Ep 59000:  mae_loss 2.601989, mse_loss 43.926052,psnr_loss 31.703583
+      Train Ep 60000:  mae_loss 3.052002, mse_loss 55.31973,psnr_loss 30.702002
+   Valid b-s-0306-19:  mae_loss 1.929945, mse_loss 26.760841,psnr_loss 33.976182
+   Valid j-d-0306-21:  mae_loss 2.500554, mse_loss 40.977116,psnr_loss 32.305957
+   Valid h-j-0306-13:  mae_loss 3.079071, mse_loss 48.362688,psnr_loss 31.335762
+   Valid d-g-0308-10:  mae_loss 1.978096, mse_loss 24.224573,psnr_loss 34.467728
+   Valid h-y-0306-17:  mae_loss 2.665536, mse_loss 38.189206,psnr_loss 32.365058
+   Valid a-y-0305-12:  mae_loss 2.016863, mse_loss 34.331228,psnr_loss 33.347453
+      Train Ep 61000:  mae_loss 2.785729, mse_loss 55.073196,psnr_loss 30.7214
+      Train Ep 62000:  mae_loss 2.355051, mse_loss 32.30997,psnr_loss 33.037437
+      Train Ep 63000:  mae_loss 2.944281, mse_loss 42.840527,psnr_loss 31.812256
+      Train Ep 64000:  mae_loss 2.592106, mse_loss 39.462936,psnr_loss 32.168907
+      Train Ep 65000:  mae_loss 1.697662, mse_loss 23.53006,psnr_loss 34.414574
+   Valid b-s-0306-19:  mae_loss 1.888134, mse_loss 26.965824,psnr_loss 33.962188
+   Valid j-d-0306-21:  mae_loss 2.392762, mse_loss 39.75933,psnr_loss 32.462311
+   Valid h-j-0306-13:  mae_loss 2.967859, mse_loss 45.42133,psnr_loss 31.603559
+   Valid d-g-0308-10:  mae_loss 1.926302, mse_loss 23.743584,psnr_loss 34.548905
+   Valid h-y-0306-17:  mae_loss 2.574821, mse_loss 36.734547,psnr_loss 32.531551
+   Valid a-y-0305-12:  mae_loss 1.911601, mse_loss 33.048137,psnr_loss 33.610532
+      Train Ep 66000:  mae_loss 1.849564, mse_loss 18.602932,psnr_loss 35.434986
+      Train Ep 67000:  mae_loss 1.476101, mse_loss 13.424827,psnr_loss 36.851715
+      Train Ep 68000:  mae_loss 2.657784, mse_loss 33.989056,psnr_loss 32.817413
+      Train Ep 69000:  mae_loss 2.35016, mse_loss 34.44431,psnr_loss 32.75963
+      Train Ep 70000:  mae_loss 2.020012, mse_loss 19.594425,psnr_loss 35.209476
+   Valid b-s-0306-19:  mae_loss 1.870282, mse_loss 26.179499,psnr_loss 34.109329
+   Valid j-d-0306-21:  mae_loss 2.376964, mse_loss 38.098994,psnr_loss 32.633089
+   Valid h-j-0306-13:  mae_loss 2.952053, mse_loss 45.054314,psnr_loss 31.644264
+   Valid d-g-0308-10:  mae_loss 1.869499, mse_loss 23.288317,psnr_loss 34.62459
+   Valid h-y-0306-17:  mae_loss 2.522701, mse_loss 35.767315,psnr_loss 32.650678
+   Valid a-y-0305-12:  mae_loss 1.85889, mse_loss 31.908057,psnr_loss 33.681302
+      Train Ep 71000:  mae_loss 2.424796, mse_loss 36.198895,psnr_loss 32.54385
+      Train Ep 72000:  mae_loss 2.233898, mse_loss 41.14485,psnr_loss 31.987648
+      Train Ep 73000:  mae_loss 2.466525, mse_loss 31.691076,psnr_loss 33.121433
+      Train Ep 74000:  mae_loss 1.757586, mse_loss 18.915194,psnr_loss 35.362698
+      Train Ep 75000:  mae_loss 1.955619, mse_loss 29.29008,psnr_loss 33.463596
+   Valid b-s-0306-19:  mae_loss 1.79938, mse_loss 25.41428,psnr_loss 34.261378
+   Valid j-d-0306-21:  mae_loss 2.453875, mse_loss 39.356912,psnr_loss 32.605617
+   Valid h-j-0306-13:  mae_loss 2.911047, mse_loss 44.302671,psnr_loss 31.720956
+   Valid d-g-0308-10:  mae_loss 1.880751, mse_loss 23.422154,psnr_loss 34.638209
+   Valid h-y-0306-17:  mae_loss 2.489877, mse_loss 34.506575,psnr_loss 32.808739
+   Valid a-y-0305-12:  mae_loss 1.850543, mse_loss 31.808942,psnr_loss 33.770319
+      Train Ep 76000:  mae_loss 1.582893, mse_loss 15.213481,psnr_loss 36.308514
+      Train Ep 77000:  mae_loss 1.89242, mse_loss 18.704704,psnr_loss 35.411297
+      Train Ep 78000:  mae_loss 1.873339, mse_loss 25.537073,psnr_loss 34.05909
+      Train Ep 79000:  mae_loss 1.746697, mse_loss 17.80222,psnr_loss 35.626064
+      Train Ep 80000:  mae_loss 2.317451, mse_loss 28.338026,psnr_loss 33.607105
+   Valid b-s-0306-19:  mae_loss 1.831951, mse_loss 25.056334,psnr_loss 34.335384
+   Valid j-d-0306-21:  mae_loss 2.288427, mse_loss 36.220585,psnr_loss 32.858925
+   Valid h-j-0306-13:  mae_loss 2.866591, mse_loss 42.806434,psnr_loss 31.863494
+   Valid d-g-0308-10:  mae_loss 1.866638, mse_loss 22.664134,psnr_loss 34.7342
+   Valid h-y-0306-17:  mae_loss 2.457173, mse_loss 33.570812,psnr_loss 32.929335
+   Valid a-y-0305-12:  mae_loss 1.906639, mse_loss 32.325202,psnr_loss 33.648782
+      Train Ep 81000:  mae_loss 1.938741, mse_loss 21.773727,psnr_loss 34.751476
+      Train Ep 82000:  mae_loss 1.40595, mse_loss 19.141169,psnr_loss 35.31112
+      Train Ep 83000:  mae_loss 1.346339, mse_loss 10.545161,psnr_loss 37.900272
+      Train Ep 84000:  mae_loss 1.632361, mse_loss 14.096636,psnr_loss 36.63965
+      Train Ep 85000:  mae_loss 1.678737, mse_loss 22.790241,psnr_loss 34.553314
+   Valid b-s-0306-19:  mae_loss 1.757276, mse_loss 23.53275,psnr_loss 34.561375
+   Valid j-d-0306-21:  mae_loss 2.340504, mse_loss 36.070389,psnr_loss 32.969451
+   Valid h-j-0306-13:  mae_loss 2.835529, mse_loss 41.96215,psnr_loss 31.951351
+   Valid d-g-0308-10:  mae_loss 1.839527, mse_loss 22.206489,psnr_loss 34.844787
+   Valid h-y-0306-17:  mae_loss 2.404116, mse_loss 32.228902,psnr_loss 33.114318
+   Valid a-y-0305-12:  mae_loss 1.747325, mse_loss 28.680097,psnr_loss 34.231408
+      Train Ep 86000:  mae_loss 2.787323, mse_loss 53.96104,psnr_loss 30.810001
+      Train Ep 87000:  mae_loss 1.948236, mse_loss 22.055368,psnr_loss 34.69566
+      Train Ep 88000:  mae_loss 2.778398, mse_loss 47.304512,psnr_loss 31.381779
+      Train Ep 89000:  mae_loss 1.731392, mse_loss 17.846174,psnr_loss 35.615353
+      Train Ep 90000:  mae_loss 3.149742, mse_loss 58.390537,psnr_loss 30.467379
+   Valid b-s-0306-19:  mae_loss 1.750813, mse_loss 23.807449,psnr_loss 34.580047
+   Valid j-d-0306-21:  mae_loss 2.308637, mse_loss 35.126779,psnr_loss 33.055494
+   Valid h-j-0306-13:  mae_loss 2.784941, mse_loss 40.600649,psnr_loss 32.097556
+   Valid d-g-0308-10:  mae_loss 1.878028, mse_loss 22.408358,psnr_loss 34.794635
+   Valid h-y-0306-17:  mae_loss 2.390258, mse_loss 31.365095,psnr_loss 33.223317
+   Valid a-y-0305-12:  mae_loss 1.785991, mse_loss 29.918276,psnr_loss 34.055097
+      Train Ep 91000:  mae_loss 1.507415, mse_loss 12.226899,psnr_loss 37.25764
+      Train Ep 92000:  mae_loss 2.058282, mse_loss 35.817265,psnr_loss 32.589878
+      Train Ep 93000:  mae_loss 2.788764, mse_loss 35.353374,psnr_loss 32.646492
+      Train Ep 94000:  mae_loss 1.809833, mse_loss 29.199345,psnr_loss 33.477074
+      Train Ep 95000:  mae_loss 1.785686, mse_loss 22.26672,psnr_loss 34.65424
+   Valid b-s-0306-19:  mae_loss 1.746476, mse_loss 22.86118,psnr_loss 34.713793
+   Valid j-d-0306-21:  mae_loss 2.348334, mse_loss 35.49074,psnr_loss 33.056022
+   Valid h-j-0306-13:  mae_loss 2.795189, mse_loss 40.910335,psnr_loss 32.065735
+   Valid d-g-0308-10:  mae_loss 1.84194, mse_loss 22.317291,psnr_loss 34.834384
+   Valid h-y-0306-17:  mae_loss 2.395525, mse_loss 31.058244,psnr_loss 33.272985
+   Valid a-y-0305-12:  mae_loss 1.91197, mse_loss 31.882863,psnr_loss 33.701875
+      Train Ep 96000:  mae_loss 1.973864, mse_loss 22.134945,psnr_loss 34.68002
+      Train Ep 97000:  mae_loss 1.432725, mse_loss 15.483943,psnr_loss 36.23199
+      Train Ep 98000:  mae_loss 2.270566, mse_loss 38.390778,psnr_loss 32.288536
+      Train Ep 99000:  mae_loss 1.00861, mse_loss 5.137152,psnr_loss 41.02358
+     Train Ep 100000:  mae_loss 1.747361, mse_loss 13.881319,psnr_loss 36.706497
+   Valid b-s-0306-19:  mae_loss 1.743234, mse_loss 22.001336,psnr_loss 34.946357
+   Valid j-d-0306-21:  mae_loss 2.314337, mse_loss 35.418608,psnr_loss 33.080751
+   Valid h-j-0306-13:  mae_loss 2.789301, mse_loss 39.991661,psnr_loss 32.163506
+   Valid d-g-0308-10:  mae_loss 1.886929, mse_loss 21.453717,psnr_loss 34.962334
+   Valid h-y-0306-17:  mae_loss 2.392769, mse_loss 30.430245,psnr_loss 33.360987
+   Valid a-y-0305-12:  mae_loss 1.791406, mse_loss 28.755024,psnr_loss 34.180937
+     Train Ep 101000:  mae_loss 1.944522, mse_loss 23.197832,psnr_loss 34.47633
+     Train Ep 102000:  mae_loss 2.88628, mse_loss 46.349594,psnr_loss 31.470345
+     Train Ep 103000:  mae_loss 1.72905, mse_loss 19.983053,psnr_loss 35.124184
+     Train Ep 104000:  mae_loss 2.543126, mse_loss 37.59003,psnr_loss 32.380074
+     Train Ep 105000:  mae_loss 1.591194, mse_loss 14.571765,psnr_loss 36.49568
+   Valid b-s-0306-19:  mae_loss 1.767248, mse_loss 22.126434,psnr_loss 34.862147
+   Valid j-d-0306-21:  mae_loss 2.256942, mse_loss 32.387206,psnr_loss 33.366949
+   Valid h-j-0306-13:  mae_loss 2.74666, mse_loss 38.382472,psnr_loss 32.343126
+   Valid d-g-0308-10:  mae_loss 1.868487, mse_loss 21.725246,psnr_loss 34.954717
+   Valid h-y-0306-17:  mae_loss 2.320288, mse_loss 28.522223,psnr_loss 33.652191
+   Valid a-y-0305-12:  mae_loss 1.853952, mse_loss 28.341816,psnr_loss 34.231054
+     Train Ep 106000:  mae_loss 2.182711, mse_loss 34.134132,psnr_loss 32.798916
+     Train Ep 107000:  mae_loss 1.61528, mse_loss 14.102564,psnr_loss 36.637825
+     Train Ep 108000:  mae_loss 1.787121, mse_loss 23.154938,psnr_loss 34.484367
+     Train Ep 109000:  mae_loss 2.81221, mse_loss 52.074352,psnr_loss 30.964565
+     Train Ep 110000:  mae_loss 1.427329, mse_loss 13.646204,psnr_loss 36.780685
+   Valid b-s-0306-19:  mae_loss 1.694515, mse_loss 21.341596,psnr_loss 35.069952
+   Valid j-d-0306-21:  mae_loss 2.288393, mse_loss 33.318252,psnr_loss 33.411377
+   Valid h-j-0306-13:  mae_loss 2.73662, mse_loss 38.353794,psnr_loss 32.340133
+   Valid d-g-0308-10:  mae_loss 1.830474, mse_loss 21.157335,psnr_loss 35.058675
+   Valid h-y-0306-17:  mae_loss 2.361646, mse_loss 28.746192,psnr_loss 33.603733
+   Valid a-y-0305-12:  mae_loss 1.781199, mse_loss 28.759977,psnr_loss 34.257442
+     Train Ep 111000:  mae_loss 1.596583, mse_loss 21.602827,psnr_loss 34.785694
+     Train Ep 112000:  mae_loss 1.83424, mse_loss 27.23615,psnr_loss 33.779343
+     Train Ep 113000:  mae_loss 1.522436, mse_loss 16.278032,psnr_loss 36.01478
+     Train Ep 114000:  mae_loss 1.677819, mse_loss 13.626314,psnr_loss 36.787018
+     Train Ep 115000:  mae_loss 1.330215, mse_loss 17.970604,psnr_loss 35.585175
+   Valid b-s-0306-19:  mae_loss 1.74113, mse_loss 21.048521,psnr_loss 35.093619
+   Valid j-d-0306-21:  mae_loss 2.259317, mse_loss 31.552325,psnr_loss 33.522575
+   Valid h-j-0306-13:  mae_loss 2.735977, mse_loss 37.967101,psnr_loss 32.392968
+   Valid d-g-0308-10:  mae_loss 1.863043, mse_loss 21.513171,psnr_loss 34.992628
+   Valid h-y-0306-17:  mae_loss 2.34971, mse_loss 28.141876,psnr_loss 33.704241
+   Valid a-y-0305-12:  mae_loss 1.873014, mse_loss 27.758843,psnr_loss 34.352858
+     Train Ep 116000:  mae_loss 1.393788, mse_loss 12.518592,psnr_loss 37.15525
+     Train Ep 117000:  mae_loss 0.995681, mse_loss 4.888696,psnr_loss 41.238876
+     Train Ep 118000:  mae_loss 2.148752, mse_loss 25.476076,psnr_loss 34.069477
+     Train Ep 119000:  mae_loss 1.558706, mse_loss 11.697429,psnr_loss 37.4499
+     Train Ep 120000:  mae_loss 1.676463, mse_loss 22.173431,psnr_loss 34.67247
+   Valid b-s-0306-19:  mae_loss 1.696762, mse_loss 21.283898,psnr_loss 35.085283
+   Valid j-d-0306-21:  mae_loss 2.206269, mse_loss 31.568562,psnr_loss 33.587012
+   Valid h-j-0306-13:  mae_loss 2.699433, mse_loss 37.965878,psnr_loss 32.386873
+   Valid d-g-0308-10:  mae_loss 1.792199, mse_loss 20.594727,psnr_loss 35.151992
+   Valid h-y-0306-17:  mae_loss 2.286042, mse_loss 27.701729,psnr_loss 33.777965
+   Valid a-y-0305-12:  mae_loss 1.778251, mse_loss 28.566911,psnr_loss 34.231341
+     Train Ep 121000:  mae_loss 1.866426, mse_loss 16.914146,psnr_loss 35.8483
+     Train Ep 122000:  mae_loss 2.577586, mse_loss 40.149395,psnr_loss 32.094013
+     Train Ep 123000:  mae_loss 2.003668, mse_loss 23.683998,psnr_loss 34.386253
+     Train Ep 124000:  mae_loss 2.921538, mse_loss 48.903175,psnr_loss 31.237432
+     Train Ep 125000:  mae_loss 2.388554, mse_loss 28.385008,psnr_loss 33.599915
+   Valid b-s-0306-19:  mae_loss 1.734694, mse_loss 20.318696,psnr_loss 35.302647
+   Valid j-d-0306-21:  mae_loss 2.249329, mse_loss 31.355203,psnr_loss 33.62614
+   Valid h-j-0306-13:  mae_loss 2.687742, mse_loss 36.40172,psnr_loss 32.576212
+   Valid d-g-0308-10:  mae_loss 1.825195, mse_loss 20.854517,psnr_loss 35.1202
+   Valid h-y-0306-17:  mae_loss 2.290278, mse_loss 26.792245,psnr_loss 33.922579
+   Valid a-y-0305-12:  mae_loss 1.771621, mse_loss 26.7342,psnr_loss 34.607781
+     Train Ep 126000:  mae_loss 1.258008, mse_loss 7.83477,psnr_loss 39.19054
+     Train Ep 127000:  mae_loss 3.573013, mse_loss 77.36733,psnr_loss 29.245226
+     Train Ep 128000:  mae_loss 1.494052, mse_loss 13.545177,psnr_loss 36.812958
+     Train Ep 129000:  mae_loss 1.861861, mse_loss 26.93978,psnr_loss 33.826862
+     Train Ep 130000:  mae_loss 1.234153, mse_loss 7.689202,psnr_loss 39.27199
+   Valid b-s-0306-19:  mae_loss 1.677699, mse_loss 20.673584,psnr_loss 35.197371
+   Valid j-d-0306-21:  mae_loss 2.190062, mse_loss 30.325416,psnr_loss 33.75557
+   Valid h-j-0306-13:  mae_loss 2.667406, mse_loss 36.694714,psnr_loss 32.535208
+   Valid d-g-0308-10:  mae_loss 1.802047, mse_loss 20.624241,psnr_loss 35.173839
+   Valid h-y-0306-17:  mae_loss 2.247095, mse_loss 26.259842,psnr_loss 34.010257
+   Valid a-y-0305-12:  mae_loss 1.749413, mse_loss 27.684847,psnr_loss 34.371628
+     Train Ep 131000:  mae_loss 1.978211, mse_loss 17.717201,psnr_loss 35.646854
+     Train Ep 132000:  mae_loss 2.043315, mse_loss 23.317629,psnr_loss 34.45396
+     Train Ep 133000:  mae_loss 1.3139, mse_loss 10.077715,psnr_loss 38.097183
+     Train Ep 134000:  mae_loss 1.88988, mse_loss 18.032202,psnr_loss 35.570312
+     Train Ep 135000:  mae_loss 2.514836, mse_loss 32.507145,psnr_loss 33.011013
+   Valid b-s-0306-19:  mae_loss 1.684644, mse_loss 19.890844,psnr_loss 35.426105
+   Valid j-d-0306-21:  mae_loss 2.176889, mse_loss 29.454781,psnr_loss 33.874627
+   Valid h-j-0306-13:  mae_loss 2.649547, mse_loss 35.234104,psnr_loss 32.709837
+   Valid d-g-0308-10:  mae_loss 1.801658, mse_loss 20.764597,psnr_loss 35.150131
+   Valid h-y-0306-17:  mae_loss 2.265387, mse_loss 25.998409,psnr_loss 34.051399
+   Valid a-y-0305-12:  mae_loss 1.750569, mse_loss 25.861611,psnr_loss 34.696646
+     Train Ep 136000:  mae_loss 1.725674, mse_loss 16.07246,psnr_loss 36.06998
+     Train Ep 137000:  mae_loss 2.515048, mse_loss 60.963116,psnr_loss 30.280132
+     Train Ep 138000:  mae_loss 1.129603, mse_loss 9.674902,psnr_loss 38.274338
+     Train Ep 139000:  mae_loss 1.510664, mse_loss 18.389147,psnr_loss 35.485188
+     Train Ep 140000:  mae_loss 2.169278, mse_loss 31.419155,psnr_loss 33.15886
+   Valid b-s-0306-19:  mae_loss 1.687547, mse_loss 19.457168,psnr_loss 35.453178
+   Valid j-d-0306-21:  mae_loss 2.257296, mse_loss 31.650371,psnr_loss 33.674593
+   Valid h-j-0306-13:  mae_loss 2.618835, mse_loss 35.305605,psnr_loss 32.707957
+   Valid d-g-0308-10:  mae_loss 1.799323, mse_loss 20.124882,psnr_loss 35.26139
+   Valid h-y-0306-17:  mae_loss 2.209728, mse_loss 25.522699,psnr_loss 34.146677
+   Valid a-y-0305-12:  mae_loss 1.773285, mse_loss 28.009373,psnr_loss 34.408022
+     Train Ep 141000:  mae_loss 1.653772, mse_loss 16.922882,psnr_loss 35.846058
+     Train Ep 142000:  mae_loss 1.771933, mse_loss 28.149557,psnr_loss 33.63609
+     Train Ep 143000:  mae_loss 1.980996, mse_loss 30.721872,psnr_loss 33.256325
+     Train Ep 144000:  mae_loss 1.552887, mse_loss 18.691416,psnr_loss 35.414383
+     Train Ep 145000:  mae_loss 1.989631, mse_loss 25.239483,psnr_loss 34.109997
+   Valid b-s-0306-19:  mae_loss 1.685676, mse_loss 19.825701,psnr_loss 35.414924
+   Valid j-d-0306-21:  mae_loss 2.142704, mse_loss 28.475766,psnr_loss 34.036525
+   Valid h-j-0306-13:  mae_loss 2.609263, mse_loss 34.809644,psnr_loss 32.770914
+   Valid d-g-0308-10:  mae_loss 1.780598, mse_loss 20.593414,psnr_loss 35.20618
+   Valid h-y-0306-17:  mae_loss 2.202734, mse_loss 24.770782,psnr_loss 34.261152
+   Valid a-y-0305-12:  mae_loss 1.631482, mse_loss 23.888002,psnr_loss 35.015497
+     Train Ep 146000:  mae_loss 1.285275, mse_loss 8.988021,psnr_loss 38.594166
+     Train Ep 147000:  mae_loss 1.634082, mse_loss 17.058594,psnr_loss 35.81137
+     Train Ep 148000:  mae_loss 2.390654, mse_loss 32.70033,psnr_loss 32.985283
+     Train Ep 149000:  mae_loss 1.668307, mse_loss 12.210321,psnr_loss 37.263535
+     Train Ep 150000:  mae_loss 1.425145, mse_loss 12.967707,psnr_loss 37.002174
+   Valid b-s-0306-19:  mae_loss 1.637086, mse_loss 19.083507,psnr_loss 35.529081
+   Valid j-d-0306-21:  mae_loss 2.152819, mse_loss 28.812,psnr_loss 34.048228
+   Valid h-j-0306-13:  mae_loss 2.581118, mse_loss 34.217061,psnr_loss 32.843222
+   Valid d-g-0308-10:  mae_loss 1.804693, mse_loss 20.032674,psnr_loss 35.288417
+   Valid h-y-0306-17:  mae_loss 2.192639, mse_loss 24.458213,psnr_loss 34.319285
+   Valid a-y-0305-12:  mae_loss 1.707495, mse_loss 26.106831,psnr_loss 34.741778
+     Train Ep 151000:  mae_loss 2.071033, mse_loss 21.496702,psnr_loss 34.807083
+     Train Ep 152000:  mae_loss 2.144337, mse_loss 31.878515,psnr_loss 33.09582
+     Train Ep 153000:  mae_loss 2.880315, mse_loss 51.624092,psnr_loss 31.002281
+     Train Ep 154000:  mae_loss 1.829642, mse_loss 17.959784,psnr_loss 35.58779
+     Train Ep 155000:  mae_loss 2.293444, mse_loss 40.345634,psnr_loss 32.072838
+   Valid b-s-0306-19:  mae_loss 1.597977, mse_loss 18.918692,psnr_loss 35.617494
+   Valid j-d-0306-21:  mae_loss 2.233836, mse_loss 30.321383,psnr_loss 33.917153
+   Valid h-j-0306-13:  mae_loss 2.583325, mse_loss 33.998887,psnr_loss 32.862223
+   Valid d-g-0308-10:  mae_loss 1.740875, mse_loss 19.796852,psnr_loss 35.349113
+   Valid h-y-0306-17:  mae_loss 2.147105, mse_loss 23.980508,psnr_loss 34.414847
+   Valid a-y-0305-12:  mae_loss 1.739959, mse_loss 25.991397,psnr_loss 34.669737
+     Train Ep 156000:  mae_loss 1.966615, mse_loss 21.467356,psnr_loss 34.81302
+     Train Ep 157000:  mae_loss 2.369965, mse_loss 32.94954,psnr_loss 32.95231
+     Train Ep 158000:  mae_loss 1.496056, mse_loss 12.779662,psnr_loss 37.06561
+     Train Ep 159000:  mae_loss 1.455516, mse_loss 15.304372,psnr_loss 36.282646
+     Train Ep 160000:  mae_loss 1.586285, mse_loss 20.6159,psnr_loss 34.98878
+   Valid b-s-0306-19:  mae_loss 1.616827, mse_loss 19.229721,psnr_loss 35.600514
+   Valid j-d-0306-21:  mae_loss 2.035614, mse_loss 27.180684,psnr_loss 34.250351
+   Valid h-j-0306-13:  mae_loss 2.558369, mse_loss 33.782294,psnr_loss 32.899316
+   Valid d-g-0308-10:  mae_loss 1.761471, mse_loss 19.847772,psnr_loss 35.36164
+   Valid h-y-0306-17:  mae_loss 2.160468, mse_loss 23.867976,psnr_loss 34.435644
+   Valid a-y-0305-12:  mae_loss 1.683043, mse_loss 25.913222,psnr_loss 34.663498
+     Train Ep 161000:  mae_loss 1.815343, mse_loss 14.348623,psnr_loss 36.5627
+     Train Ep 162000:  mae_loss 1.906896, mse_loss 22.221037,psnr_loss 34.66316
+     Train Ep 163000:  mae_loss 2.40717, mse_loss 38.979725,psnr_loss 32.222416
+     Train Ep 164000:  mae_loss 1.605192, mse_loss 11.269268,psnr_loss 37.611847
+     Train Ep 165000:  mae_loss 2.394118, mse_loss 36.10734,psnr_loss 32.554848
+   Valid b-s-0306-19:  mae_loss 1.605792, mse_loss 19.38507,psnr_loss 35.529512
+   Valid j-d-0306-21:  mae_loss 2.147864, mse_loss 28.000512,psnr_loss 34.16875
+   Valid h-j-0306-13:  mae_loss 2.530847, mse_loss 33.058903,psnr_loss 32.990115
+   Valid d-g-0308-10:  mae_loss 1.751141, mse_loss 19.292572,psnr_loss 35.434009
+   Valid h-y-0306-17:  mae_loss 2.146726, mse_loss 23.631535,psnr_loss 34.472186
+   Valid a-y-0305-12:  mae_loss 1.678668, mse_loss 24.826578,psnr_loss 34.872654
+     Train Ep 166000:  mae_loss 1.518238, mse_loss 12.422376,psnr_loss 37.188755
+     Train Ep 167000:  mae_loss 1.849399, mse_loss 25.798075,psnr_loss 34.01493
+     Train Ep 168000:  mae_loss 2.047383, mse_loss 28.604166,psnr_loss 33.56651
+     Train Ep 169000:  mae_loss 1.387467, mse_loss 10.947403,psnr_loss 37.737686
+     Train Ep 170000:  mae_loss 1.780254, mse_loss 16.260727,psnr_loss 36.019405
+   Valid b-s-0306-19:  mae_loss 1.59784, mse_loss 18.239684,psnr_loss 35.739992
+   Valid j-d-0306-21:  mae_loss 2.103472, mse_loss 27.775027,psnr_loss 34.18464
+   Valid h-j-0306-13:  mae_loss 2.546256, mse_loss 33.370502,psnr_loss 32.959352
+   Valid d-g-0308-10:  mae_loss 1.759531, mse_loss 19.355673,psnr_loss 35.438011
+   Valid h-y-0306-17:  mae_loss 2.116996, mse_loss 22.959975,psnr_loss 34.595987
+   Valid a-y-0305-12:  mae_loss 1.64609, mse_loss 24.280262,psnr_loss 35.024493
+     Train Ep 171000:  mae_loss 2.069396, mse_loss 27.773478,psnr_loss 33.6945
+     Train Ep 172000:  mae_loss 1.958063, mse_loss 27.7483,psnr_loss 33.69844
+     Train Ep 173000:  mae_loss 1.656291, mse_loss 17.870186,psnr_loss 35.609512
+     Train Ep 174000:  mae_loss 2.246756, mse_loss 27.763798,psnr_loss 33.696014
+     Train Ep 175000:  mae_loss 1.839945, mse_loss 20.112638,psnr_loss 35.096115
+   Valid b-s-0306-19:  mae_loss 1.599738, mse_loss 18.313029,psnr_loss 35.787165
+   Valid j-d-0306-21:  mae_loss 2.17839, mse_loss 28.327774,psnr_loss 34.16258
+   Valid h-j-0306-13:  mae_loss 2.521075, mse_loss 32.523832,psnr_loss 33.059444
+   Valid d-g-0308-10:  mae_loss 1.769522, mse_loss 19.387581,psnr_loss 35.438389
+   Valid h-y-0306-17:  mae_loss 2.177701, mse_loss 23.496796,psnr_loss 34.49182
+   Valid a-y-0305-12:  mae_loss 1.740543, mse_loss 25.753566,psnr_loss 34.766003
+     Train Ep 176000:  mae_loss 2.166404, mse_loss 40.419834,psnr_loss 32.064857
+     Train Ep 177000:  mae_loss 2.504107, mse_loss 34.37049,psnr_loss 32.768944
+     Train Ep 178000:  mae_loss 2.294533, mse_loss 31.855808,psnr_loss 33.098915
+     Train Ep 179000:  mae_loss 2.120587, mse_loss 23.438278,psnr_loss 34.431545
+     Train Ep 180000:  mae_loss 1.573534, mse_loss 23.663624,psnr_loss 34.38999
+   Valid b-s-0306-19:  mae_loss 1.611677, mse_loss 18.279825,psnr_loss 35.833673
+   Valid j-d-0306-21:  mae_loss 2.092791, mse_loss 28.380446,psnr_loss 34.238817
+   Valid h-j-0306-13:  mae_loss 2.5576, mse_loss 32.699535,psnr_loss 33.03243
+   Valid d-g-0308-10:  mae_loss 1.778832, mse_loss 19.523234,psnr_loss 35.402544
+   Valid h-y-0306-17:  mae_loss 2.12036, mse_loss 22.653749,psnr_loss 34.664517
+   Valid a-y-0305-12:  mae_loss 1.68318, mse_loss 24.68983,psnr_loss 34.890932
+     Train Ep 181000:  mae_loss 1.393874, mse_loss 10.651846,psnr_loss 37.856556
+     Train Ep 182000:  mae_loss 1.694864, mse_loss 12.289987,psnr_loss 37.23529
+     Train Ep 183000:  mae_loss 1.560166, mse_loss 15.004597,psnr_loss 36.368557
+     Train Ep 184000:  mae_loss 1.708803, mse_loss 15.991508,psnr_loss 36.09191
+     Train Ep 185000:  mae_loss 1.761726, mse_loss 14.255822,psnr_loss 36.590878
+   Valid b-s-0306-19:  mae_loss 1.606447, mse_loss 18.042666,psnr_loss 35.806316
+   Valid j-d-0306-21:  mae_loss 2.03733, mse_loss 25.44968,psnr_loss 34.471439
+   Valid h-j-0306-13:  mae_loss 2.499936, mse_loss 32.03214,psnr_loss 33.1363
+   Valid d-g-0308-10:  mae_loss 1.728146, mse_loss 19.240249,psnr_loss 35.472274
+   Valid h-y-0306-17:  mae_loss 2.083775, mse_loss 22.179214,psnr_loss 34.764717
+   Valid a-y-0305-12:  mae_loss 1.692843, mse_loss 25.749715,psnr_loss 34.783248
+     Train Ep 186000:  mae_loss 1.381394, mse_loss 11.139374,psnr_loss 37.662193
+     Train Ep 187000:  mae_loss 2.046662, mse_loss 31.610378,psnr_loss 33.132507
+     Train Ep 188000:  mae_loss 2.016907, mse_loss 33.65943,psnr_loss 32.859734
+     Train Ep 189000:  mae_loss 1.61683, mse_loss 19.263367,psnr_loss 35.28348
+     Train Ep 190000:  mae_loss 2.398404, mse_loss 35.362804,psnr_loss 32.645336
+   Valid b-s-0306-19:  mae_loss 1.589308, mse_loss 18.070072,psnr_loss 35.779133
+   Valid j-d-0306-21:  mae_loss 2.140734, mse_loss 27.594817,psnr_loss 34.298833
+   Valid h-j-0306-13:  mae_loss 2.494521, mse_loss 31.728356,psnr_loss 33.172877
+   Valid d-g-0308-10:  mae_loss 1.747351, mse_loss 19.210547,psnr_loss 35.506181
+   Valid h-y-0306-17:  mae_loss 2.130827, mse_loss 22.52473,psnr_loss 34.681309
+   Valid a-y-0305-12:  mae_loss 1.673311, mse_loss 23.850416,psnr_loss 35.053666
+     Train Ep 191000:  mae_loss 1.44782, mse_loss 9.850065,psnr_loss 38.19641
+     Train Ep 192000:  mae_loss 2.005882, mse_loss 26.024052,psnr_loss 33.977055
+     Train Ep 193000:  mae_loss 1.454164, mse_loss 11.993771,psnr_loss 37.341248
+     Train Ep 194000:  mae_loss 1.521542, mse_loss 18.011618,psnr_loss 35.575275
+     Train Ep 195000:  mae_loss 1.659076, mse_loss 13.414267,psnr_loss 36.855133
+   Valid b-s-0306-19:  mae_loss 1.5582, mse_loss 17.49015,psnr_loss 36.058876
+   Valid j-d-0306-21:  mae_loss 2.058955, mse_loss 26.035495,psnr_loss 34.496589
+   Valid h-j-0306-13:  mae_loss 2.514696, mse_loss 32.234504,psnr_loss 33.099848
+   Valid d-g-0308-10:  mae_loss 1.744481, mse_loss 18.845587,psnr_loss 35.543603
+   Valid h-y-0306-17:  mae_loss 2.102214, mse_loss 22.184386,psnr_loss 34.768046
+   Valid a-y-0305-12:  mae_loss 1.688593, mse_loss 24.315084,psnr_loss 34.984186
+     Train Ep 196000:  mae_loss 2.294743, mse_loss 27.29694,psnr_loss 33.769665
+     Train Ep 197000:  mae_loss 1.401714, mse_loss 12.615685,psnr_loss 37.121696
+     Train Ep 198000:  mae_loss 1.764901, mse_loss 15.773574,psnr_loss 36.1515
+     Train Ep 199000:  mae_loss 1.754299, mse_loss 15.515133,psnr_loss 36.22325
+     Train Ep 200000:  mae_loss 2.09225, mse_loss 23.8931,psnr_loss 34.348076
+   Valid b-s-0306-19:  mae_loss 1.615778, mse_loss 18.386032,psnr_loss 35.752405
+   Valid j-d-0306-21:  mae_loss 2.149761, mse_loss 27.937469,psnr_loss 34.304806
+   Valid h-j-0306-13:  mae_loss 2.482661, mse_loss 31.423159,psnr_loss 33.215986
+   Valid d-g-0308-10:  mae_loss 1.729904, mse_loss 18.636319,psnr_loss 35.604641
+   Valid h-y-0306-17:  mae_loss 2.087264, mse_loss 21.669728,psnr_loss 34.83942
+   Valid a-y-0305-12:  mae_loss 1.625634, mse_loss 24.433892,psnr_loss 35.068784
+     Train Ep 201000:  mae_loss 1.520225, mse_loss 14.480251,psnr_loss 36.52304
+     Train Ep 202000:  mae_loss 1.628591, mse_loss 13.971947,psnr_loss 36.678234
+     Train Ep 203000:  mae_loss 1.607424, mse_loss 15.418528,psnr_loss 36.250374
+     Train Ep 204000:  mae_loss 1.718285, mse_loss 15.26899,psnr_loss 36.292698
+     Train Ep 205000:  mae_loss 2.564762, mse_loss 26.465729,psnr_loss 33.903965
+   Valid b-s-0306-19:  mae_loss 1.631509, mse_loss 17.398361,psnr_loss 35.951365
+   Valid j-d-0306-21:  mae_loss 2.103194, mse_loss 26.196144,psnr_loss 34.488053
+   Valid h-j-0306-13:  mae_loss 2.529021, mse_loss 31.225239,psnr_loss 33.241225
+   Valid d-g-0308-10:  mae_loss 1.76701, mse_loss 19.262023,psnr_loss 35.488799
+   Valid h-y-0306-17:  mae_loss 2.092027, mse_loss 21.473617,psnr_loss 34.907132
+   Valid a-y-0305-12:  mae_loss 1.684103, mse_loss 23.05372,psnr_loss 35.212102
+     Train Ep 206000:  mae_loss 1.89647, mse_loss 22.662474,psnr_loss 34.57773
+     Train Ep 207000:  mae_loss 1.980295, mse_loss 24.941792,psnr_loss 34.161526
+     Train Ep 208000:  mae_loss 2.248198, mse_loss 32.69651,psnr_loss 32.98579
+     Train Ep 209000:  mae_loss 2.794978, mse_loss 43.639153,psnr_loss 31.73204
+     Train Ep 210000:  mae_loss 1.333196, mse_loss 12.777843,psnr_loss 37.066227
+   Valid b-s-0306-19:  mae_loss 1.49933, mse_loss 17.017773,psnr_loss 36.142379
+   Valid j-d-0306-21:  mae_loss 2.03483, mse_loss 25.908206,psnr_loss 34.520283
+   Valid h-j-0306-13:  mae_loss 2.449062, mse_loss 30.733461,psnr_loss 33.306166
+   Valid d-g-0308-10:  mae_loss 1.721779, mse_loss 19.031879,psnr_loss 35.538905
+   Valid h-y-0306-17:  mae_loss 2.069001, mse_loss 21.574364,psnr_loss 34.867911
+   Valid a-y-0305-12:  mae_loss 1.584717, mse_loss 22.663816,psnr_loss 35.380483
+     Train Ep 211000:  mae_loss 1.488388, mse_loss 11.612051,psnr_loss 37.481712
+     Train Ep 212000:  mae_loss 2.494298, mse_loss 32.555065,psnr_loss 33.004616
+     Train Ep 213000:  mae_loss 1.9829, mse_loss 32.15835,psnr_loss 33.057865
+     Train Ep 214000:  mae_loss 2.052507, mse_loss 26.888742,psnr_loss 33.8351
+     Train Ep 215000:  mae_loss 2.279496, mse_loss 38.67075,psnr_loss 32.256977
+   Valid b-s-0306-19:  mae_loss 1.579333, mse_loss 17.342576,psnr_loss 35.988155
+   Valid j-d-0306-21:  mae_loss 2.076338, mse_loss 26.172951,psnr_loss 34.523037
+   Valid h-j-0306-13:  mae_loss 2.453667, mse_loss 30.698077,psnr_loss 33.319577
+   Valid d-g-0308-10:  mae_loss 1.730138, mse_loss 18.075033,psnr_loss 35.72704
+   Valid h-y-0306-17:  mae_loss 2.083088, mse_loss 21.572016,psnr_loss 34.874003
+   Valid a-y-0305-12:  mae_loss 1.699415, mse_loss 25.411144,psnr_loss 34.761067
+     Train Ep 216000:  mae_loss 2.315734, mse_loss 30.208965,psnr_loss 33.329445
+     Train Ep 217000:  mae_loss 1.525909, mse_loss 13.395072,psnr_loss 36.86135
+     Train Ep 218000:  mae_loss 1.004966, mse_loss 4.390786,psnr_loss 41.70538
+     Train Ep 219000:  mae_loss 1.377144, mse_loss 9.736737,psnr_loss 38.246662
+     Train Ep 220000:  mae_loss 2.082867, mse_loss 28.848503,psnr_loss 33.52957
+   Valid b-s-0306-19:  mae_loss 1.555541, mse_loss 17.476917,psnr_loss 36.010361
+   Valid j-d-0306-21:  mae_loss 2.075666, mse_loss 25.804564,psnr_loss 34.58657
+   Valid h-j-0306-13:  mae_loss 2.451543, mse_loss 30.781082,psnr_loss 33.303581
+   Valid d-g-0308-10:  mae_loss 1.700768, mse_loss 18.652809,psnr_loss 35.602814
+   Valid h-y-0306-17:  mae_loss 2.024093, mse_loss 20.584107,psnr_loss 35.090117
+   Valid a-y-0305-12:  mae_loss 1.614879, mse_loss 23.856027,psnr_loss 35.132067
+     Train Ep 221000:  mae_loss 1.997971, mse_loss 25.497435,psnr_loss 34.065838
+     Train Ep 222000:  mae_loss 1.843011, mse_loss 20.151806,psnr_loss 35.087666
+     Train Ep 223000:  mae_loss 2.982034, mse_loss 45.099846,psnr_loss 31.589052
+     Train Ep 224000:  mae_loss 2.209898, mse_loss 29.148378,psnr_loss 33.484657
+     Train Ep 225000:  mae_loss 2.328199, mse_loss 39.70154,psnr_loss 32.14273
+   Valid b-s-0306-19:  mae_loss 1.53465, mse_loss 16.70248,psnr_loss 36.129924
+   Valid j-d-0306-21:  mae_loss 2.097891, mse_loss 26.978172,psnr_loss 34.478498
+   Valid h-j-0306-13:  mae_loss 2.421696, mse_loss 30.041122,psnr_loss 33.409334
+   Valid d-g-0308-10:  mae_loss 1.753108, mse_loss 18.794586,psnr_loss 35.577354
+   Valid h-y-0306-17:  mae_loss 2.057162, mse_loss 21.524828,psnr_loss 34.893618
+   Valid a-y-0305-12:  mae_loss 1.637806, mse_loss 23.375026,psnr_loss 35.048912
+     Train Ep 226000:  mae_loss 2.189961, mse_loss 23.47448,psnr_loss 34.424843
+     Train Ep 227000:  mae_loss 1.814589, mse_loss 20.630423,psnr_loss 34.985725
+     Train Ep 228000:  mae_loss 2.09006, mse_loss 27.02827,psnr_loss 33.812626
+     Train Ep 229000:  mae_loss 1.618441, mse_loss 11.048444,psnr_loss 37.697792
+     Train Ep 230000:  mae_loss 2.055608, mse_loss 17.09857,psnr_loss 35.801205
+   Valid b-s-0306-19:  mae_loss 1.573887, mse_loss 18.090387,psnr_loss 35.916204
+   Valid j-d-0306-21:  mae_loss 1.99757, mse_loss 25.080632,psnr_loss 34.66806
+   Valid h-j-0306-13:  mae_loss 2.454154, mse_loss 30.36146,psnr_loss 33.364865
+   Valid d-g-0308-10:  mae_loss 1.724348, mse_loss 18.467542,psnr_loss 35.679502
+   Valid h-y-0306-17:  mae_loss 2.032879, mse_loss 20.690095,psnr_loss 35.056617
+   Valid a-y-0305-12:  mae_loss 1.611436, mse_loss 23.090696,psnr_loss 35.298138
+     Train Ep 231000:  mae_loss 1.882732, mse_loss 18.784477,psnr_loss 35.39281
+     Train Ep 232000:  mae_loss 1.99649, mse_loss 22.246918,psnr_loss 34.658104
+     Train Ep 233000:  mae_loss 0.980339, mse_loss 7.931682,psnr_loss 39.13715
+     Train Ep 234000:  mae_loss 1.814875, mse_loss 14.559308,psnr_loss 36.499397
+     Train Ep 235000:  mae_loss 1.476835, mse_loss 12.762226,psnr_loss 37.071537
+   Valid b-s-0306-19:  mae_loss 1.554941, mse_loss 16.695494,psnr_loss 36.14654
+   Valid j-d-0306-21:  mae_loss 2.027222, mse_loss 25.287613,psnr_loss 34.631199
+   Valid h-j-0306-13:  mae_loss 2.406547, mse_loss 29.561901,psnr_loss 33.479728
+   Valid d-g-0308-10:  mae_loss 1.684463, mse_loss 17.838397,psnr_loss 35.76339
+   Valid h-y-0306-17:  mae_loss 2.057, mse_loss 20.772145,psnr_loss 35.04675
+   Valid a-y-0305-12:  mae_loss 1.67335, mse_loss 23.650207,psnr_loss 35.114931
+     Train Ep 236000:  mae_loss 2.567031, mse_loss 35.76163,psnr_loss 32.59663
+     Train Ep 237000:  mae_loss 1.475855, mse_loss 15.468645,psnr_loss 36.23628
+     Train Ep 238000:  mae_loss 1.686105, mse_loss 17.997534,psnr_loss 35.578674
+     Train Ep 239000:  mae_loss 1.645233, mse_loss 15.36473,psnr_loss 36.265556
+     Train Ep 240000:  mae_loss 1.456304, mse_loss 15.142542,psnr_loss 36.328815
+   Valid b-s-0306-19:  mae_loss 1.546731, mse_loss 16.939216,psnr_loss 36.136239
+   Valid j-d-0306-21:  mae_loss 2.077965, mse_loss 26.070574,psnr_loss 34.584253
+   Valid h-j-0306-13:  mae_loss 2.421559, mse_loss 30.186605,psnr_loss 33.396043
+   Valid d-g-0308-10:  mae_loss 1.708038, mse_loss 18.627171,psnr_loss 35.628148
+   Valid h-y-0306-17:  mae_loss 2.033708, mse_loss 20.746687,psnr_loss 35.041151
+   Valid a-y-0305-12:  mae_loss 1.607266, mse_loss 23.426797,psnr_loss 35.18591
+     Train Ep 241000:  mae_loss 1.673262, mse_loss 14.339954,psnr_loss 36.565327
+     Train Ep 242000:  mae_loss 1.265729, mse_loss 12.466912,psnr_loss 37.17321
+     Train Ep 243000:  mae_loss 1.650409, mse_loss 19.369846,psnr_loss 35.259544
+     Train Ep 244000:  mae_loss 1.209611, mse_loss 6.857408,psnr_loss 39.769203
+     Train Ep 245000:  mae_loss 1.484795, mse_loss 14.448385,psnr_loss 36.532608
+   Valid b-s-0306-19:  mae_loss 1.490048, mse_loss 16.141843,psnr_loss 36.340301
+   Valid j-d-0306-21:  mae_loss 2.060407, mse_loss 26.125304,psnr_loss 34.632954
+   Valid h-j-0306-13:  mae_loss 2.437727, mse_loss 29.733143,psnr_loss 33.445537
+   Valid d-g-0308-10:  mae_loss 1.715298, mse_loss 18.377798,psnr_loss 35.666201
+   Valid h-y-0306-17:  mae_loss 2.028695, mse_loss 20.324385,psnr_loss 35.132213
+   Valid a-y-0305-12:  mae_loss 1.59594, mse_loss 23.022695,psnr_loss 35.241435
+     Train Ep 246000:  mae_loss 1.916753, mse_loss 19.849249,psnr_loss 35.15337
+     Train Ep 247000:  mae_loss 2.287913, mse_loss 28.799309,psnr_loss 33.536983
+     Train Ep 248000:  mae_loss 1.406864, mse_loss 19.117842,psnr_loss 35.316414
+     Train Ep 249000:  mae_loss 1.169967, mse_loss 9.623672,psnr_loss 38.297394
+     Train Ep 250000:  mae_loss 1.889035, mse_loss 14.064521,psnr_loss 36.64955
+   Valid b-s-0306-19:  mae_loss 1.564602, mse_loss 17.144079,psnr_loss 36.076646
+   Valid j-d-0306-21:  mae_loss 2.078373, mse_loss 25.350162,psnr_loss 34.616847
+   Valid h-j-0306-13:  mae_loss 2.44149, mse_loss 29.71933,psnr_loss 33.45464
+   Valid d-g-0308-10:  mae_loss 1.730834, mse_loss 18.731732,psnr_loss 35.626438
+   Valid h-y-0306-17:  mae_loss 2.026564, mse_loss 20.153912,psnr_loss 35.18138
+   Valid a-y-0305-12:  mae_loss 1.643928, mse_loss 23.736991,psnr_loss 35.225057
+     Train Ep 251000:  mae_loss 2.179976, mse_loss 28.053593,psnr_loss 33.650917
+     Train Ep 252000:  mae_loss 1.54661, mse_loss 16.463737,psnr_loss 35.965523
+     Train Ep 253000:  mae_loss 1.522988, mse_loss 9.424467,psnr_loss 38.388237
+     Train Ep 254000:  mae_loss 1.462623, mse_loss 11.983209,psnr_loss 37.345074
+     Train Ep 255000:  mae_loss 1.990251, mse_loss 19.885471,psnr_loss 35.145447
+   Valid b-s-0306-19:  mae_loss 1.508685, mse_loss 16.069854,psnr_loss 36.426123
+   Valid j-d-0306-21:  mae_loss 1.983356, mse_loss 24.292543,psnr_loss 34.822648
+   Valid h-j-0306-13:  mae_loss 2.398602, mse_loss 29.346517,psnr_loss 33.514743
+   Valid d-g-0308-10:  mae_loss 1.728949, mse_loss 17.98216,psnr_loss 35.743301
+   Valid h-y-0306-17:  mae_loss 2.031495, mse_loss 20.150319,psnr_loss 35.164202
+   Valid a-y-0305-12:  mae_loss 1.608346, mse_loss 21.679182,psnr_loss 35.337002
+     Train Ep 256000:  mae_loss 1.712342, mse_loss 22.334332,psnr_loss 34.641075
+     Train Ep 257000:  mae_loss 1.696407, mse_loss 21.918562,psnr_loss 34.722683
+     Train Ep 258000:  mae_loss 2.331056, mse_loss 26.707418,psnr_loss 33.864487
+     Train Ep 259000:  mae_loss 1.948015, mse_loss 24.698126,psnr_loss 34.204163
+     Train Ep 260000:  mae_loss 1.57315, mse_loss 19.283615,psnr_loss 35.278915
+   Valid b-s-0306-19:  mae_loss 1.529201, mse_loss 16.683379,psnr_loss 36.168401
+   Valid j-d-0306-21:  mae_loss 2.043257, mse_loss 25.807902,psnr_loss 34.692136
+   Valid h-j-0306-13:  mae_loss 2.387265, mse_loss 28.891751,psnr_loss 33.583521
+   Valid d-g-0308-10:  mae_loss 1.645069, mse_loss 17.382157,psnr_loss 35.897763
+   Valid h-y-0306-17:  mae_loss 1.957537, mse_loss 19.625278,psnr_loss 35.301837
+   Valid a-y-0305-12:  mae_loss 1.569637, mse_loss 22.353845,psnr_loss 35.442819
+     Train Ep 261000:  mae_loss 1.445417, mse_loss 11.122949,psnr_loss 37.6686
+     Train Ep 262000:  mae_loss 1.700653, mse_loss 12.483315,psnr_loss 37.167503
+     Train Ep 263000:  mae_loss 1.94083, mse_loss 27.408133,psnr_loss 33.75201
+     Train Ep 264000:  mae_loss 1.639468, mse_loss 16.366045,psnr_loss 35.991367
+     Train Ep 265000:  mae_loss 2.361791, mse_loss 36.531437,psnr_loss 32.504135
+   Valid b-s-0306-19:  mae_loss 1.511341, mse_loss 16.513174,psnr_loss 36.314106
+   Valid j-d-0306-21:  mae_loss 1.962874, mse_loss 23.76853,psnr_loss 34.885432
+   Valid h-j-0306-13:  mae_loss 2.409235, mse_loss 29.205635,psnr_loss 33.525995
+   Valid d-g-0308-10:  mae_loss 1.698928, mse_loss 18.419727,psnr_loss 35.697967
+   Valid h-y-0306-17:  mae_loss 1.999841, mse_loss 19.833469,psnr_loss 35.257635
+   Valid a-y-0305-12:  mae_loss 1.629716, mse_loss 23.533758,psnr_loss 35.188808
+     Train Ep 266000:  mae_loss 1.377204, mse_loss 11.658234,psnr_loss 37.464478
+     Train Ep 267000:  mae_loss 1.834994, mse_loss 22.564684,psnr_loss 34.59651
+     Train Ep 268000:  mae_loss 1.511818, mse_loss 15.517292,psnr_loss 36.222645
+     Train Ep 269000:  mae_loss 1.827387, mse_loss 35.44815,psnr_loss 32.634865
+     Train Ep 270000:  mae_loss 1.557594, mse_loss 11.477528,psnr_loss 37.53232
+   Valid b-s-0306-19:  mae_loss 1.479253, mse_loss 15.971029,psnr_loss 36.397922
+   Valid j-d-0306-21:  mae_loss 2.102717, mse_loss 26.44274,psnr_loss 34.625531

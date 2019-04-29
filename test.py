@@ -44,10 +44,7 @@ time.sleep(2)
 mod = importlib.import_module('saved_params.exp'+args.exp_id)
 params = mod.generate_params()
 
-log_name = "h-j-2/edsr_032921_sl2_tr1_netb16f64"
-
-model_path = args.modeldir + log_name + '.ckpt'
-log_path = args.logdir + log_name + '.log'
+model_path = args.modeldir
 
 # Load data
 
@@ -79,7 +76,7 @@ sr_train_data, sr_valid_data, sr_test_data = sr_dataset(args.datadir, params)
 small_size = (params['network']['size_h'], params['network']['size_w'])
 
 import matplotlib.pyplot as plt
-import cv2
+#import cv2
 
 
 def get_psnr(p, q):
@@ -134,7 +131,7 @@ def check_inf(l, r, mx):
 
 
 
-def get_hr_image(sess, ph, targets, inp, inp_size, border, debug=True):
+def get_hr_image(sess, ph, targets, inp, inp_size, border, debug=False):
     border = params['data']['scale'] + 6
     window_w = inp_size[1] - 2 * border
     window_h = inp_size[0] - 2 * border
@@ -181,7 +178,8 @@ def get_hr_image(sess, ph, targets, inp, inp_size, border, debug=True):
 
 
 def print_image(sess, ph, targets, logdir, corpus_name, corpus):
-    for _ in range(corpus.len() // params['train']['batch_size']):
+    losses = []
+    for _ in range(corpus.len()):
         lr_image, hr_image = corpus.get_next_batch(1)
 
         lr_image = lr_image[0, :, :, :]
@@ -190,22 +188,25 @@ def print_image(sess, ph, targets, logdir, corpus_name, corpus):
         ts = time.time()
         out_image = get_hr_image(sess, ph, targets, lr_image, small_size, params['data']['scale'] + 6)
         ts = time.time() - ts
-        print('Process image {}: {} s'.format(_, ts))
-
+        #print('Process image {}: {} s'.format(_, ts))
 
         prefix = logdir + '{}_{}'.format(corpus_name, _)
 
-        cubic = cv2.resize(lr_image, (hr_image.shape[1], hr_image.shape[0]), 
-            interpolation=cv2.INTER_CUBIC)
+        #cubic = cv2.resize(lr_image, (hr_image.shape[1], hr_image.shape[0]), 
+        #    interpolation=cv2.INTER_CUBIC)
         plt.imsave(prefix + '_lr.png', lr_image)
-        plt.imsave(prefix + '_cb.png', cubic)
+        #plt.imsave(prefix + '_cb.png', cubic)
         plt.imsave(prefix + '_hr.png', hr_image)
         plt.imsave(prefix + '_fa.png', out_image.astype(int))
 
         psnr_model = get_psnr(out_image, hr_image)
-        psnr_cubic = get_psnr(cubic, hr_image)
+        #psnr_cubic = get_psnr(cubic, hr_image)
+        psnr_cubic = 0.0
 
-        print('PSNR Cubic {}, PSNR EDSR {}'.format(psnr_cubic, psnr_model))
+        #print('PSNR Cubic {}, PSNR EDSR {}'.format(psnr_cubic, psnr_model))
+        losses.append(psnr_model)
+    return np.mean(losses)
+
 
 
 
@@ -215,5 +216,7 @@ decay = 1.0
 
 
 for name in sr_test_data:
-    print_image(sess, ph, targets, args.outdir, name, sr_test_data[name])
+    s = print_image(sess, ph, targets, args.outdir, name, sr_test_data[name])
+    print('Dataset {}, PSNR loss = {}'.format(name, s))
+
 

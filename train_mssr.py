@@ -247,9 +247,9 @@ if len(args.restore) > 0:
                 begin_ep = max(begin_ep, ep)
             else:
                 assert Exception, "Invalid log file"
-    model_path = args.restoredir
+    #model_path = args.restoredir
     print('Load model and start training at ep {}'.format(begin_ep))
-    saver.restore(sess, model_path)
+    saver.restore(sess, args.restoredir)
     for i in range(begin_ep // params['train']['decay_interval']):
         decay *= 0.9
 
