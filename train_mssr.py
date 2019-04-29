@@ -237,9 +237,9 @@ import re
 
 if len(args.restore) > 0:
     log_file_path_old = args.logdir + '/' + args.restore + '.log'
-    with open(log_file_path_old, 'r') as f:
+    with f.open(log_file_path_old, 'r') as f:
         ep = 0
-        pattern = re.compile(r'(?<=Train Ep )\d+\.?\d*')
+        pattern = re.compile(r'(?<=Train Ep =)\d+\.?\d*')
         for line in f.readlines():
             if 'Train Ep' in line:
                 ep = int(pattern.findall(line)[0])
@@ -248,11 +248,8 @@ if len(args.restore) > 0:
             else:
                 assert Exception, "Invalid log file"
     #model_path = args.restoredir
-    print('Load model and start training at ep {}'.format(begin_ep))
     saver.restore(sess, args.restoredir)
     for i in range(begin_ep // params['train']['decay_interval']):
-        decay *= 0.9
-
 
 readouts = {}
 for s in range(n_sources):
