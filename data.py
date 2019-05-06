@@ -108,11 +108,11 @@ def sr_dataset(datadir, params, split_train=False):
 
                 lr_img_cl.append(np.expand_dims(shrink, axis=0))
         pgb.finish()
-
+        
         lr_img_dat = np.concatenate(lr_img_cl, axis=0)
         hr_img_dat = np.concatenate(hr_img_cl, axis=0)
         n_data = lr_img_dat.shape[0]
-        print('Number of data = {}'.format(n_data))
+        print('Number of data = {}, [{}, {}]'.format(n_data, hr_img_dat.shape[1], hr_img_dat.shape[2]))
         if data_name in train_set:
             print('{}: TRAIN'.format(data_name))
             if split_train:

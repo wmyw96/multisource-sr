@@ -156,7 +156,10 @@ def get_hr_image(sess, ph, targets, inp, inp_size, border, debug=True):
         x += window_h
 
     feed_dict = {ph['lr_image']: np.concatenate(inp_images, axis=0)}
+    
+    tt = -time.time()
     out = sess.run(targets['samples']['hr_fake_image'], feed_dict=feed_dict)
+    tt += time.time()
 
     sc = out.shape[1] // inp_size[0]
 
@@ -175,11 +178,12 @@ def get_hr_image(sess, ph, targets, inp, inp_size, border, debug=True):
             q[_] *= sc
 
         image[p[0]:p[1], p[2]:p[3], :] = out[i, q[0]:q[1], q[2]:q[3], :]
-    return image
+    return image, tt
 
 
 def evaluate(sess, ph, targets, sr_data, mode='Valid'):
     ts = 0.0
+    tt = 0.0
 
     total_loss = []
     for name in sr_data:
@@ -193,11 +197,13 @@ def evaluate(sess, ph, targets, sr_data, mode='Valid'):
             hr_image = hr_image[0, :, :, :]
 
             ts -= time.time()
-            out_image = get_hr_image(sess, ph, targets, lr_image, small_size, params['data']['scale'] + 6, False)
+            out_image, stt = get_hr_image(sess, ph, targets, lr_image, small_size, params['data']['scale'] + 6, False)
             ts += time.time()
+            tt += stt
 
             fetches.append(get_loss(out_image, hr_image))
 
+        print('Tensorflow Time: Total {} s, Mean {} s'.format(tt, tt / corpus.len()))
         print('Evaluation Time: Total {} s, Mean {} s'.format(ts, ts / corpus.len()))
         ts = 0.0
         write_logs('Valid {}'.format(name), combine_loss(fetches), log_path)
@@ -250,5 +256,5 @@ for ep in range(params['train']['num_episodes']):
             best_psnr_loss = cur_psnr_loss
             saver.save(sess, model_path)
 
-evaluate(sess, sr_test_data)
+evaluate(sess, ph, targets, sr_test_data)
 
