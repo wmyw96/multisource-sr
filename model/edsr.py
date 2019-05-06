@@ -56,6 +56,17 @@ def get_edsr_graph(ph, params):
                              kernel_size, None)
         graph['hr_fake'] = up
 
+    with tf.variable_scope('disc', reuse=False):
+        print(ph['hr_image'].get_shape())
+        graph['real_critic'], graph['real_feat'] = \
+            build_disc(ph['hr_image'], params, reuse=False)
+        graph['fake_critic'], graph['fake_feat'] = \
+            build_disc(graph['hr_fake'], params, reuse=True)
+
+        graph['hat'] = interpolate(ph['hr_image'], graph['hr_fake'])
+        graph['hat_critic'], graph['hat_feat'] = \
+            build_disc(graph['hat'], params, reuse=True)
+
     return graph
 
 
@@ -79,15 +90,42 @@ def get_edsr_targets(ph, graph, graph_vars, params):
     psnr = tf.constant(255**2, dtype=tf.float32) / mse
     psnr = tf.constant(10, dtype=tf.float32) * log10(psnr)
 
+    w_dist = tf.reduce_mean(graph['real_critic']) - tf.reduce_mean(graph['fake_critic'])
+    gp = tf.reduce_mean(
+            (tf.sqrt(tf.reduce_sum(tf.gradients(graph['hat_critic'], graph['hat'])[0] ** 2,
+                                   reduction_indices=[1, 2, 3])) - 1.) ** 2
+        )
+    gen_loss = -1. * tf.reduce_mean(graph['fake_critic'])
+    feat_loss = tf.reduce_mean(tf.square(graph['real_feat'] - graph['fake_feat']))
+
+    loss = mae + params['loss']['disc_loss'] * gen_loss + \
+        params['loss']['feat_loss'] * feat_loss
+    disc_loss = params['loss']['disc_loss'] * (-w_dist + params['loss']['gp_weight'] * gp) + \
+        params['loss']['feat_loss'] * (-feat_loss)
+
     edsr_op = tf.train.AdamOptimizer(params['train']['lr'] * ph['lr_decay'])
-    edsr_grads = edsr_op.compute_gradients(loss=mae,
+    edsr_grads = edsr_op.compute_gradients(loss=loss,
                                            var_list=graph_vars['edsr'])
     edsr_train_op = edsr_op.apply_gradients(grads_and_vars=edsr_grads)
+
+    disc_op = tf.train.AdamOptimizer(params['train']['lr'] * ph['lr_decay'])
+    disc_grads = disc_op.compute_gradients(loss=disc_loss,
+                                           var_list=graph_vars['disc'])
+    disc_train_op = disc_op.apply_gradients(grads_and_vars=disc_grads)
+
     targets['train'] = {
         'mae_loss': mae,
         'mse_loss': mse,
         'psnr_loss': psnr,
-        'edsr_train_op': edsr_train_op
+        'edsr_train_op': edsr_train_op,
+        'w_dist': w_dist,
+        'gen_loss': gen_loss,
+        'total_loss': loss
+    }
+
+    targets['train_disc'] = {
+        'disc_loss': disc_loss,
+        'disc_train_op': disc_train_op
     }
 
     targets['eval'] = {
@@ -103,7 +141,9 @@ def get_edsr_targets(ph, graph, graph_vars, params):
 def get_edsr_vars(ph, graph):
     graph_vars = {
         'edsr': tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES,
-                                  scope='edsr')
+                                  scope='edsr'),
+        'disc': tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES,
+                                  scope='disc')
     }
     save_vars = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES,
                                   scope='edsr')

@@ -11,6 +11,29 @@ def resblock(x, n_feats, kernel_size, scale):
     return x + tmp
 
 
+def build_disc(inp, params, reuse=False):
+    with tf.variable_scope('disc-network', reuse=reuse):
+        x = tf.identity(inp)
+        n_feats = params['disc']['n_feats']
+        kernel_size = params['disc']['kernel_size']
+
+        for i in range(params['disc']['n_layers']):
+            x = slim.conv2d(x, n_feats, kernel_size, stride=2, 
+                            activation_fn=tf.nn.relu)
+        sp = x.get_shape()
+        feat_dim = sp[1] * sp[2] * sp[3]
+        print('Feat Dim = {}'.format(feat_dim))
+        feat = tf.reshape(x, [-1, feat_dim])
+        critic = tf.layers.dense(feat, 1)
+    return feat, critic
+
+
+def interpolate(real, fake):
+    alpha = tf.random_uniform([tf.shape(real)[0], 1, 1, 1], 0, 1, seed=123456)
+    out = real * alpha + (1 - alpha) * fake
+    return out
+
+
 def _phase_shift(I, r):
     bsize, a, b, c = I.get_shape().as_list()
     bsize = tf.shape(I)[

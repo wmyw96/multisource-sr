@@ -54,11 +54,11 @@ f.close()
 #with open(log_path, 'w') as f:
 #    f.truncate()
 
-# Load data
-sr_train_data, sr_valid_data, sr_test_data = sr_dataset(args.datadir, params)
-
 # Build the computation graph
 ph, graph, save_vars, targets = build_edsr_model(params=params)
+
+# Load data
+sr_train_data, sr_valid_data, sr_test_data = sr_dataset(args.datadir, params)
 
 # Train loop
 if args.gpu > -1:
@@ -223,6 +223,17 @@ for ep in range(params['train']['num_episodes']):
 
     t_ep_start = time.time()
 
+    # train disc
+    for k in range(params['train']['disc_steps']):
+        lr_image, hr_image = \
+            sr_train_data.get_next_batch(params['train']['batch_size'], size=small_size)
+        feed_dict = {
+            ph['lr_image']: lr_image,
+            ph['hr_image']: hr_image,
+            ph['lr_decay']: decay
+        }
+        _ = sess.run(targets['train_disc'], feed_dict=feed_dict)
+    
     lr_image, hr_image = \
         sr_train_data.get_next_batch(params['train']['batch_size'], size=small_size)
     feed_dict = {
