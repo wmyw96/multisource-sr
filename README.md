@@ -1,7 +1,9 @@
 # Multi-source Super Resolution
 
-## Exp 0
+## Youtube
 
-To validate the model can work
+Single
 
-- dataset: General 100
+```
+python train.py --exp_id y1 --data dataset/youtube
+```
