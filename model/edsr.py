@@ -15,10 +15,10 @@ def get_edsr_ph(params):
                 params_d['size_c']]
 
     ph['lr_image'] = tf.placeholder(dtype=tf.float32,
-                                    shape=[None] + lr_shape,
+                                    shape=[None, None, None, 3],
                                     name='lr_image')
     ph['hr_image'] = tf.placeholder(dtype=tf.float32,
-                                    shape=[None] + hr_shape,
+                                    shape=[None, None, None, 3],
                                     name='hr_image')
     ph['lr_decay'] = tf.placeholder(dtype=tf.float32,
                                     shape=[], name='lr_decay')
