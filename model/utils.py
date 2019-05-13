@@ -21,7 +21,7 @@ def build_disc(inp, params, reuse=False):
             x = slim.conv2d(x, n_feats, kernel_size, stride=2, 
                             activation_fn=tf.nn.relu)
         sp = x.get_shape()
-        feat_dim = sp[1] * sp[2] * sp[3]
+        feat_dim = int(sp[1] * sp[2] * sp[3])
         print('Feat Dim = {}'.format(feat_dim))
         feat = tf.reshape(x, [-1, feat_dim])
         critic = tf.layers.dense(feat, 1)

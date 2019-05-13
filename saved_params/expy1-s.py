@@ -4,8 +4,8 @@ def generate_params():
                    'size_w': 1920 // 4,
                    'size_c': 3,
                    'scale': 4,
-                   'train': ['m3'],
-                   'test': ['m3']}
+                   'train': ['m3-s'],
+                   'test': ['m3-s']}
 
     train_params = {'batch_size': 16,
                     'lr': 1e-4,

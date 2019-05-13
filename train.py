@@ -218,13 +218,16 @@ decay = 1.0
 
 best_psnr_loss = 0.0
 
+readouts = {}
 for ep in range(params['train']['num_episodes']):
-    readouts = {}
+    #readouts = {}
 
     t_ep_start = time.time()
-
+    steps = params['train']['disc_steps']
+    if ep < 100 or ep % 100 == 0:
+        steps = 100
     # train disc
-    for k in range(params['train']['disc_steps']):
+    for k in range(steps):
         lr_image, hr_image = \
             sr_train_data.get_next_batch(params['train']['batch_size'], size=small_size)
         feed_dict = {
@@ -233,6 +236,7 @@ for ep in range(params['train']['num_episodes']):
             ph['lr_decay']: decay
         }
         _ = sess.run(targets['train_disc'], feed_dict=feed_dict)
+        print('Train Disc: Wdist = {}'.format(_['wdist_loss']))
     
     lr_image, hr_image = \
         sr_train_data.get_next_batch(params['train']['batch_size'], size=small_size)
@@ -248,7 +252,7 @@ for ep in range(params['train']['num_episodes']):
 
     t_ep_end = time.time()
     
-    if ep % 1000 == 0:
+    if ep % 100 == 0:
         print('Episode: {} ({})'.format(ep, t_ep_end - t_ep_start))
         print_metrics(readouts)
         write_logs('Train Ep {}'.format(ep), readouts, log_path)

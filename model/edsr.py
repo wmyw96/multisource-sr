@@ -27,11 +27,14 @@ def get_edsr_ph(params):
 
 def get_edsr_graph(ph, params):
     graph = {}
+    
+    graph['lr_image'] = ph['lr_image'] / 255.0
+    graph['hr_image'] = ph['hr_image'] / 255.0
 
     with tf.variable_scope('edsr', reuse=False):
-        inp = ph['lr_image']
+        inp = graph['lr_image'] 
         if params['network']['shift_mean']:
-            inp = inp - 127
+            inp = inp - 0.5
 
         graph['inp'] = inp
 
@@ -56,10 +59,13 @@ def get_edsr_graph(ph, params):
                              kernel_size, None)
         graph['hr_fake'] = up
 
+    if params['network']['shift_mean']:
+        graph['hr_fake'] += 0.5
+
     with tf.variable_scope('disc', reuse=False):
         print(ph['hr_image'].get_shape())
         graph['real_critic'], graph['real_feat'] = \
-            build_disc(ph['hr_image'], params, reuse=False)
+            build_disc(graph['hr_image'], params, reuse=False)
         graph['fake_critic'], graph['fake_feat'] = \
             build_disc(graph['hr_fake'], params, reuse=True)
 
@@ -72,22 +78,19 @@ def get_edsr_graph(ph, params):
 
 def get_edsr_targets(ph, graph, graph_vars, params):
     targets = {}
-
+    
+    out = tf.identity(graph['hr_fake'])
     # samples
-    if params['network']['shift_mean']:
-        out = graph['hr_fake'] + 127.0
-    else:
-        out = graph['hr_fake'] + 0.0
-    samples = {'hr_fake_image': tf.clip_by_value(out, 0.0, 255.0)}
+    samples = {'hr_fake_image': tf.clip_by_value(out, 0.0, 1.0) * 255}
 
     # evaluation
     mae = tf.reduce_mean(tf.losses.absolute_difference(out,
-                                                       ph['hr_image']))
-    mse = tf.squared_difference(out, ph['hr_image'])
+                                                       graph['hr_image']))
+    mse = tf.squared_difference(out, graph['hr_image'])
     mae = tf.reduce_mean(mae)
     mse = tf.reduce_mean(mse)
 
-    psnr = tf.constant(255**2, dtype=tf.float32) / mse
+    psnr = tf.constant(1**2, dtype=tf.float32) / mse
     psnr = tf.constant(10, dtype=tf.float32) * log10(psnr)
 
     w_dist = tf.reduce_mean(graph['real_critic']) - tf.reduce_mean(graph['fake_critic'])
@@ -98,10 +101,10 @@ def get_edsr_targets(ph, graph, graph_vars, params):
     gen_loss = -1. * tf.reduce_mean(graph['fake_critic'])
     feat_loss = tf.reduce_mean(tf.square(graph['real_feat'] - graph['fake_feat']))
 
-    loss = mae + params['loss']['disc_loss'] * gen_loss + \
-        params['loss']['feat_loss'] * feat_loss
+    loss = mae * 255. + params['loss']['disc_loss'] * gen_loss + \
+        0.0# params['loss']['feat_loss'] * feat_loss
     disc_loss = params['loss']['disc_loss'] * (-w_dist + params['loss']['gp_weight'] * gp) + \
-        params['loss']['feat_loss'] * (-feat_loss)
+        0.0 #params['loss']['feat_loss'] * (-feat_loss)
 
     edsr_op = tf.train.AdamOptimizer(params['train']['lr'] * ph['lr_decay'])
     edsr_grads = edsr_op.compute_gradients(loss=loss,
@@ -118,13 +121,15 @@ def get_edsr_targets(ph, graph, graph_vars, params):
         'mse_loss': mse,
         'psnr_loss': psnr,
         'edsr_train_op': edsr_train_op,
-        'w_dist': w_dist,
+        'wdist_loss': w_dist,
         'gen_loss': gen_loss,
-        'total_loss': loss
+        'total_loss': loss,
+        'gp_loss': gp
     }
 
     targets['train_disc'] = {
         'disc_loss': disc_loss,
+        'wdist_loss': w_dist,
         'disc_train_op': disc_train_op
     }
 
@@ -145,6 +150,9 @@ def get_edsr_vars(ph, graph):
         'disc': tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES,
                                   scope='disc')
     }
+    print('Disc Variables')
+    for var in graph_vars['disc']:
+        print(var.name + ': ' + str(var.get_shape()))
     save_vars = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES,
                                   scope='edsr')
     return graph_vars, save_vars
