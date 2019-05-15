@@ -16,10 +16,10 @@ def get_mssr_ph(params):
                 params_d['size_c']]
 
     ph['lr_image'] = tf.placeholder(dtype=tf.float32,
-                                    shape=[None] + lr_shape,
+                                    shape=[None, None, None, 3],
                                     name='lr_image')
     ph['hr_image'] = tf.placeholder(dtype=tf.float32,
-                                    shape=[None] + hr_shape,
+                                    shape=[None, None, None, 3],
                                     name='hr_image')
     ph['lr_decay'] = tf.placeholder(dtype=tf.float32,
                                     shape=[], name='lr_decay')
@@ -53,6 +53,7 @@ def get_mssr_graph(ph, params):
     params_n = params['network']
 
     n_feats = params_n['n_feats']
+    branch_n_feats = params_n['n_feats_branch']
     kernel_size = params_n['kernel_size']
 
     with tf.variable_scope('mssr-global', reuse=False):
@@ -70,23 +71,33 @@ def get_mssr_graph(ph, params):
             with tf.variable_scope('pre-resblock-%d' % i, reuse=False):
                 x = resblock(x, n_feats, kernel_size, params_n['res_scale'])
 
-        graph['branch'] = tf.identity(x)
+        graph['shared'] = tf.identity(x)
 
     graph['branch_feat'] = {}
+    graph['local_head'] = {}
     with tf.variable_scope('mssr-local', reuse=False):
+
         for i in range(params['network']['n_sources']):
-
             with tf.variable_scope('source-%d' % i, reuse=False):
-                x = slim.conv2d(graph['branch'], params_n['n_feats_branch'], kernel_size)
+                with tf.variable_scope('local-feat-extra', reuse=False)
+                    graph['local_head'][i] = slim.conv2d(graph['inp'], branch_n_feats, kernel_size)
 
-                for _ in range(params_n['n_resblocks_branch']):
+                lx = tf.identity(graph['local_head'][i])
+                for _ in range(params['network']['n_resblocks_branch_b']):
                     with tf.variable_scope('resblock-%d' % _, reuse=False):
-                        x = resblock(x, params_n['n_feats_branch'], kernel_size, params_n['res_scale'])
+                        lx = resblock(lx, branch_n_feats, kernel_size, params_n['res_scale'])                    
 
-                graph['branch_feat'][i] = tf.identity(x)
+                lx = tf.concat([lx, graph['shared']], axis=3)
+                lx = slim.conv2d(lx, params_n['n_feats_branch'], kernel_size)
+
+                for _ in range(params_n['n_resblocks_branch_a']):
+                    with tf.variable_scope('resblock-%d' % _, reuse=False):
+                        lx = resblock(lx, branch_n_feats, kernel_size, params_n['res_scale'])
+
+                graph['branch_feat'][i] = tf.identity(lx)
 
     with tf.variable_scope('mssr-global', reuse=False):
-        x = tf.identity(graph['branch'])
+        x = tf.identity(graph['shared'])
 
         for _ in range(params_n['n_resblocks'] - params_n['start_branch']):
             with tf.variable_scope('aft-resblock-%d' % _, reuse=False):
@@ -107,13 +118,19 @@ def get_mssr_graph(ph, params):
                     slim.conv2d(cced, n_feats, kernel_size) + graph['head']
 
             with tf.variable_scope('upsamler-module', reuse=(i > 0)):
-                up = upsampler_block(graph['body'][i], params_d['scale'], n_feats,
-                                     kernel_size, None)
+                up_global = upsampler_block(graph['body'][i], params_d['scale'], n_feats,
+                                            kernel_size, None)
 
-            if params['network']['shift_mean']:
-                graph['hr_fake'][i] = up + 127.0
-            else:
-                graph['hr_fake'][i] = up
+        with tf.variable_scope('mssr-local', reuse=False):
+            local_feat = graph['branch_feat'][i] + graph['local_head'][i]
+            up_local = upsampler_block(local_feat, params_d['scale'], n_feats,
+                                       kernel_size, None)
+        up = up_global + up_local
+        
+        if params['network']['shift_mean']:
+            graph['hr_fake'][i] = up + 127.0
+        else:
+            graph['hr_fake'][i] = up
 
     return graph
 

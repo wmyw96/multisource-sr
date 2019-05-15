@@ -144,54 +144,21 @@ def check_inf(l, r, mx):
 
 
 
-def get_hr_image(sess, ph, targets, name, inp, inp_size, border, debug=True):
-    window_w = inp_size[1] - 2 * border
-    window_h = inp_size[0] - 2 * border
-    h = inp_size[0]
-    w = inp_size[1]
+def get_hr_image(sess, ph, targets, inp, inp_size, border, debug=True):
+    inp_images = np.expand_dims(inp, axis=0)
+    feed_dict = {ph['lr_image']: inp_images}
+    
+    tt = -time.time()
+    out = sess.run(targets['samples']['hr_fake_image'], feed_dict=feed_dict)
+    tt += time.time()
 
-    inp_images = []
-    cover = []
-
-    x = border
-    while x < inp.shape[0]:
-        y = border
-        while y < inp.shape[1]:
-            x1, x2 = check_inf(x - border, x - border + h, inp.shape[0])
-            y1, y2 = check_inf(y - border, y - border + w, inp.shape[1])
-            inp_images.append(np.expand_dims(inp[x1:x2, y1:y2, :], axis=0))
-            cover.append(check_border(x1 + border, window_h, y1 + border, window_w, 
-                border, inp.shape[0], inp.shape[1]))
-            y += window_w
-        x += window_h
-
-    source_id = name2idx[name]
-
-    feed_dict = {ph['lr_image'][source_id]: np.concatenate(inp_images, axis=0)}
-    out = sess.run(targets['samples'][source_id]['hr_fake_image'], feed_dict=feed_dict)
-
-    sc = out.shape[1] // inp_size[0]
-
-    out_shape = (sc * inp.shape[0], sc * inp.shape[1], inp.shape[2])
-    if debug:
-        print('Output shape = [{}, {}, {}]'.format(out_shape[0], out_shape[1],
-            out_shape[2]))
-
-    image = np.zeros(out_shape)
-    for i in range(len(cover)):
-        p = cover[i][0]
-        q = cover[i][1]
-
-        for _ in range(4):
-            p[_] *= sc
-            q[_] *= sc
-
-        image[p[0]:p[1], p[2]:p[3], :] = out[i, q[0]:q[1], q[2]:q[3], :]
-    return image
+    image = out
+    return image, tt
 
 
 def evaluate(sess, ph, targets, sr_data, mode='Valid'):
     ts = 0.0
+    tt = 0.0
 
     total_loss = []
     for name in sr_data:
@@ -205,14 +172,17 @@ def evaluate(sess, ph, targets, sr_data, mode='Valid'):
             hr_image = hr_image[0, :, :, :]
 
             ts -= time.time()
-            out_image = get_hr_image(sess, ph, targets, name, 
+            out_image, tt_s = get_hr_image(sess, ph, targets, name, 
                 lr_image, small_size, params['data']['scale'] + 6, False)
             ts += time.time()
-
+            tt += tt_s
             fetches.append(get_loss(out_image, hr_image))
 
         print('Evaluation Time: Total {} s, Mean {} s'.format(ts, ts / corpus.len()))
+        print('Tensorflow Time: Total {} s, Mean {} s'.format(tt, tt / corpus.len()))
+
         ts = 0.0
+        tt = 0.0
         write_logs('Valid {}'.format(name), combine_loss(fetches), log_path)
         print_metrics(combine_loss(fetches), name)
 

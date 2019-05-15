@@ -20,10 +20,10 @@ def get_mssr_ph(params):
 
     for i in range(params['network']['n_sources']):
         ph['lr_image'][i] = tf.placeholder(dtype=tf.float32,
-                                           shape=[None] + lr_shape,
-                                           name='lr_image')
+                                           shape=[None, None, None, 3],
+                                           name='hr_image')
         ph['hr_image'][i] = tf.placeholder(dtype=tf.float32,
-                                           shape=[None] + hr_shape,
+                                           shape=[None, None, None, 3],
                                            name='hr_image')
     ph['lr_decay'] = tf.placeholder(dtype=tf.float32,
                                     shape=[], name='lr_decay')
@@ -58,14 +58,16 @@ def get_mssr_graph(ph, params):
 
     n_feats = params_n['n_feats']
     kernel_size = params_n['kernel_size']
+    branch_n_feats = params_n['n_feats_branch']
 
     graph['branch_feat'] = {}
-    graph['branch'] = {}
+    graph['shared'] = {}
     graph['inp'] = {}
     graph['global_feat'] = {}
     graph['head'] = {}
     graph['body'] = {}
     graph['hr_fake'] = {}
+    graph['local_head'] = {}
 
     for s in range(params['network']['n_sources']):
         with tf.variable_scope('mssr-global', reuse=s > 0):
@@ -79,26 +81,38 @@ def get_mssr_graph(ph, params):
 
             x = tf.identity(graph['head'][s])
 
-            for _ in range(params_n['start_branch']):
+            for _ in range(params_n['shared_block']):
                 with tf.variable_scope('pre-resblock-%d' % _, reuse=s > 0):
                     x = resblock(x, n_feats, kernel_size, params_n['res_scale'])
 
-            graph['branch'][s] = tf.identity(x)
+            graph['shared'][s] = tf.identity(x)
 
         with tf.variable_scope('mssr-local', reuse=False):
             with tf.variable_scope('source-%d' % s, reuse=False):
-                x = slim.conv2d(graph['branch'][s], params_n['n_feats_branch'], kernel_size)
 
-                for _ in range(params_n['n_resblocks_branch']):
-                    with tf.variable_scope('resblock-%d' % _, reuse=False):
-                        x = resblock(x, params_n['n_feats_branch'], kernel_size, params_n['res_scale'])
+                # local feat extra
+                with tf.variable_scope('local-feat-extra', reuse=False):
+                    graph['local_head'][s] = slim.conv2d(graph['inp'][s], branch_n_feats, kernel_size)
 
-                graph['branch_feat'][s] = tf.identity(x)
+                lx = tf.identity(graph['local_head'][s])
+                for _ in range(params_n['n_resblocks_branch_b']):
+                    with tf.variable_scope('resblock-b-%d' % _, reuse=False):
+                        lx = resblock(lx, branch_n_feats, kernel_size, params_n['res_scale'])                    
+
+                lx = tf.concat([lx, graph['shared'][s]], axis=3)
+                with tf.variable_scope('shared-feat-concat', reuse=False):
+                    lx = slim.conv2d(lx, params_n['n_feats_branch'], kernel_size)
+
+                for _ in range(params_n['n_resblocks_branch_a']):
+                    with tf.variable_scope('resblock-a-%d' % _, reuse=False):
+                        lx = resblock(lx, branch_n_feats, kernel_size, params_n['res_scale'])
+
+                graph['branch_feat'][s] = tf.identity(lx)
 
         with tf.variable_scope('mssr-global', reuse=s > 0):
-            x = tf.identity(graph['branch'][s])
+            x = tf.identity(graph['shared'][s])
 
-            for _ in range(params_n['n_resblocks'] - params_n['start_branch']):
+            for _ in range(params_n['n_resblocks'] - params_n['shared_block']):
                 with tf.variable_scope('aft-resblock-%d' % _, reuse=False):
                     x = resblock(x, n_feats, kernel_size, params_n['res_scale'])
 
@@ -113,13 +127,21 @@ def get_mssr_graph(ph, params):
                     slim.conv2d(cced, n_feats, kernel_size) + graph['head'][s]
 
             with tf.variable_scope('upsamler-module', reuse=(s > 0)):
-                up = upsampler_block(graph['body'][s], params_d['scale'], n_feats,
-                                     kernel_size, None)
+                up_gb = upsampler_block(graph['body'][s], params_d['scale'], n_feats,
+                                       kernel_size, None)
 
-            if params['network']['shift_mean']:
-                graph['hr_fake'][s] = up + 127.0
-            else:
-                graph['hr_fake'][s] = up
+        with tf.variable_scope('mssr-local', reuse=False):
+            with tf.variable_scope('source-%d' % s, reuse=False):
+                local_feat = graph['branch_feat'][s] + graph['local_head'][s]
+                with tf.variable_scope('upsamler-module', reuse=False):
+                    up_local = upsampler_block(local_feat, params_d['scale'], n_feats,
+                                               kernel_size, None)
+        up = up_gb + up_local
+
+        if params['network']['shift_mean']:
+            graph['hr_fake'][s] = up + 127.0
+        else:
+            graph['hr_fake'][s] = up
 
     return graph
 
