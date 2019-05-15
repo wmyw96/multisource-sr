@@ -151,8 +151,10 @@ decay = 1.0
 
 best_psnr_loss = 0.0
 
+readouts = {}
+
 for ep in range(params['train']['num_episodes']):
-    readouts = {}
+    #readouts = {}
 
     t_ep_start = time.time()
 

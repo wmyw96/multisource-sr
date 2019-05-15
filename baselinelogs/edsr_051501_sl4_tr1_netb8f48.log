@@ -1,0 +1,361 @@
+                    Train Ep 0: psnr_loss 10.009085, mse_loss 6488.9126, mae_loss 68.57678
+             Valid b-s-0306-19: psnr_loss 11.234004, mse_loss 5313.113, mae_loss 62.414047
+                 Train Ep 1000: psnr_loss 21.713545, mse_loss 649.3354, mae_loss 13.19905
+                 Train Ep 2000: psnr_loss 25.15846, mse_loss 204.17131, mae_loss 6.95835
+                 Train Ep 3000: psnr_loss 25.863472, mse_loss 173.77185, mae_loss 6.193439
+                 Train Ep 4000: psnr_loss 26.311613, mse_loss 157.06775, mae_loss 5.775768
+                 Train Ep 5000: psnr_loss 26.712074, mse_loss 143.57794, mae_loss 5.435582
+             Valid b-s-0306-19: psnr_loss 24.852392, mse_loss 217.02193, mae_loss 6.013656
+                 Train Ep 6000: psnr_loss 26.902805, mse_loss 137.2739, mae_loss 5.240289
+                 Train Ep 7000: psnr_loss 27.197027, mse_loss 129.19568, mae_loss 5.004253
+                 Train Ep 8000: psnr_loss 27.300938, mse_loss 126.15288, mae_loss 4.878588
+                 Train Ep 9000: psnr_loss 27.545765, mse_loss 119.487724, mae_loss 4.700316
+                Train Ep 10000: psnr_loss 27.62921, mse_loss 116.839, mae_loss 4.640461
+             Valid b-s-0306-19: psnr_loss 25.44574, mse_loss 188.65417, mae_loss 5.458942
+                Train Ep 11000: psnr_loss 27.794554, mse_loss 112.64378, mae_loss 4.552846
+                Train Ep 12000: psnr_loss 27.907757, mse_loss 109.50137, mae_loss 4.439244
+                Train Ep 13000: psnr_loss 28.119324, mse_loss 104.48203, mae_loss 4.30895
+                Train Ep 14000: psnr_loss 28.189629, mse_loss 102.81859, mae_loss 4.271786
+                Train Ep 15000: psnr_loss 28.314844, mse_loss 99.89677, mae_loss 4.217577
+             Valid b-s-0306-19: psnr_loss 25.94248, mse_loss 168.30716, mae_loss 5.001
+                Train Ep 16000: psnr_loss 28.341585, mse_loss 99.576935, mae_loss 4.177998
+                Train Ep 17000: psnr_loss 28.478174, mse_loss 96.33847, mae_loss 4.111627
+                Train Ep 18000: psnr_loss 28.539501, mse_loss 95.28522, mae_loss 4.073538
+                Train Ep 19000: psnr_loss 28.685877, mse_loss 91.879684, mae_loss 4.025458
+                Train Ep 20000: psnr_loss 28.721521, mse_loss 91.17545, mae_loss 3.985852
+             Valid b-s-0306-19: psnr_loss 26.380771, mse_loss 152.52365, mae_loss 4.817556
+                Train Ep 21000: psnr_loss 28.768248, mse_loss 90.03724, mae_loss 3.96668
+                Train Ep 22000: psnr_loss 28.911951, mse_loss 87.07638, mae_loss 3.901448
+                Train Ep 23000: psnr_loss 28.914639, mse_loss 87.26276, mae_loss 3.888702
+                Train Ep 24000: psnr_loss 28.860916, mse_loss 88.082664, mae_loss 3.925188
+                Train Ep 25000: psnr_loss 28.968485, mse_loss 86.04477, mae_loss 3.860719
+             Valid b-s-0306-19: psnr_loss 26.677269, mse_loss 142.60384, mae_loss 4.734636
+                Train Ep 26000: psnr_loss 29.084991, mse_loss 83.94728, mae_loss 3.822073
+                Train Ep 27000: psnr_loss 29.031004, mse_loss 84.5037, mae_loss 3.833862
+                Train Ep 28000: psnr_loss 29.0736, mse_loss 84.04309, mae_loss 3.80881
+                Train Ep 29000: psnr_loss 29.142925, mse_loss 82.70792, mae_loss 3.790314
+                Train Ep 30000: psnr_loss 29.267284, mse_loss 80.16163, mae_loss 3.746313
+             Valid b-s-0306-19: psnr_loss 26.953281, mse_loss 134.15552, mae_loss 4.50544
+                Train Ep 31000: psnr_loss 29.248087, mse_loss 80.33728, mae_loss 3.722257
+                Train Ep 32000: psnr_loss 29.196196, mse_loss 81.39222, mae_loss 3.78065
+                Train Ep 33000: psnr_loss 29.26123, mse_loss 80.15649, mae_loss 3.727401
+                Train Ep 34000: psnr_loss 29.292547, mse_loss 79.589584, mae_loss 3.718896
+                Train Ep 35000: psnr_loss 29.283657, mse_loss 80.06674, mae_loss 3.732031
+             Valid b-s-0306-19: psnr_loss 27.255053, mse_loss 125.49967, mae_loss 4.345172
+                Train Ep 36000: psnr_loss 29.398132, mse_loss 77.746544, mae_loss 3.670012
+                Train Ep 37000: psnr_loss 29.417532, mse_loss 77.32972, mae_loss 3.67222
+                Train Ep 38000: psnr_loss 29.479864, mse_loss 76.26273, mae_loss 3.641317
+                Train Ep 39000: psnr_loss 29.460627, mse_loss 76.42648, mae_loss 3.654845
+                Train Ep 40000: psnr_loss 29.482738, mse_loss 76.05167, mae_loss 3.629
+             Valid b-s-0306-19: psnr_loss 27.44185, mse_loss 120.53198, mae_loss 4.207674
+                Train Ep 41000: psnr_loss 29.587212, mse_loss 74.15583, mae_loss 3.593269
+                Train Ep 42000: psnr_loss 29.542007, mse_loss 75.23364, mae_loss 3.615522
+                Train Ep 43000: psnr_loss 29.602621, mse_loss 74.181564, mae_loss 3.591005
+                Train Ep 44000: psnr_loss 29.594473, mse_loss 73.97008, mae_loss 3.60207
+                Train Ep 45000: psnr_loss 29.629337, mse_loss 73.726654, mae_loss 3.576257
+             Valid b-s-0306-19: psnr_loss 27.592493, mse_loss 116.63213, mae_loss 4.239226
+                Train Ep 46000: psnr_loss 29.639105, mse_loss 73.33156, mae_loss 3.562074
+                Train Ep 47000: psnr_loss 29.701172, mse_loss 72.30253, mae_loss 3.555345
+                Train Ep 48000: psnr_loss 29.651375, mse_loss 73.0043, mae_loss 3.554174
+                Train Ep 49000: psnr_loss 29.72603, mse_loss 71.90044, mae_loss 3.541181
+                Train Ep 50000: psnr_loss 29.75492, mse_loss 71.430046, mae_loss 3.533028
+             Valid b-s-0306-19: psnr_loss 27.786114, mse_loss 111.83658, mae_loss 4.187373
+                Train Ep 51000: psnr_loss 29.728085, mse_loss 71.755424, mae_loss 3.531331
+                Train Ep 52000: psnr_loss 29.779942, mse_loss 71.075264, mae_loss 3.504151
+                Train Ep 53000: psnr_loss 29.775265, mse_loss 71.05363, mae_loss 3.51656
+                Train Ep 54000: psnr_loss 29.802326, mse_loss 70.75561, mae_loss 3.501115
+                Train Ep 55000: psnr_loss 29.796177, mse_loss 70.74253, mae_loss 3.503078
+             Valid b-s-0306-19: psnr_loss 27.907947, mse_loss 108.89341, mae_loss 4.043877
+                Train Ep 56000: psnr_loss 29.846043, mse_loss 69.93696, mae_loss 3.47497
+                Train Ep 57000: psnr_loss 29.820093, mse_loss 70.23023, mae_loss 3.493459
+                Train Ep 58000: psnr_loss 29.899586, mse_loss 69.317764, mae_loss 3.472834
+                Train Ep 59000: psnr_loss 29.868223, mse_loss 69.6007, mae_loss 3.486107
+                Train Ep 60000: psnr_loss 29.844131, mse_loss 69.895874, mae_loss 3.486389
+             Valid b-s-0306-19: psnr_loss 27.908242, mse_loss 108.45412, mae_loss 4.036172
+                Train Ep 61000: psnr_loss 29.9183, mse_loss 68.85413, mae_loss 3.46111
+                Train Ep 62000: psnr_loss 29.85593, mse_loss 69.90581, mae_loss 3.48137
+                Train Ep 63000: psnr_loss 29.859352, mse_loss 69.57437, mae_loss 3.474845
+                Train Ep 64000: psnr_loss 29.983418, mse_loss 67.79555, mae_loss 3.426411
+                Train Ep 65000: psnr_loss 29.925709, mse_loss 68.57663, mae_loss 3.461529
+             Valid b-s-0306-19: psnr_loss 28.094389, mse_loss 104.613106, mae_loss 4.010548
+                Train Ep 66000: psnr_loss 29.9633, mse_loss 68.075806, mae_loss 3.445856
+                Train Ep 67000: psnr_loss 29.95532, mse_loss 68.11631, mae_loss 3.427431
+                Train Ep 68000: psnr_loss 29.998493, mse_loss 67.46524, mae_loss 3.431682
+                Train Ep 69000: psnr_loss 29.982403, mse_loss 67.92679, mae_loss 3.423535
+                Train Ep 70000: psnr_loss 30.059101, mse_loss 66.495155, mae_loss 3.407577
+             Valid b-s-0306-19: psnr_loss 28.132604, mse_loss 103.51395, mae_loss 4.004591
+                Train Ep 71000: psnr_loss 30.01172, mse_loss 67.10818, mae_loss 3.422329
+                Train Ep 72000: psnr_loss 30.045237, mse_loss 66.768524, mae_loss 3.399933
+                Train Ep 73000: psnr_loss 30.08982, mse_loss 66.251144, mae_loss 3.383985
+                Train Ep 74000: psnr_loss 29.999216, mse_loss 67.448616, mae_loss 3.416705
+                Train Ep 75000: psnr_loss 30.075571, mse_loss 66.42174, mae_loss 3.396656
+             Valid b-s-0306-19: psnr_loss 28.197526, mse_loss 102.711136, mae_loss 3.980162
+                Train Ep 76000: psnr_loss 30.138067, mse_loss 65.467384, mae_loss 3.375106
+                Train Ep 77000: psnr_loss 30.08076, mse_loss 66.06799, mae_loss 3.393764
+                Train Ep 78000: psnr_loss 30.039465, mse_loss 66.947685, mae_loss 3.397598
+                Train Ep 79000: psnr_loss 30.028105, mse_loss 67.045906, mae_loss 3.425378
+                Train Ep 80000: psnr_loss 30.12162, mse_loss 65.57031, mae_loss 3.384415
+             Valid b-s-0306-19: psnr_loss 28.317923, mse_loss 99.27074, mae_loss 3.93507
+                Train Ep 81000: psnr_loss 30.120241, mse_loss 65.47295, mae_loss 3.37655
+                Train Ep 82000: psnr_loss 30.060278, mse_loss 66.44773, mae_loss 3.414521
+                Train Ep 83000: psnr_loss 30.135094, mse_loss 65.51488, mae_loss 3.37842
+                Train Ep 84000: psnr_loss 30.137882, mse_loss 65.21742, mae_loss 3.365671
+                Train Ep 85000: psnr_loss 30.187626, mse_loss 64.64038, mae_loss 3.338928
+             Valid b-s-0306-19: psnr_loss 28.269693, mse_loss 100.573135, mae_loss 3.985069
+                Train Ep 86000: psnr_loss 30.190664, mse_loss 64.66395, mae_loss 3.355955
+                Train Ep 87000: psnr_loss 30.162155, mse_loss 64.858864, mae_loss 3.360439
+                Train Ep 88000: psnr_loss 30.20765, mse_loss 64.48442, mae_loss 3.350126
+                Train Ep 89000: psnr_loss 30.177809, mse_loss 64.911736, mae_loss 3.378941
+                Train Ep 90000: psnr_loss 30.162962, mse_loss 65.01623, mae_loss 3.352515
+             Valid b-s-0306-19: psnr_loss 28.462976, mse_loss 95.66921, mae_loss 3.799062
+                Train Ep 91000: psnr_loss 30.227688, mse_loss 64.06257, mae_loss 3.324422
+                Train Ep 92000: psnr_loss 30.254696, mse_loss 63.6831, mae_loss 3.342481
+                Train Ep 93000: psnr_loss 30.210352, mse_loss 64.13737, mae_loss 3.341712
+                Train Ep 94000: psnr_loss 30.20923, mse_loss 64.31153, mae_loss 3.339458
+                Train Ep 95000: psnr_loss 30.217432, mse_loss 64.000755, mae_loss 3.341344
+             Valid b-s-0306-19: psnr_loss 28.488538, mse_loss 96.294815, mae_loss 3.909291
+                Train Ep 96000: psnr_loss 30.208982, mse_loss 64.2005, mae_loss 3.351668
+                Train Ep 97000: psnr_loss 30.269547, mse_loss 63.42175, mae_loss 3.326976
+                Train Ep 98000: psnr_loss 30.24778, mse_loss 63.645554, mae_loss 3.340229
+                Train Ep 99000: psnr_loss 30.224651, mse_loss 64.06838, mae_loss 3.348858
+               Train Ep 100000: psnr_loss 30.217636, mse_loss 63.957016, mae_loss 3.343976
+             Valid b-s-0306-19: psnr_loss 28.39479, mse_loss 97.29075, mae_loss 3.93813
+               Train Ep 101000: psnr_loss 30.255009, mse_loss 63.62747, mae_loss 3.32653
+               Train Ep 102000: psnr_loss 30.295477, mse_loss 63.209045, mae_loss 3.307089
+               Train Ep 103000: psnr_loss 30.291042, mse_loss 63.035282, mae_loss 3.304136
+               Train Ep 104000: psnr_loss 30.293917, mse_loss 63.056572, mae_loss 3.29895
+               Train Ep 105000: psnr_loss 30.264317, mse_loss 63.493034, mae_loss 3.308448
+             Valid b-s-0306-19: psnr_loss 28.518094, mse_loss 95.379585, mae_loss 3.777289
+               Train Ep 106000: psnr_loss 30.243786, mse_loss 63.739468, mae_loss 3.331024
+               Train Ep 107000: psnr_loss 30.319597, mse_loss 62.703297, mae_loss 3.297101
+               Train Ep 108000: psnr_loss 30.325083, mse_loss 62.635082, mae_loss 3.29698
+               Train Ep 109000: psnr_loss 30.282396, mse_loss 63.32542, mae_loss 3.316104
+               Train Ep 110000: psnr_loss 30.336588, mse_loss 62.43237, mae_loss 3.303342
+             Valid b-s-0306-19: psnr_loss 28.50018, mse_loss 96.02853, mae_loss 3.840339
+               Train Ep 111000: psnr_loss 30.310717, mse_loss 62.73554, mae_loss 3.298063
+               Train Ep 112000: psnr_loss 30.304386, mse_loss 62.880688, mae_loss 3.304903
+               Train Ep 113000: psnr_loss 30.291079, mse_loss 62.85534, mae_loss 3.302748
+               Train Ep 114000: psnr_loss 30.320246, mse_loss 62.55642, mae_loss 3.291983
+               Train Ep 115000: psnr_loss 30.334421, mse_loss 62.424805, mae_loss 3.285368
+             Valid b-s-0306-19: psnr_loss 28.598132, mse_loss 93.26142, mae_loss 3.858443
+               Train Ep 116000: psnr_loss 30.389788, mse_loss 61.5219, mae_loss 3.278292
+               Train Ep 117000: psnr_loss 30.368626, mse_loss 62.141384, mae_loss 3.272863
+               Train Ep 118000: psnr_loss 30.36041, mse_loss 62.164078, mae_loss 3.287136
+               Train Ep 119000: psnr_loss 30.363308, mse_loss 62.050365, mae_loss 3.27062
+               Train Ep 120000: psnr_loss 30.402464, mse_loss 61.3515, mae_loss 3.257451
+             Valid b-s-0306-19: psnr_loss 28.566774, mse_loss 94.687325, mae_loss 3.776992
+               Train Ep 121000: psnr_loss 30.339907, mse_loss 62.334, mae_loss 3.289024
+               Train Ep 122000: psnr_loss 30.370472, mse_loss 61.76554, mae_loss 3.276509
+               Train Ep 123000: psnr_loss 30.392302, mse_loss 61.638577, mae_loss 3.261156
+               Train Ep 124000: psnr_loss 30.42871, mse_loss 61.106377, mae_loss 3.259639
+               Train Ep 125000: psnr_loss 30.392653, mse_loss 61.672127, mae_loss 3.276712
+             Valid b-s-0306-19: psnr_loss 28.69793, mse_loss 91.5337, mae_loss 3.831197
+               Train Ep 126000: psnr_loss 30.404884, mse_loss 61.445526, mae_loss 3.266824
+               Train Ep 127000: psnr_loss 30.365206, mse_loss 62.119724, mae_loss 3.279418
+               Train Ep 128000: psnr_loss 30.386345, mse_loss 61.715164, mae_loss 3.268388
+               Train Ep 129000: psnr_loss 30.436773, mse_loss 60.924046, mae_loss 3.253361
+               Train Ep 130000: psnr_loss 30.447788, mse_loss 60.76529, mae_loss 3.237514
+             Valid b-s-0306-19: psnr_loss 28.57133, mse_loss 93.41302, mae_loss 3.796414
+               Train Ep 131000: psnr_loss 30.369438, mse_loss 62.045216, mae_loss 3.273606
+               Train Ep 132000: psnr_loss 30.405119, mse_loss 61.293076, mae_loss 3.254496
+               Train Ep 133000: psnr_loss 30.442902, mse_loss 60.851772, mae_loss 3.240344
+               Train Ep 134000: psnr_loss 30.408018, mse_loss 61.470448, mae_loss 3.257295
+               Train Ep 135000: psnr_loss 30.362759, mse_loss 62.009834, mae_loss 3.273369
+             Valid b-s-0306-19: psnr_loss 28.763674, mse_loss 90.851524, mae_loss 3.793748
+               Train Ep 136000: psnr_loss 30.43164, mse_loss 60.94601, mae_loss 3.258624
+               Train Ep 137000: psnr_loss 30.430368, mse_loss 61.138027, mae_loss 3.25121
+               Train Ep 138000: psnr_loss 30.429207, mse_loss 61.126865, mae_loss 3.266244
+               Train Ep 139000: psnr_loss 30.44904, mse_loss 60.806313, mae_loss 3.235706
+               Train Ep 140000: psnr_loss 30.443937, mse_loss 60.70399, mae_loss 3.250378
+             Valid b-s-0306-19: psnr_loss 28.657955, mse_loss 91.785736, mae_loss 3.816856
+               Train Ep 141000: psnr_loss 30.427734, mse_loss 61.304173, mae_loss 3.259156
+               Train Ep 142000: psnr_loss 30.39721, mse_loss 61.471394, mae_loss 3.271615
+               Train Ep 143000: psnr_loss 30.379126, mse_loss 61.647312, mae_loss 3.274461
+               Train Ep 144000: psnr_loss 30.46048, mse_loss 60.57822, mae_loss 3.239412
+               Train Ep 145000: psnr_loss 30.452608, mse_loss 60.768562, mae_loss 3.239788
+             Valid b-s-0306-19: psnr_loss 28.650073, mse_loss 92.49757, mae_loss 3.876556
+               Train Ep 146000: psnr_loss 30.4066, mse_loss 61.46792, mae_loss 3.263582
+               Train Ep 147000: psnr_loss 30.450356, mse_loss 60.813263, mae_loss 3.253452
+               Train Ep 148000: psnr_loss 30.482647, mse_loss 60.375164, mae_loss 3.23978
+               Train Ep 149000: psnr_loss 30.45339, mse_loss 60.808914, mae_loss 3.249146
+               Train Ep 150000: psnr_loss 30.40932, mse_loss 61.28646, mae_loss 3.245482
+             Valid b-s-0306-19: psnr_loss 28.77028, mse_loss 90.47427, mae_loss 3.761679
+               Train Ep 151000: psnr_loss 30.459402, mse_loss 60.615616, mae_loss 3.228048
+               Train Ep 152000: psnr_loss 30.444483, mse_loss 60.745213, mae_loss 3.24473
+               Train Ep 153000: psnr_loss 30.470802, mse_loss 60.387833, mae_loss 3.237206
+               Train Ep 154000: psnr_loss 30.482565, mse_loss 60.32617, mae_loss 3.222823
+               Train Ep 155000: psnr_loss 30.540854, mse_loss 59.5169, mae_loss 3.214184
+             Valid b-s-0306-19: psnr_loss 28.712196, mse_loss 91.20095, mae_loss 3.790736
+               Train Ep 156000: psnr_loss 30.48439, mse_loss 60.202946, mae_loss 3.230454
+               Train Ep 157000: psnr_loss 30.400723, mse_loss 61.44592, mae_loss 3.258886
+               Train Ep 158000: psnr_loss 30.4782, mse_loss 60.3499, mae_loss 3.226092
+               Train Ep 159000: psnr_loss 30.450094, mse_loss 60.888508, mae_loss 3.244636
+               Train Ep 160000: psnr_loss 30.47323, mse_loss 60.439007, mae_loss 3.228084
+             Valid b-s-0306-19: psnr_loss 28.711746, mse_loss 90.99904, mae_loss 3.799472
+               Train Ep 161000: psnr_loss 30.534767, mse_loss 59.604774, mae_loss 3.21416
+               Train Ep 162000: psnr_loss 30.46767, mse_loss 60.669197, mae_loss 3.229349
+               Train Ep 163000: psnr_loss 30.530903, mse_loss 59.839016, mae_loss 3.20568
+               Train Ep 164000: psnr_loss 30.482508, mse_loss 60.291794, mae_loss 3.240547
+               Train Ep 165000: psnr_loss 30.50028, mse_loss 59.960526, mae_loss 3.219777
+             Valid b-s-0306-19: psnr_loss 28.706486, mse_loss 91.708305, mae_loss 3.829518
+               Train Ep 166000: psnr_loss 30.535692, mse_loss 59.481228, mae_loss 3.203858
+               Train Ep 167000: psnr_loss 30.460735, mse_loss 60.703148, mae_loss 3.241014
+               Train Ep 168000: psnr_loss 30.503376, mse_loss 60.10321, mae_loss 3.225693
+               Train Ep 169000: psnr_loss 30.551077, mse_loss 59.297836, mae_loss 3.204879
+               Train Ep 170000: psnr_loss 30.467102, mse_loss 60.38493, mae_loss 3.213332
+             Valid b-s-0306-19: psnr_loss 28.864651, mse_loss 87.98842, mae_loss 3.649351
+               Train Ep 171000: psnr_loss 30.485937, mse_loss 60.273563, mae_loss 3.227948
+               Train Ep 172000: psnr_loss 30.528418, mse_loss 59.736233, mae_loss 3.216876
+               Train Ep 173000: psnr_loss 30.537935, mse_loss 59.58792, mae_loss 3.200911
+               Train Ep 174000: psnr_loss 30.542011, mse_loss 59.501045, mae_loss 3.213394
+               Train Ep 175000: psnr_loss 30.496975, mse_loss 59.928017, mae_loss 3.220254
+             Valid b-s-0306-19: psnr_loss 28.723771, mse_loss 90.41218, mae_loss 3.770836
+               Train Ep 176000: psnr_loss 30.575605, mse_loss 58.979885, mae_loss 3.19925
+               Train Ep 177000: psnr_loss 30.567139, mse_loss 59.19198, mae_loss 3.202156
+               Train Ep 178000: psnr_loss 30.521671, mse_loss 59.665134, mae_loss 3.206086
+               Train Ep 179000: psnr_loss 30.528696, mse_loss 59.783733, mae_loss 3.216415
+               Train Ep 180000: psnr_loss 30.528168, mse_loss 59.70294, mae_loss 3.208447
+             Valid b-s-0306-19: psnr_loss 28.867361, mse_loss 88.37237, mae_loss 3.75931
+               Train Ep 181000: psnr_loss 30.60991, mse_loss 58.45901, mae_loss 3.182796
+               Train Ep 182000: psnr_loss 30.560766, mse_loss 59.267265, mae_loss 3.208946
+               Train Ep 183000: psnr_loss 30.525684, mse_loss 59.799274, mae_loss 3.209074
+               Train Ep 184000: psnr_loss 30.627718, mse_loss 58.37222, mae_loss 3.174914
+               Train Ep 185000: psnr_loss 30.529152, mse_loss 59.488968, mae_loss 3.215627
+             Valid b-s-0306-19: psnr_loss 28.736508, mse_loss 90.65054, mae_loss 3.760269
+               Train Ep 186000: psnr_loss 30.532307, mse_loss 59.49967, mae_loss 3.213556
+               Train Ep 187000: psnr_loss 30.579647, mse_loss 59.000793, mae_loss 3.191169
+               Train Ep 188000: psnr_loss 30.555445, mse_loss 59.253204, mae_loss 3.203021
+               Train Ep 189000: psnr_loss 30.526415, mse_loss 59.681683, mae_loss 3.214832
+               Train Ep 190000: psnr_loss 30.518585, mse_loss 59.954086, mae_loss 3.207412
+             Valid b-s-0306-19: psnr_loss 28.841973, mse_loss 89.048775, mae_loss 3.712628
+               Train Ep 191000: psnr_loss 30.532032, mse_loss 59.623405, mae_loss 3.210117
+               Train Ep 192000: psnr_loss 30.58014, mse_loss 58.98936, mae_loss 3.195865
+               Train Ep 193000: psnr_loss 30.535036, mse_loss 59.345272, mae_loss 3.201427
+               Train Ep 194000: psnr_loss 30.563074, mse_loss 59.21404, mae_loss 3.184879
+               Train Ep 195000: psnr_loss 30.604315, mse_loss 58.59416, mae_loss 3.185851
+             Valid b-s-0306-19: psnr_loss 28.879908, mse_loss 87.564735, mae_loss 3.71058
+               Train Ep 196000: psnr_loss 30.557362, mse_loss 59.357933, mae_loss 3.201615
+               Train Ep 197000: psnr_loss 30.555124, mse_loss 59.333157, mae_loss 3.186303
+               Train Ep 198000: psnr_loss 30.568472, mse_loss 59.10942, mae_loss 3.19161
+               Train Ep 199000: psnr_loss 30.597845, mse_loss 58.72692, mae_loss 3.196665
+               Train Ep 200000: psnr_loss 30.565966, mse_loss 59.209576, mae_loss 3.20394
+             Valid b-s-0306-19: psnr_loss 29.008116, mse_loss 85.852554, mae_loss 3.62193
+               Train Ep 201000: psnr_loss 30.582773, mse_loss 58.945126, mae_loss 3.178774
+               Train Ep 202000: psnr_loss 30.585262, mse_loss 58.914093, mae_loss 3.188008
+               Train Ep 203000: psnr_loss 30.64486, mse_loss 58.201878, mae_loss 3.165681
+               Train Ep 204000: psnr_loss 30.651445, mse_loss 58.038586, mae_loss 3.17265
+               Train Ep 205000: psnr_loss 30.652742, mse_loss 57.96974, mae_loss 3.15983
+             Valid b-s-0306-19: psnr_loss 28.677581, mse_loss 91.64554, mae_loss 3.80886
+               Train Ep 206000: psnr_loss 30.636595, mse_loss 58.095016, mae_loss 3.166746
+               Train Ep 207000: psnr_loss 30.568676, mse_loss 59.069805, mae_loss 3.185469
+               Train Ep 208000: psnr_loss 30.62792, mse_loss 58.19736, mae_loss 3.175944
+               Train Ep 209000: psnr_loss 30.548138, mse_loss 59.43764, mae_loss 3.201063
+               Train Ep 210000: psnr_loss 30.617056, mse_loss 58.543816, mae_loss 3.180889
+             Valid b-s-0306-19: psnr_loss 28.918106, mse_loss 87.23613, mae_loss 3.636312
+               Train Ep 211000: psnr_loss 30.629963, mse_loss 58.1664, mae_loss 3.178147
+               Train Ep 212000: psnr_loss 30.578247, mse_loss 58.94253, mae_loss 3.181596
+               Train Ep 213000: psnr_loss 30.616348, mse_loss 58.560287, mae_loss 3.180907
+               Train Ep 214000: psnr_loss 30.645594, mse_loss 58.063637, mae_loss 3.158195
+               Train Ep 215000: psnr_loss 30.629528, mse_loss 58.43308, mae_loss 3.162738
+             Valid b-s-0306-19: psnr_loss 28.926498, mse_loss 87.28006, mae_loss 3.673586
+               Train Ep 216000: psnr_loss 30.606417, mse_loss 58.60082, mae_loss 3.175138
+               Train Ep 217000: psnr_loss 30.589718, mse_loss 58.72754, mae_loss 3.184663
+               Train Ep 218000: psnr_loss 30.605667, mse_loss 58.50257, mae_loss 3.173451
+               Train Ep 219000: psnr_loss 30.634422, mse_loss 58.2265, mae_loss 3.160977
+               Train Ep 220000: psnr_loss 30.631329, mse_loss 58.21134, mae_loss 3.167692
+             Valid b-s-0306-19: psnr_loss 28.837702, mse_loss 88.59017, mae_loss 3.742928
+               Train Ep 221000: psnr_loss 30.649084, mse_loss 58.083138, mae_loss 3.157508
+               Train Ep 222000: psnr_loss 30.644669, mse_loss 58.028393, mae_loss 3.163217
+               Train Ep 223000: psnr_loss 30.630058, mse_loss 58.47286, mae_loss 3.163346
+               Train Ep 224000: psnr_loss 30.593172, mse_loss 58.84852, mae_loss 3.184269
+               Train Ep 225000: psnr_loss 30.623852, mse_loss 58.67214, mae_loss 3.18053
+             Valid b-s-0306-19: psnr_loss 28.889525, mse_loss 87.92031, mae_loss 3.734426
+               Train Ep 226000: psnr_loss 30.612513, mse_loss 58.487022, mae_loss 3.178919
+               Train Ep 227000: psnr_loss 30.588364, mse_loss 58.864758, mae_loss 3.175872
+               Train Ep 228000: psnr_loss 30.616776, mse_loss 58.32553, mae_loss 3.177094
+               Train Ep 229000: psnr_loss 30.629288, mse_loss 58.207283, mae_loss 3.174148
+               Train Ep 230000: psnr_loss 30.651863, mse_loss 58.00849, mae_loss 3.159943
+             Valid b-s-0306-19: psnr_loss 29.036289, mse_loss 84.74643, mae_loss 3.597174
+               Train Ep 231000: psnr_loss 30.660872, mse_loss 57.813313, mae_loss 3.152444
+               Train Ep 232000: psnr_loss 30.610773, mse_loss 58.423157, mae_loss 3.163745
+               Train Ep 233000: psnr_loss 30.645384, mse_loss 58.069813, mae_loss 3.159573
+               Train Ep 234000: psnr_loss 30.637148, mse_loss 58.025215, mae_loss 3.164868
+               Train Ep 235000: psnr_loss 30.659716, mse_loss 57.782887, mae_loss 3.149686
+             Valid b-s-0306-19: psnr_loss 28.819319, mse_loss 89.29219, mae_loss 3.766101
+               Train Ep 236000: psnr_loss 30.583014, mse_loss 58.827538, mae_loss 3.187887
+               Train Ep 237000: psnr_loss 30.6476, mse_loss 57.957012, mae_loss 3.154653
+               Train Ep 238000: psnr_loss 30.583578, mse_loss 58.810993, mae_loss 3.18953
+               Train Ep 239000: psnr_loss 30.65436, mse_loss 58.0241, mae_loss 3.160472
+               Train Ep 240000: psnr_loss 30.706993, mse_loss 57.286655, mae_loss 3.148464
+             Valid b-s-0306-19: psnr_loss 28.983159, mse_loss 85.459946, mae_loss 3.704881
+               Train Ep 241000: psnr_loss 30.622705, mse_loss 58.37047, mae_loss 3.163615
+               Train Ep 242000: psnr_loss 30.675997, mse_loss 57.784184, mae_loss 3.15948
+               Train Ep 243000: psnr_loss 30.633245, mse_loss 58.14682, mae_loss 3.160902
+               Train Ep 244000: psnr_loss 30.628754, mse_loss 58.268787, mae_loss 3.167337
+               Train Ep 245000: psnr_loss 30.659927, mse_loss 57.915077, mae_loss 3.138887
+             Valid b-s-0306-19: psnr_loss 28.839992, mse_loss 88.69981, mae_loss 3.715506
+               Train Ep 246000: psnr_loss 30.67938, mse_loss 57.589905, mae_loss 3.134156
+               Train Ep 247000: psnr_loss 30.645206, mse_loss 58.058266, mae_loss 3.168742
+               Train Ep 248000: psnr_loss 30.693506, mse_loss 57.494427, mae_loss 3.145201
+               Train Ep 249000: psnr_loss 30.68214, mse_loss 57.557125, mae_loss 3.133936
+               Train Ep 250000: psnr_loss 30.656622, mse_loss 57.810375, mae_loss 3.15458
+             Valid b-s-0306-19: psnr_loss 29.022348, mse_loss 85.19625, mae_loss 3.66179
+               Train Ep 251000: psnr_loss 30.644957, mse_loss 58.063416, mae_loss 3.162764
+               Train Ep 252000: psnr_loss 30.68431, mse_loss 57.60632, mae_loss 3.1412
+               Train Ep 253000: psnr_loss 30.662539, mse_loss 57.81047, mae_loss 3.157952
+               Train Ep 254000: psnr_loss 30.673895, mse_loss 57.684532, mae_loss 3.140252
+               Train Ep 255000: psnr_loss 30.683035, mse_loss 57.583546, mae_loss 3.137948
+             Valid b-s-0306-19: psnr_loss 28.917927, mse_loss 87.65318, mae_loss 3.739645
+               Train Ep 256000: psnr_loss 30.664097, mse_loss 57.926517, mae_loss 3.159698
+               Train Ep 257000: psnr_loss 30.631624, mse_loss 58.13548, mae_loss 3.164756
+               Train Ep 258000: psnr_loss 30.66112, mse_loss 57.982094, mae_loss 3.147987
+               Train Ep 259000: psnr_loss 30.660006, mse_loss 57.888256, mae_loss 3.137943
+               Train Ep 260000: psnr_loss 30.609785, mse_loss 58.537273, mae_loss 3.178509
+             Valid b-s-0306-19: psnr_loss 28.944745, mse_loss 86.43917, mae_loss 3.663086
+               Train Ep 261000: psnr_loss 30.6536, mse_loss 58.193417, mae_loss 3.157194
+               Train Ep 262000: psnr_loss 30.665546, mse_loss 57.73876, mae_loss 3.157819
+               Train Ep 263000: psnr_loss 30.696766, mse_loss 57.51537, mae_loss 3.143957
+               Train Ep 264000: psnr_loss 30.63055, mse_loss 58.368774, mae_loss 3.164176
+               Train Ep 265000: psnr_loss 30.713362, mse_loss 57.260727, mae_loss 3.131409
+             Valid b-s-0306-19: psnr_loss 29.036547, mse_loss 85.60218, mae_loss 3.659846
+               Train Ep 266000: psnr_loss 30.699123, mse_loss 57.57304, mae_loss 3.151081
+               Train Ep 267000: psnr_loss 30.669754, mse_loss 57.50949, mae_loss 3.148984
+               Train Ep 268000: psnr_loss 30.655584, mse_loss 58.08893, mae_loss 3.151637
+               Train Ep 269000: psnr_loss 30.66925, mse_loss 57.739742, mae_loss 3.144104
+               Train Ep 270000: psnr_loss 30.700476, mse_loss 57.379402, mae_loss 3.128133
+             Valid b-s-0306-19: psnr_loss 28.923256, mse_loss 86.61528, mae_loss 3.664295
+               Train Ep 271000: psnr_loss 30.712622, mse_loss 57.242306, mae_loss 3.142042
+               Train Ep 272000: psnr_loss 30.698547, mse_loss 57.322987, mae_loss 3.13418
+               Train Ep 273000: psnr_loss 30.677748, mse_loss 57.620426, mae_loss 3.149548
+               Train Ep 274000: psnr_loss 30.644482, mse_loss 58.01643, mae_loss 3.15768
+               Train Ep 275000: psnr_loss 30.660069, mse_loss 57.985195, mae_loss 3.156079
+             Valid b-s-0306-19: psnr_loss 29.094953, mse_loss 84.473915, mae_loss 3.611641
+               Train Ep 276000: psnr_loss 30.692324, mse_loss 57.37342, mae_loss 3.13805
+               Train Ep 277000: psnr_loss 30.666578, mse_loss 57.877636, mae_loss 3.145414
+               Train Ep 278000: psnr_loss 30.70359, mse_loss 57.43704, mae_loss 3.143816
+               Train Ep 279000: psnr_loss 30.707556, mse_loss 57.252724, mae_loss 3.13523
+               Train Ep 280000: psnr_loss 30.664095, mse_loss 57.87169, mae_loss 3.150585
+             Valid b-s-0306-19: psnr_loss 28.86578, mse_loss 87.49075, mae_loss 3.732705
+               Train Ep 281000: psnr_loss 30.717682, mse_loss 57.07434, mae_loss 3.140217
+               Train Ep 282000: psnr_loss 30.666227, mse_loss 57.685143, mae_loss 3.147733
+               Train Ep 283000: psnr_loss 30.718939, mse_loss 57.147266, mae_loss 3.139731
+               Train Ep 284000: psnr_loss 30.637718, mse_loss 58.06335, mae_loss 3.145512
+               Train Ep 285000: psnr_loss 30.636871, mse_loss 58.024803, mae_loss 3.15485
+             Valid b-s-0306-19: psnr_loss 28.969334, mse_loss 86.04444, mae_loss 3.648313
+               Train Ep 286000: psnr_loss 30.67476, mse_loss 57.77804, mae_loss 3.139051
+               Train Ep 287000: psnr_loss 30.672094, mse_loss 57.80347, mae_loss 3.155096
+               Train Ep 288000: psnr_loss 30.72439, mse_loss 57.00632, mae_loss 3.12533
+               Train Ep 289000: psnr_loss 30.729927, mse_loss 56.851555, mae_loss 3.122292
+               Train Ep 290000: psnr_loss 30.759897, mse_loss 56.497055, mae_loss 3.123483
+             Valid b-s-0306-19: psnr_loss 28.982597, mse_loss 86.78105, mae_loss 3.661855
+               Train Ep 291000: psnr_loss 30.74321, mse_loss 56.787994, mae_loss 3.12493
+               Train Ep 292000: psnr_loss 30.74508, mse_loss 56.82929, mae_loss 3.12045
+               Train Ep 293000: psnr_loss 30.69941, mse_loss 57.32421, mae_loss 3.134906
+               Train Ep 294000: psnr_loss 30.685987, mse_loss 57.58586, mae_loss 3.139662
+               Train Ep 295000: psnr_loss 30.769587, mse_loss 56.36268, mae_loss 3.117676
+             Valid b-s-0306-19: psnr_loss 29.109536, mse_loss 83.555405, mae_loss 3.639073
+               Train Ep 296000: psnr_loss 30.682713, mse_loss 57.45212, mae_loss 3.141714
+               Train Ep 297000: psnr_loss 30.727507, mse_loss 57.0459, mae_loss 3.123111
+               Train Ep 298000: psnr_loss 30.62614, mse_loss 58.210884, mae_loss 3.162877
+               Train Ep 299000: psnr_loss 30.67388, mse_loss 57.66981, mae_loss 3.144966
+             Valid b-s-0306-19: psnr_loss 28.877603, mse_loss 89.04736, mae_loss 3.753109

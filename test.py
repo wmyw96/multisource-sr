@@ -99,81 +99,13 @@ def get_loss(p, q):
     }
 
 
-def calc_interval(left, leng, border, maxv):
-    if left == border:
-        le = 0
-        le_s = 0
-    else:
-        le = left
-        le_s = border
-
-    ri = left + leng
-    if ri + border < maxv:
-        return le, ri, le_s, leng + border
-    else:
-        return le, maxv, le_s, leng + border * 2
-
-
-def check_border(x1, lx, y1, ly, b, mx, my):
-    xl, xr, xl_s, xr_s = calc_interval(x1, lx, b, mx)
-    yl, yr, yl_s, yr_s = calc_interval(y1, ly, b, my)
-    if xr_s - xl_s != xr - xl:
-        print('check_border: ERROR!')
-        print('[{}, {}] -> [{}, {}]'.format(xl, xr, xl_s, xr_s))
-    return [xl, xr, yl, yr], [xl_s, xr_s, yl_s, yr_s]
-
-
-def check_inf(l, r, mx):
-    if r <= mx:
-        return l, r
-    else:
-        return mx - (r - l), mx
-
-
-
 def get_hr_image(sess, ph, targets, inp, inp_size, border, debug=False):
-    border = params['data']['scale'] + 6
-    window_w = inp_size[1] - 2 * border
-    window_h = inp_size[0] - 2 * border
-    h = inp_size[0]
-    w = inp_size[1]
+    inp_images = np.expand_dims(inp, axis=0)
 
-    inp_images = []
-    cover = []
-
-    x = border
-    while x < inp.shape[0]:
-        y = border
-        while y < inp.shape[1]:
-            x1, x2 = check_inf(x - border, x - border + h, inp.shape[0])
-            y1, y2 = check_inf(y - border, y - border + w, inp.shape[1])
-            inp_images.append(np.expand_dims(inp[x1:x2, y1:y2, :], axis=0))
-            cover.append(check_border(x1 + border, window_h, y1 + border, window_w, 
-                border, inp.shape[0], inp.shape[1]))
-            y += window_w
-        x += window_h
-
-    feed_dict = {ph['lr_image']: np.concatenate(inp_images, axis=0)}
+    feed_dict = {ph['lr_image']: inp_images}
     out = sess.run(targets['samples']['hr_fake_image'], feed_dict=feed_dict)
 
-    sc = out.shape[1] // inp_size[0]
-
-    out_shape = (sc * inp.shape[0], sc * inp.shape[1], inp.shape[2])
-    if debug:
-        print('Output shape = [{}, {}, {}]'.format(out_shape[0], out_shape[1],
-            out_shape[2]))
-
-    image = np.zeros(out_shape)
-    for i in range(len(cover)):
-        p = cover[i][0]
-        q = cover[i][1]
-
-        for _ in range(4):
-            p[_] *= sc
-            q[_] *= sc
-
-        image[p[0]:p[1], p[2]:p[3], :] = out[i, q[0]:q[1], q[2]:q[3], :]
-    return image
+    return out[0, :, :, :]
 
 
 

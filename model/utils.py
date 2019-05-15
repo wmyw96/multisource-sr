@@ -14,7 +14,10 @@ def resblock(x, n_feats, kernel_size, scale):
 def _phase_shift(I, r):
     bsize, a, b, c = I.get_shape().as_list()
     bsize = tf.shape(I)[
-        0]  # Handling Dimension(None) type for undefined batch dim
+        0]
+    a = tf.shape(I)[1]
+    print(a)
+    b = tf.shape(I)[2]  # Handling Dimension(None) type for undefined batch dim
     X = tf.reshape(I, (bsize, a, b, r, r))
     X = tf.transpose(X, (0, 1, 2, 4, 3))  # bsize, a, b, 1, 1
     X = tf.split(X, a, 1)  # a, [bsize, b, r, r]
@@ -40,11 +43,11 @@ def upsampler_block(x, scale, n_feats, kernel_size, activation):
             ps_features = 3 * (2 ** 2)
             x = slim.conv2d(x, ps_features, kernel_size,
                             activation_fn=activation)
-            x = ps_operator(x, 2, color=True)
+            x = tf.depth_to_space(x, 2) #ps_operator(x, 2, color=True)
     else:
         ps_features = 3 * (3 ** 2)
         x = slim.conv2d(x, ps_features, kernel_size, activation_fn=activation)
-        x = ps_operator(x, 3, color=True)
+        x = tf.depth_to_space(x, 3)
     return x
 
 
