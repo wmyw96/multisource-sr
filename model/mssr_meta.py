@@ -134,9 +134,14 @@ def get_mssr_graph(ph, params):
             with tf.variable_scope('source-%d' % s, reuse=False):
                 local_feat = graph['branch_feat'][s] + graph['local_head'][s]
                 with tf.variable_scope('upsamler-module', reuse=False):
-                    up_local = upsampler_block(local_feat, params_d['scale'], n_feats,
+                    up_local = upsampler_block(local_feat, params_d['scale'], branch_n_feats,
                                                kernel_size, None)
-        up = up_gb + up_local
+                with tf.variable_scope('local-weight', reuse=False):
+                    local_weight = upsampler_block(local_feat, params_d['scale'], branch_n_feats,
+                                                   kernel_size, None)
+                    local_weight = tf.sigmoid(local_weight)
+
+        up = up_gb * (1 - local_weight) + up_local * local_weight
 
         if params['network']['shift_mean']:
             graph['hr_fake'][s] = up + 127.0

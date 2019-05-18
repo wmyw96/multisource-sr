@@ -11,7 +11,7 @@ def generate_params():
 
     train_params = {'batch_size': 16,
                     'meta_batch_size': 3, 
-                    'lr': 1e-4,
+                    'lr': 5 * 1e-4,
                     'num_episodes': 300000,
                     'trainlog_interval': 1000,
                     'decay_interval': 50000,
@@ -21,7 +21,7 @@ def generate_params():
     network_params = {'size_h': 48,
                       'size_w': 48,
                       'size_c': 3,
-                      'scale': 2,
+                      'scale': 4,
                       'n_resblocks': 8,
                       'kernel_size': [3, 3],
                       'n_feats': 46,
@@ -31,7 +31,7 @@ def generate_params():
                       'n_feats_branch': 12,
                       'n_resblocks_branch_b': 3,
                       'n_resblocks_branch_a': 3,
-                      'n_sources': 7}
+                      'n_sources': 6}
 
     params = {'data': data_params,
               'train': train_params,
