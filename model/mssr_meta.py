@@ -119,13 +119,14 @@ def get_mssr_graph(ph, params):
             graph['global_feat'][s] = tf.identity(x)
 
         with tf.variable_scope('mssr-global', reuse=(s > 0)):
-            cced = tf.concat([graph['global_feat'][s], graph['branch_feat'][s]], axis=3)
+            #cced = tf.concat([graph['global_feat'][s], graph['branch_feat'][s]], axis=3)
 
-            print('Concatenated feats for source {}, shape = '.format(s) + str(cced.shape))
-            with tf.variable_scope('feat-concat', reuse=(s > 0)):
-                graph['body'][s] = \
-                    slim.conv2d(cced, n_feats, kernel_size) + graph['head'][s]
-
+            #print('Concatenated feats for source {}, shape = '.format(s) + str(cced.shape))
+            #with tf.variable_scope('feat-concat', reuse=(s > 0)):
+            #    graph['body'][s] = \
+            #        slim.conv2d(cced, n_feats, kernel_size) + graph['head'][s]
+            graph['body'][s] = graph['global_feat'][s] + graph['head'][s]
+            
             with tf.variable_scope('upsamler-module', reuse=(s > 0)):
                 up_gb = upsampler_block(graph['body'][s], params_d['scale'], n_feats,
                                        kernel_size, None)
@@ -134,9 +135,18 @@ def get_mssr_graph(ph, params):
             with tf.variable_scope('source-%d' % s, reuse=False):
                 local_feat = graph['branch_feat'][s] + graph['local_head'][s]
                 with tf.variable_scope('upsamler-module', reuse=False):
-                    up_local = upsampler_block(local_feat, params_d['scale'], n_feats,
+                    up_local = upsampler_block(local_feat, params_d['scale'], branch_n_feats,
                                                kernel_size, None)
-        up = up_gb + up_local
+
+                cced = tf.concat([graph['body'][s], local_feat], axis=3)
+                with tf.variable_scope('local-weight', reuse=False):
+                    fs = slim.conv2d(cced, branch_n_feats, kernel_size)
+                    #fs = tf.nn.relu(fs)
+                    local_weight = upsampler_block(fs, params_d['scale'], branch_n_feats,
+                                                   kernel_size, None)
+                    local_weight = tf.sigmoid(local_weight)
+
+        up = up_gb * (1 - local_weight) + up_local * local_weight
 
         if params['network']['shift_mean']:
             graph['hr_fake'][s] = up + 127.0

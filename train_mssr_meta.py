@@ -80,11 +80,11 @@ writer = tf.summary.FileWriter(args.logdir, sess.graph)
 
 idx2name = {}
 name2idx = {}
-for i in range(n_sources - 1):
+for i in range(n_sources):
     data_name = params['data']['train'][i]
-    name2idx[data_name] = i + 1
-    idx2name[i + 1] = data_name
-idx2name[0] = 'general'
+    name2idx[data_name] = i
+    idx2name[i] = data_name
+#idx2name[0] = 'general'
 
 
 sess.run(tf.global_variables_initializer())
@@ -144,12 +144,15 @@ def check_inf(l, r, mx):
 
 
 
-def get_hr_image(sess, ph, targets, inp, inp_size, border, debug=True):
+def get_hr_image(sess, ph, targets, name, inp, inp_size, border, debug=True):
     inp_images = np.expand_dims(inp, axis=0)
-    feed_dict = {ph['lr_image']: inp_images}
+    source_id = name2idx[name]
+    feed_dict = {ph['lr_image'][source_id]: inp_images}
     
+    #source_id = name2idx[name]
+
     tt = -time.time()
-    out = sess.run(targets['samples']['hr_fake_image'], feed_dict=feed_dict)
+    out = sess.run(targets['samples'][source_id]['hr_fake_image'], feed_dict=feed_dict)
     tt += time.time()
 
     image = out
@@ -233,11 +236,7 @@ for ep in range(begin_ep, params['train']['num_episodes']):
     t_ep_start = time.time()
 
     for s in range(n_sources):
-        if s == 0:
-            idd = int(np.random.randint(n_sources - 1, size=(1)))
-            data_name = params['data']['train'][idd]
-        else:
-            data_name = params['data']['train'][s - 1]
+        data_name = params['data']['train'][s]
 
         lr_image, hr_image = \
             sr_train_data[data_name].get_next_batch(params['train']['batch_size'], 
@@ -255,11 +254,7 @@ for ep in range(begin_ep, params['train']['num_episodes']):
 
     feed_dict = {ph['lr_decay']: decay}
     for s in range(n_sources):
-        if s == 0:
-            idd = int(np.random.randint(n_sources - 1, size=(1)))
-            data_name = params['data']['train'][idd]
-        else:
-            data_name = params['data']['train'][s - 1]
+        data_name = params['data']['train'][s]
 
         lr_s, hr_s = \
             sr_train_data[data_name].get_next_batch(params['train']['meta_batch_size'], 
