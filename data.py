@@ -86,8 +86,8 @@ def sr_dataset(datadir, params, split_train=False):
         hr_img_cl = []
         lr_img_cl = []
         #print(len(cur_list))
-        pgb = progressbar.ProgressBar()
-        pgb.start()
+        #pgb = progressbar.ProgressBar()
+        #pgb.start()
         count = 0
 
         print('=' * 16 + '\nRead File: {}'.format(path))
@@ -95,7 +95,7 @@ def sr_dataset(datadir, params, split_train=False):
             if ele[0] == '.':
                 continue
             count += 1
-            pgb.update(count)
+            #pgb.update(count)
 
             file_path = os.path.join(path, ele)
 
@@ -107,7 +107,7 @@ def sr_dataset(datadir, params, split_train=False):
                 shrink = im.resize(lr_img_size, Image.ANTIALIAS)
 
                 lr_img_cl.append(np.expand_dims(shrink, axis=0))
-        pgb.finish()
+        #pgb.finish()
         
         lr_img_dat = np.concatenate(lr_img_cl, axis=0)
         hr_img_dat = np.concatenate(hr_img_cl, axis=0)
