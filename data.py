@@ -70,6 +70,35 @@ class dataset(object):
         return inputs, labels
 
 
+class dataset_ts(object):
+    def __init__(self, inputs, labels, randomize=True):
+        self.inputs = inputs
+        self.labels = labels
+        if len(self.labels.shape) == 1:
+            self.labels = np.reshape(self.labels,
+                                     [self.labels.shape[0], 1])
+        self.randomize = randomize
+        self.num_pairs = len(inputs)
+        self.init_pointer()
+
+    def len(self):
+        return self.num_pairs
+
+    def get_next_batch(self, timestep, batch_size, size=None):
+        indexes = np.random.randint(timestep + 1, (batch_size,))
+        inputs = self.inputs[indexes, :]
+        labels = self.labels[indexes, :]
+        if size is not None:
+            return get_small_batch(inputs, labels, size)
+        return inputs, labels
+
+    def ts(timestep, size=None):
+        inputs = self.inputs[timestep:timestep+1, :]
+        labels = self.inputs[timestep:timestep+1, :]
+        return inputs, labels
+
+
+
 def sr_dataset(datadir, params, split_train=False):
     # valid = train \belong test
     train_set = set(params['data']['train'])
@@ -149,25 +178,20 @@ def sr_ts_dataset(datadir, params, split_train=False):
 
     train_lr = []
     train_hr = []
-    valid_dataset = {}
-    test_dataset = {}
-    train_dataset = {}
+    ts_dataset = {}
     for data_name in params['data']['test']:
         path = os.path.join(datadir, data_name)
         cur_list = os.listdir(path)
         hr_img_cl = []
         lr_img_cl = []
-        #print(len(cur_list))
-        pgb = progressbar.ProgressBar()
-        pgb.start()
-        count = 0
 
         print('=' * 16 + '\nRead File: {}'.format(path))
-        for ele in cur_list:
+        for ts in len(cur_list):
+            ele = cur_list[ts]
+            
             if ele[0] == '.':
                 continue
             count += 1
-            pgb.update(count)
 
             file_path = os.path.join(path, ele)
 
@@ -179,38 +203,16 @@ def sr_ts_dataset(datadir, params, split_train=False):
                 shrink = im.resize(lr_img_size, Image.ANTIALIAS)
 
                 lr_img_cl.append(np.expand_dims(shrink, axis=0))
-        pgb.finish()
         
         lr_img_dat = np.concatenate(lr_img_cl, axis=0)
         hr_img_dat = np.concatenate(hr_img_cl, axis=0)
         n_data = lr_img_dat.shape[0]
         print('Number of data = {}, [{}, {}]'.format(n_data, hr_img_dat.shape[1], hr_img_dat.shape[2]))
-        if data_name in train_set:
-            print('{}: TRAIN'.format(data_name))
-            if split_train:
-                train_dataset[data_name] = \
-                    dataset(lr_img_dat[:n_data // 10 * 6, :],
-                            hr_img_dat[:n_data // 10 * 6, :])
-            else:
-                print('append')
-                train_lr.append(lr_img_dat[:n_data // 10 * 6, :])
-                train_hr.append(hr_img_dat[:n_data // 10 * 6, :])
 
-            valid_dataset[data_name] = \
-                dataset(lr_img_dat[n_data // 10 * 6:n_data // 10 * 8, :],
-                        hr_img_dat[n_data // 10 * 6:n_data // 10 * 8, :])
-            test_dataset[data_name] = \
-                dataset(lr_img_dat[n_data // 10 * 8:, :],
-                        hr_img_dat[n_data // 10 * 8:, :])
-        else:
-            test_dataset[data_name] = \
+        ts_dataset[data_name] = \
                 dataset(lr_img_dat, hr_img_dat)
 
-    if not split_train:
-        train_lr = np.concatenate(train_lr, axis=0)
-        train_hr = np.concatenate(train_hr, axis=0)
-        train_dataset = dataset(train_lr, train_hr)
 
-    return train_dataset, valid_dataset, test_dataset
+    return ts_dataset
 
 

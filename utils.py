@@ -2,6 +2,51 @@ import numpy as np
 import time
 
 
+class TimestepSim(object):
+    def __init__(self, fps):
+        self.total_time = 0
+        self.pre_time = 0
+        self.fps = fps
+        self.status = 0
+        self.start()
+
+    def start(self):
+        cur_time = time.time()
+        if self.status:
+            self.total_time += cur_time - self.pre_time
+        self.pre_time = time.time()
+        self.status = 1
+
+    def get_time(self):
+        self.start()
+        return int(self.total_time * fps)
+
+    def stop(self):
+        cur_time = time.time()
+        if self.status:
+            self.total_time += cur_time - self.pre_time
+        self.pre_time = time.time()
+        self.status = 0
+
+
+# noinspection PyTypeChecker
+def open_file_and_save(file_path, data):
+    """
+    :param file_path: type==string
+    :param data:
+    """
+    if os.path.exists(file_path):
+        os.remove(file_path)
+
+    # Create the directory for the file
+    dir_path = file_path.rsplit('/', 1)[0]
+    if not os.path.exists(dir_path):
+        os.mkdir(dir_path)
+
+    with open(file_path, 'wb') as f_handle:
+        np.savetxt(f_handle, data, fmt='%s')
+
+
 def print_metrics(readouts, domain=None):
     '''
     Printing the losses from a sess.run() call

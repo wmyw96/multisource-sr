@@ -9,7 +9,7 @@ import importlib
 
 from model.edsr import *
 from utils import *
-from data import sr_dataset
+from data import sr_ts_dataset
 
 # os settings
 sys.path.append(os.path.dirname(__file__))
@@ -20,8 +20,9 @@ np.random.seed(0)
 
 # Parse cmdline args
 parser = argparse.ArgumentParser(description='multisource-super-resolution')
-parser.add_argument('--logdir', default='./logs', type=str)
+parser.add_argument('--logdir', default='./live-logs/', type=str)
 parser.add_argument('--modeldir', default='./saved_models/', type=str)
+parser.add_argument('--restoredir', default='./saved_models/', type=str)
 parser.add_argument('--exp_id', default='1', type=str)
 parser.add_argument('--gpu', default=-1, type=int)
 parser.add_argument('--datadir', default='./dataset/game-live-small', type=str)
@@ -55,7 +56,7 @@ f.close()
 #    f.truncate()
 
 # Load data
-sr_train_data, sr_valid_data, sr_test_data = sr_dataset(args.datadir, params)
+sr_ts_data = sr_ts_dataset(args.datadir, params)
 
 # Build the computation graph
 ph, graph, save_vars, targets = build_edsr_model(params=params)
@@ -73,7 +74,7 @@ writer = tf.summary.FileWriter(args.logdir, sess.graph)
 
 sess.run(tf.global_variables_initializer())
 # restore the model here
-
+saver.restore(sess, args.restoredir)
 ####################
 #  code to restore #
 ####################
@@ -114,81 +115,49 @@ def get_hr_image(sess, ph, targets, inp, inp_size, border, debug=True):
     return image, tt
 
 
-def evaluate(sess, ph, targets, sr_data, mode='Valid'):
-    ts = 0.0
-    tt = 0.0
-
-    total_loss = []
-    for name in sr_data:
-        print('=' * 8 + mode + ' set: ' + name + '=' * 8)
-        corpus = sr_data[name]
-        fetches = []
-        for _ in range(corpus.len()):
-            lr_image, hr_image = corpus.get_next_batch(1)
-
-            lr_image = lr_image[0, :, :, :]
-            hr_image = hr_image[0, :, :, :]
-
-            ts -= time.time()
-            out_image, stt = get_hr_image(sess, ph, targets, lr_image, small_size, params['data']['scale'] + 6, False)
-            ts += time.time()
-            tt += stt
-
-            fetches.append(get_loss(out_image, hr_image))
-
-        print('Tensorflow Time: Total {} s, Mean {} s'.format(tt, tt / corpus.len()))
-        print('Evaluation Time: Total {} s, Mean {} s'.format(ts, ts / corpus.len()))
-        ts = 0.0
-        write_logs('Valid {}'.format(name), combine_loss(fetches), log_path)
-        print_metrics(combine_loss(fetches))
-
-        total_loss.append(summarize_loss(combine_loss(fetches)))
-
-    return combine_loss(total_loss)
-
-
-decay = 1.0
-
-best_psnr_loss = 0.0
-
 readouts = {}
+timer = TimestepSim(fps=params['live']['fps'])
+timer.stop()
+
+result = np.zeros((len(sr_ts_data), 1))
 
 for ep in range(params['train']['num_episodes']):
     #readouts = {}
 
     t_ep_start = time.time()
 
+    ts = timer.get_time()
+
+    if (ts > len(sr_ts_data) - 1):
+        break
+
     lr_image, hr_image = \
-        sr_train_data.get_next_batch(params['train']['batch_size'], size=small_size)
+        sr_ts_data.get_next_batch(params['train']['batch_size'], ts, size=small_size)
     feed_dict = {
         ph['lr_image']: lr_image,
         ph['hr_image']: hr_image,
         ph['lr_decay']: decay
     }
     fetches = sess.run(targets['train'], feed_dict=feed_dict)
+
+    timer.stop()
+    print('Epoch {}, Timer = {}'.format(ep, ts))
+
     for k_, v_ in fetches.items():
         if 'loss' in k_:
             readouts[k_] = readouts.get(k_, []) + [fetches[k_]]
 
     t_ep_end = time.time()
     
-    if ep % 1000 == 0:
-        print('Episode: {} ({})'.format(ep, t_ep_end - t_ep_start))
-        print_metrics(readouts)
-        write_logs('Train Ep {}'.format(ep), readouts, log_path)
-        readouts = {}
-        #saver.save(sess, model_path)
-
     if ep % 50000 == 0 and ep > 0:
         decay *= 0.90
 
-    if ep % 5000 == 0:
-        #decay *= 0.90
-        #print(evaluate(sess, ph, targets, sr_valid_data)['psnr_loss'])
-        cur_psnr_loss = np.mean(evaluate(sess, ph, targets, sr_valid_data)['psnr_loss'])
+    ts = timer.get_time()
+    timer.stop()
 
-        if cur_psnr_loss > best_psnr_loss:
-            best_psnr_loss = cur_psnr_loss
-            saver.save(sess, model_path)
+    eval_image = sr_ts_data.ts(ts)
+    out = get_hr_image(sess, ph, targets, eval_image, None, None)
+    psnr = get_psnr(out, eval_image)
+    result[ts, 0] = max(psnr, result[ts, 0])
 
-evaluate(sess, ph, targets, sr_test_data)
+    open_file_and_save(log_path, result)
