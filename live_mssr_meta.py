@@ -164,12 +164,12 @@ for ep in range(params['train']['num_episodes']):
     fetches = sess.run(targets['train_local'][base_id], feed_dict=feed_dict)
 
     timer.stop()
-    print('Epoch {}, Timer = {}'.format(ep, ts))
+    print('Epoch {}, Timer = {}, Decay = {}'.format(ep, ts, decay))
 
     t_ep_end = time.time()
     
-    if ep % 50000 == 0 and ep > 0:
-        decay *= 0.90
+    if ep % 5000 == 0 and ep > 0:
+        decay *= 0.50
 
     ts = timer.get_time()
     timer.stop()
