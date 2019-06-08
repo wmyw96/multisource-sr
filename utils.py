@@ -1,5 +1,6 @@
 import numpy as np
 import time
+import os
 
 
 class TimestepSim(object):
@@ -19,7 +20,7 @@ class TimestepSim(object):
 
     def get_time(self):
         self.start()
-        return int(self.total_time * fps)
+        return int(self.total_time * self.fps)
 
     def stop(self):
         cur_time = time.time()

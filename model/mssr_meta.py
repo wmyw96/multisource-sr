@@ -134,11 +134,14 @@ def get_mssr_graph(ph, params):
         with tf.variable_scope('mssr-local', reuse=False):
             with tf.variable_scope('source-%d' % s, reuse=False):
                 local_feat = graph['branch_feat'][s] + graph['local_head'][s]
+                cced = tf.concat([graph['body'][s], local_feat], axis=3)
+
                 with tf.variable_scope('upsamler-module', reuse=False):
-                    up_local = upsampler_block(local_feat, params_d['scale'], branch_n_feats,
+                    fs = slim.conv2d(cced, branch_n_feats, kernel_size)
+                    up_local = upsampler_block(fs, params_d['scale'], branch_n_feats,
                                                kernel_size, None)
 
-                cced = tf.concat([graph['body'][s], local_feat], axis=3)
+                #cced = tf.concat([graph['body'][s], local_feat], axis=3)
                 with tf.variable_scope('local-weight', reuse=False):
                     fs = slim.conv2d(cced, branch_n_feats, kernel_size)
                     #fs = tf.nn.relu(fs)

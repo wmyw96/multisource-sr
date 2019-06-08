@@ -58,6 +58,8 @@ f.close()
 # Load data
 sr_ts_data = sr_ts_dataset(args.datadir, params)
 
+sr_ts_data = sr_ts_data[params['data']['train'][0]]
+
 # Build the computation graph
 ph, graph, save_vars, targets = build_edsr_model(params=params)
 
@@ -114,12 +116,13 @@ def get_hr_image(sess, ph, targets, inp, inp_size, border, debug=True):
     image = out
     return image, tt
 
+decay = 1.0
 
 readouts = {}
 timer = TimestepSim(fps=params['live']['fps'])
 timer.stop()
 
-result = np.zeros((len(sr_ts_data), 1))
+result = np.zeros((sr_ts_data.len(), 1))
 
 for ep in range(params['train']['num_episodes']):
     #readouts = {}
@@ -128,7 +131,7 @@ for ep in range(params['train']['num_episodes']):
 
     ts = timer.get_time()
 
-    if (ts > len(sr_ts_data) - 1):
+    if (ts > sr_ts_data.len() - 1):
         break
 
     lr_image, hr_image = \
@@ -155,9 +158,10 @@ for ep in range(params['train']['num_episodes']):
     ts = timer.get_time()
     timer.stop()
 
-    eval_image = sr_ts_data.ts(ts)
-    out = get_hr_image(sess, ph, targets, eval_image, None, None)
-    psnr = get_psnr(out, eval_image)
+    eval_inp, eval_out = sr_ts_data.ts(ts)
+    eval_inp = eval_inp[0, :, :, :]
+    out, tt = get_hr_image(sess, ph, targets, eval_inp, None, None)
+    psnr = get_psnr(out, eval_out)
     result[ts, 0] = max(psnr, result[ts, 0])
 
     open_file_and_save(log_path, result)

@@ -79,22 +79,23 @@ class dataset_ts(object):
                                      [self.labels.shape[0], 1])
         self.randomize = randomize
         self.num_pairs = len(inputs)
-        self.init_pointer()
 
     def len(self):
         return self.num_pairs
 
-    def get_next_batch(self, timestep, batch_size, size=None):
-        indexes = np.random.randint(timestep + 1, (batch_size,))
+    def get_next_batch(self, batch_size, timestep, size=None):
+        indexes = np.random.randint(timestep + 1, size=(batch_size,))
         inputs = self.inputs[indexes, :]
         labels = self.labels[indexes, :]
         if size is not None:
             return get_small_batch(inputs, labels, size)
+        print(inputs.shape, labels.shape)
         return inputs, labels
 
-    def ts(timestep, size=None):
+    def ts(self, timestep, size=None):
         inputs = self.inputs[timestep:timestep+1, :]
-        labels = self.inputs[timestep:timestep+1, :]
+        labels = self.labels[timestep:timestep+1, :]
+        print(inputs.shape)
         return inputs, labels
 
 
@@ -184,9 +185,10 @@ def sr_ts_dataset(datadir, params, split_train=False):
         cur_list = os.listdir(path)
         hr_img_cl = []
         lr_img_cl = []
+        count = 0
 
         print('=' * 16 + '\nRead File: {}'.format(path))
-        for ts in len(cur_list):
+        for ts in range(len(cur_list)):
             ele = cur_list[ts]
             
             if ele[0] == '.':
@@ -210,7 +212,7 @@ def sr_ts_dataset(datadir, params, split_train=False):
         print('Number of data = {}, [{}, {}]'.format(n_data, hr_img_dat.shape[1], hr_img_dat.shape[2]))
 
         ts_dataset[data_name] = \
-                dataset(lr_img_dat, hr_img_dat)
+                dataset_ts(lr_img_dat, hr_img_dat)
 
 
     return ts_dataset

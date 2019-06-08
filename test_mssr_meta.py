@@ -6,6 +6,7 @@ import sys
 import os
 import shutil
 import importlib
+import matplotlib.pyplot as plt
 
 from model.mssr_meta import *
 from utils import *
@@ -113,11 +114,11 @@ def get_hr_image(sess, ph, targets, name, inp, inp_size, border, debug=True):
     out = sess.run(targets['samples'][source_id]['hr_fake_image'], feed_dict=feed_dict)
     tt += time.time()
 
-    image = out
+    image = out[0, :, :, :]
     return image, tt
 
 
-def print_image(name, sess, ph, targets, logdir, corpus_name, corpus):
+def print_image(sess, ph, targets, logdir, corpus_name, corpus):
     losses = []
     for _ in range(corpus.len()):
         lr_image, hr_image = corpus.get_next_batch(1)
@@ -126,12 +127,12 @@ def print_image(name, sess, ph, targets, logdir, corpus_name, corpus):
         hr_image = hr_image[0, :, :, :]
 
         ts = time.time()
-        out_image = get_hr_image(sess, ph, targets, corpus_name, lr_image, small_size, params['data']['scale'] + 6, False)
+        out_image, tt = get_hr_image(sess, ph, targets, corpus_name, lr_image, small_size, params['data']['scale'] + 6, False)
         ts = time.time() - ts
         #print('Process image {}: {} s'.format(_, ts))
 
         prefix = logdir + '{}_{}'.format(corpus_name, _)
-
+        #print(out_image.shape)
         #cubic = cv2.resize(lr_image, (hr_image.shape[1], hr_image.shape[0]), 
         #    interpolation=cv2.INTER_CUBIC)
         plt.imsave(prefix + '_lr.png', lr_image)

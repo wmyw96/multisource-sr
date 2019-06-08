@@ -29,8 +29,8 @@ def generate_params():
                       'shift_mean': True,
                       'shared_block': 4,
                       'n_feats_branch': 12,
-                      'n_resblocks_branch_b': 3,
-                      'n_resblocks_branch_a': 3,
+                      'n_resblocks_branch_b': 4,
+                      'n_resblocks_branch_a': 4,
                       'n_sources': 6}
 
     params = {'data': data_params,
