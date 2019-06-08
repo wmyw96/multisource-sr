@@ -8,7 +8,7 @@ def generate_params():
                    'test': ['hy030613']}
 
     train_params = {'batch_size': 16,
-                    'lr': 5 * 1e-4,
+                    'lr': 1e-3,
                     'num_episodes': 300000}
 
     network_params = {'size_h': 48,
