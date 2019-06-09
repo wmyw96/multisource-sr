@@ -162,6 +162,6 @@ for ep in range(params['train']['num_episodes']):
     eval_inp = eval_inp[0, :, :, :]
     out, tt = get_hr_image(sess, ph, targets, eval_inp, None, None)
     psnr = get_psnr(out, eval_out)
-    result[ts, 0] = max(psnr, result[ts, 0])
+    result[ts, 0] = psnr
 
     open_file_and_save(log_path, result)
