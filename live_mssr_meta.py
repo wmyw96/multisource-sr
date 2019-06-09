@@ -169,7 +169,7 @@ for ep in range(params['train']['num_episodes']):
     t_ep_end = time.time()
     
     if ep % 5000 == 0 and ep > 0:
-        decay *= 0.50
+        decay *= 0.90
 
     ts = timer.get_time()
     timer.stop()
